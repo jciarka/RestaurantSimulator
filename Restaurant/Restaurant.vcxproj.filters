@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Client">
+      <UniqueIdentifier>{f31b96fa-e717-4b26-9e83-7ddb065975aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Dish">
+      <UniqueIdentifier>{2840ff85-44a1-46a5-8cc9-a9ceeaf732d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Restaurant">
+      <UniqueIdentifier>{30811de3-ca54-4da4-8a3c-77eba155d562}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Dish">
+      <UniqueIdentifier>{31a743dc-077d-414d-9b7b-4478f98ab255}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Client">
+      <UniqueIdentifier>{038b78da-dbcd-4ab9-b6a2-2f2b6c436dec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Restaurant">
+      <UniqueIdentifier>{d51b7b08-a5e4-4d5e-af1a-62256f43e60a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Client\Interfaces">
+      <UniqueIdentifier>{68d08f0c-ca0e-477d-83e4-840194fbed15}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Client\Headers">
+      <UniqueIdentifier>{d2a62dbb-eed9-4dc3-8f13-c2798efb6435}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Client\Source">
+      <UniqueIdentifier>{865b0566-45d5-4dcf-98d2-c1c501b7c122}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Core">
+      <UniqueIdentifier>{25546ff8-f8f8-4c96-9c9b-e36d69ec4abf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Core\Interfaces">
+      <UniqueIdentifier>{4e93e14c-815f-46fe-81c5-80311eed8464}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Core\Headers">
+      <UniqueIdentifier>{980d25ed-46e2-48cd-9c0f-fb604f33c2fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Dish\Interfaces">
+      <UniqueIdentifier>{d460fd8e-bb72-4593-b32b-7d9dc078ec35}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Core">
+      <UniqueIdentifier>{be073bfd-29ac-4950-b2a9-6c2c66126388}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Restaurant.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Triggered.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Trigger.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="TriggeredCounter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="IClient.h">
+      <Filter>Header Files\Client\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="StandardClient.h">
+      <Filter>Header Files\Client\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="IGroup.h">
+      <Filter>Header Files\Client\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="IDish.h">
+      <Filter>Header Files\Dish\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="IMenu.h">
+      <Filter>Header Files\Dish\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="IOrder.h">
+      <Filter>Header Files\Dish\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="ITriggered.h">
+      <Filter>Header Files\Core\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="Triggered.h">
+      <Filter>Header Files\Core\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ITrigger.h">
+      <Filter>Header Files\Core\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="Trigger.h">
+      <Filter>Header Files\Core\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="TriggeredCounter.h">
+      <Filter>Header Files\Core\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ITriggeredCounter.h">
+      <Filter>Header Files\Core\Interfaces</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
