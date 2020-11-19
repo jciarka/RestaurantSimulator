@@ -10,5 +10,5 @@ public:
 	virtual void start() = 0;
 	virtual void pause() = 0;
 	virtual bool is_counting() const = 0;
-	virtual ~ITriggeredCounter() = 0;
+	virtual ~ITriggeredCounter() = 0 {};
 };

@@ -10,4 +10,5 @@ class ITriggered
 {
 public:
 	virtual void execute_iteration() = 0;
+	virtual ~ITriggered() = 0 {};
 };
