@@ -4,6 +4,8 @@
 
 class IDish
 {
+    // pamiêtaj wskaŸnik IClient -> on_dish_state_change()
+    // IKitchen -> on_dish_state_change()
 public:
     enum class dish_state {
         ORDERED,
@@ -16,22 +18,13 @@ public:
     // typedef function type for raporting
     typedef void (*raport)(std::vector<std::ostream*>);
 
-    // typedef state changed functions 
-    typedef void (*dish_state_changed_event_handler)(IClient* sender, dish_state new_state);
-
-    //void add_client_state_changed_event_handler(dish_state_changed_event_handler* event_handler);
-    //void remove_client_state_changed_event_handler(dish_state_changed_event_handler* event_handler);
-
     virtual dish_state get_state() const = 0;
-    virtual void begin_preparing() = 0;
 
-    // Interface for IOrder
+    // Interface for IKitchen
     virtual void begin_preparing() = 0;
 
     // interface for IClient
     virtual void begin_eat() = 0;
-
-    virtual void execute_iteration() = 0;
 
     virtual ~IDish() = 0;
 

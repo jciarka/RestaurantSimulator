@@ -146,13 +146,20 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IClient.h" />
+    <ClInclude Include="ICsvReader.h" />
     <ClInclude Include="IDish.h" />
     <ClInclude Include="IGroup.h" />
+    <ClInclude Include="IGroupGenerator.h" />
+    <ClInclude Include="IKitchen.h" />
     <ClInclude Include="IMenu.h" />
     <ClInclude Include="IOrder.h" />
+    <ClInclude Include="IRaporter.h" />
+    <ClInclude Include="IServiceQueue.h" />
+    <ClInclude Include="ITable.h" />
     <ClInclude Include="ITrigger.h" />
     <ClInclude Include="ITriggered.h" />
     <ClInclude Include="ITriggeredCounter.h" />
+    <ClInclude Include="IWaiter.h" />
     <ClInclude Include="StandardClient.h" />
     <ClInclude Include="Trigger.h" />
     <ClInclude Include="Triggered.h" />

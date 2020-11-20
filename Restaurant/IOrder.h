@@ -27,8 +27,8 @@ public:
     virtual unsigned get_id() const = 0;
     virtual order_state get_state() const = 0;
 
-    // Interface for Group
-    virtual std::vector<IDish*>::iterator get_dishes() = 0;
+    // Interfejs dla kelnera
+    virtual 
 
     // Interface for kitchen
     virtual void begin_preparing() = 0;

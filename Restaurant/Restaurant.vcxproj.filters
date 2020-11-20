@@ -55,6 +55,9 @@
     <Filter Include="Source Files\Core">
       <UniqueIdentifier>{be073bfd-29ac-4950-b2a9-6c2c66126388}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Restaurant\Interfaces">
+      <UniqueIdentifier>{2a56a365-41ab-4909-bcf9-c060a2a69457}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Restaurant.cpp">
@@ -106,6 +109,27 @@
     </ClInclude>
     <ClInclude Include="ITriggeredCounter.h">
       <Filter>Header Files\Core\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="IWaiter.h">
+      <Filter>Header Files\Restaurant\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="IKitchen.h">
+      <Filter>Header Files\Restaurant\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="IServiceQueue.h">
+      <Filter>Header Files\Restaurant\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="ITable.h">
+      <Filter>Header Files\Client\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="IGroupGenerator.h">
+      <Filter>Header Files\Restaurant\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="ICsvReader.h">
+      <Filter>Header Files\Core\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="IRaporter.h">
+      <Filter>Header Files\Core\Headers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
