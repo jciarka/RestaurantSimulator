@@ -139,13 +139,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Order.cpp" />
+    <ClCompile Include="Raportable.cpp" />
     <ClCompile Include="Restaurant.cpp" />
-    <ClCompile Include="TerminalRaporter.cpp" />
+    <ClCompile Include="StandardClient.cpp" />
     <ClCompile Include="Trigger.cpp" />
     <ClCompile Include="Triggered.cpp" />
     <ClCompile Include="TriggeredCounter.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Beverage.h" />
+    <ClInclude Include="Dessert.h" />
+    <ClInclude Include="fwd_include.h" />
     <ClInclude Include="IClient.h" />
     <ClInclude Include="ICsvReader.h" />
     <ClInclude Include="IDish.h" />
@@ -154,6 +159,7 @@
     <ClInclude Include="IKitchen.h" />
     <ClInclude Include="IMenu.h" />
     <ClInclude Include="IOrder.h" />
+    <ClInclude Include="IRaportable.h" />
     <ClInclude Include="IRaporter.h" />
     <ClInclude Include="IServiceQueue.h" />
     <ClInclude Include="ITable.h" />
@@ -161,6 +167,11 @@
     <ClInclude Include="ITriggered.h" />
     <ClInclude Include="ITriggeredCounter.h" />
     <ClInclude Include="IWaiter.h" />
+    <ClInclude Include="MainCourse.h" />
+    <ClInclude Include="Order.h" />
+    <ClInclude Include="Price.h" />
+    <ClInclude Include="Raportable.h" />
+    <ClInclude Include="Soup.h" />
     <ClInclude Include="StandardClient.h" />
     <ClInclude Include="TerminalRaporter.h" />
     <ClInclude Include="Trigger.h" />

@@ -1,9 +1,9 @@
 #pragma once
-#include <iostream>
-#include <vector>
-#include "IDish.h"
-#include "IMenu.h"
+
+#include "fwd_include.h"
+
 #include "IClient.h"
+#include "IDish.h"
 
 class IOrder
 {
@@ -19,14 +19,12 @@ public:
     virtual unsigned get_id() const = 0;
     virtual order_state get_state() const = 0;
 
-    // Interfejs dla kelnera
-    virtual IClient* who_ordered() = 0;
-
     // Interfejs dla klienta
     virtual IDish* get_dish() = 0;
+    virtual IClient* get_client() = 0;
 
     // Interface for kitchen
     virtual void begin_preparing() = 0;
 
-    virtual ~IOrder() = 0;
+    virtual ~IOrder() = 0 {};
 };

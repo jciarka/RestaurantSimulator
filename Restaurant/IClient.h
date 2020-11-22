@@ -1,9 +1,12 @@
 #pragma once
-#include <iostream>
+
+#include "fwd_include.h"
+
 #include <vector>
-#include "IDish.h"
 #include "IMenu.h"
 #include "IOrder.h"
+#include "IDish.h"
+
 
 class IClient
 {
@@ -23,7 +26,6 @@ public:
         WAITING_FOR_DISHES,
         EATING,
         FINISHED_EATING,
-        READY_TO_PAY,
         LEAVING,
     };
 
@@ -34,16 +36,16 @@ public:
 
     // Interface for IKelner
     virtual void take_card(const IMenu* menu) = 0;
-    virtual std::vector<IOrder*> give_order() const = 0; // Creates new Order 
+    virtual std::vector<IOrder*> give_order() = 0; // Creates new Order 
                                             // and new Dishes (MUST REMEMBER TO delete the after eating)
     virtual void pick_up_order(IOrder* order) = 0; //Deletes fullfilled order
-    virtual void pay() const = 0;
+    virtual void pay() = 0;
 
     // Interfejs dla IDish
-    virtual bool on_dish_state_change(IDish* dish) = 0;
+    virtual void on_dish_state_change(IDish* dish) = 0;
 
     // Interfejs dla IGroup
     virtual void begin_feast() = 0;
 
-    virtual ~IClient() = 0;  // Zniszcz dania, zniszcz menu zniszcz zamowienia
+    virtual ~IClient() = 0 {};  // Zniszcz dania, zniszcz menu zniszcz zamowienia
 };

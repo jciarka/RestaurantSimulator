@@ -58,6 +58,18 @@
     <Filter Include="Header Files\Restaurant\Interfaces">
       <UniqueIdentifier>{2a56a365-41ab-4909-bcf9-c060a2a69457}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Dish\Headers">
+      <UniqueIdentifier>{7326b7ae-8c1b-4855-a875-62de6ccf8056}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Infractructure">
+      <UniqueIdentifier>{da09ecc2-c0fe-48bc-87e1-0a4d4597dee8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Infractructure\Headers">
+      <UniqueIdentifier>{a51b40d4-1430-4c40-95b8-e287498fe1a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Infractructure\Interfaces">
+      <UniqueIdentifier>{ff119aff-c029-4e34-a669-c0074afee235}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Restaurant.cpp">
@@ -69,11 +81,17 @@
     <ClCompile Include="Trigger.cpp">
       <Filter>Source Files\Core</Filter>
     </ClCompile>
-    <ClCompile Include="TriggeredCounter.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="StandardClient.cpp">
+      <Filter>Source Files\Client</Filter>
     </ClCompile>
-    <ClCompile Include="TerminalRaporter.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="TriggeredCounter.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Order.cpp">
+      <Filter>Source Files\Dish</Filter>
+    </ClCompile>
+    <ClCompile Include="Raportable.cpp">
+      <Filter>Source Files\Core</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -128,14 +146,41 @@
     <ClInclude Include="IGroupGenerator.h">
       <Filter>Header Files\Restaurant\Interfaces</Filter>
     </ClInclude>
-    <ClInclude Include="ICsvReader.h">
-      <Filter>Header Files\Core\Interfaces</Filter>
-    </ClInclude>
     <ClInclude Include="IRaporter.h">
       <Filter>Header Files\Core\Interfaces</Filter>
     </ClInclude>
     <ClInclude Include="TerminalRaporter.h">
       <Filter>Header Files\Core\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="IRaportable.h">
+      <Filter>Header Files\Core\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="Raportable.h">
+      <Filter>Header Files\Core\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="MainCourse.h">
+      <Filter>Header Files\Dish\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Beverage.h">
+      <Filter>Header Files\Dish\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Dessert.h">
+      <Filter>Header Files\Dish\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Soup.h">
+      <Filter>Header Files\Dish\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Order.h">
+      <Filter>Header Files\Dish\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="fwd_include.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="ICsvReader.h">
+      <Filter>Header Files\Infractructure\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="Price.h">
+      <Filter>Header Files\Infractructure\Headers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -1,4 +1,6 @@
 #pragma once
+
+#include "fwd_include.h"
 #include "IOrder.h"
 
 class IKitchen

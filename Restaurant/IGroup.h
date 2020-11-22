@@ -1,7 +1,10 @@
 #pragma once
-#include <iostream>
+
+#include "fwd_include.h"
+
 #include <vector>
 #include "IClient.h"
+
 
 class IGroup
 {
@@ -13,7 +16,7 @@ public:
     virtual unsigned get_id() const = 0;
 
     // interfejs dla kelnera
-    virtual std::vector<IClient> give_clients() = 0;
+    virtual std::vector<IClient*> give_clients() = 0;
 
     // interfejs dla klienta
     virtual void on_client_state_changed(IClient* clinet) = 0;

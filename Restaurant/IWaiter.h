@@ -1,8 +1,5 @@
 #pragma once
-
-#include <iostream>
-#include <vector>
-#include "IDish.h"
+#include "fwd_include.h"
 
 class IWaiter
 {
