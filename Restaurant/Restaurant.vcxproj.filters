@@ -70,6 +70,12 @@
     <Filter Include="Header Files\Infractructure\Interfaces">
       <UniqueIdentifier>{ff119aff-c029-4e34-a669-c0074afee235}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Test">
+      <UniqueIdentifier>{1d6aaf4a-e9f9-498d-b252-e606ccad843f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Test\Headers">
+      <UniqueIdentifier>{6449298f-4402-4790-adcb-a4800e95f75b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Restaurant.cpp">
@@ -92,6 +98,9 @@
     </ClCompile>
     <ClCompile Include="Raportable.cpp">
       <Filter>Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="DishBase.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -181,6 +190,12 @@
     </ClInclude>
     <ClInclude Include="Price.h">
       <Filter>Header Files\Infractructure\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="TestMenu.h">
+      <Filter>Header Files\Test\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="DishBase.h">
+      <Filter>Header Files\Dish\Headers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

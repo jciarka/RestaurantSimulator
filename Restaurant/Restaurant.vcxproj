@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="DishBase.cpp" />
     <ClCompile Include="Order.cpp" />
     <ClCompile Include="Raportable.cpp" />
     <ClCompile Include="Restaurant.cpp" />
@@ -154,6 +155,7 @@
     <ClInclude Include="IClient.h" />
     <ClInclude Include="ICsvReader.h" />
     <ClInclude Include="IDish.h" />
+    <ClInclude Include="DishBase.h" />
     <ClInclude Include="IGroup.h" />
     <ClInclude Include="IGroupGenerator.h" />
     <ClInclude Include="IKitchen.h" />
@@ -174,6 +176,7 @@
     <ClInclude Include="Soup.h" />
     <ClInclude Include="StandardClient.h" />
     <ClInclude Include="TerminalRaporter.h" />
+    <ClInclude Include="TestMenu.h" />
     <ClInclude Include="Trigger.h" />
     <ClInclude Include="Triggered.h" />
     <ClInclude Include="TriggeredCounter.h" />
