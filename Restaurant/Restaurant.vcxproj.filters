@@ -72,6 +72,9 @@
     <ClCompile Include="TriggeredCounter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TerminalRaporter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IClient.h">
@@ -126,9 +129,12 @@
       <Filter>Header Files\Restaurant\Interfaces</Filter>
     </ClInclude>
     <ClInclude Include="ICsvReader.h">
-      <Filter>Header Files\Core\Headers</Filter>
+      <Filter>Header Files\Core\Interfaces</Filter>
     </ClInclude>
     <ClInclude Include="IRaporter.h">
+      <Filter>Header Files\Core\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="TerminalRaporter.h">
       <Filter>Header Files\Core\Headers</Filter>
     </ClInclude>
   </ItemGroup>

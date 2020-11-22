@@ -15,9 +15,6 @@ public:
         EATEN,
     };
 
-    // typedef function type for raporting
-    typedef void (*raport)(std::vector<std::ostream*>);
-
     virtual dish_state get_state() const = 0;
 
     // Interface for IKitchen

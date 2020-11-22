@@ -27,13 +27,8 @@ public:
         LEAVING,
     };
 
-    // typedef function type for raporting
-    typedef void (*raport)(std::vector<std::ostream*>);
 
-
-    // Interface dla IDish
-    virtual bool on_dish_state_change(IDish* dish) = 0;
-
+    // general 
     virtual unsigned get_id() const = 0;
     virtual client_state get_state() const = 0;
 
@@ -45,9 +40,10 @@ public:
     virtual void pay() const = 0;
 
     // Interfejs dla IDish
-    virtual IDish* on_dish_state_change() = 0;
+    virtual bool on_dish_state_change(IDish* dish) = 0;
 
-    virtual void execute_iteration() = 0;
+    // Interfejs dla IGroup
+    virtual void begin_feast() = 0;
 
     virtual ~IClient() = 0;  // Zniszcz dania, zniszcz menu zniszcz zamowienia
 };

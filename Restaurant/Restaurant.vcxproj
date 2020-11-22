@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Restaurant.cpp" />
+    <ClCompile Include="TerminalRaporter.cpp" />
     <ClCompile Include="Trigger.cpp" />
     <ClCompile Include="Triggered.cpp" />
     <ClCompile Include="TriggeredCounter.cpp" />
@@ -161,6 +162,7 @@
     <ClInclude Include="ITriggeredCounter.h" />
     <ClInclude Include="IWaiter.h" />
     <ClInclude Include="StandardClient.h" />
+    <ClInclude Include="TerminalRaporter.h" />
     <ClInclude Include="Trigger.h" />
     <ClInclude Include="Triggered.h" />
     <ClInclude Include="TriggeredCounter.h" />
