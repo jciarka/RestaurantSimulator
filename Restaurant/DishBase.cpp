@@ -15,7 +15,7 @@ unsigned DishBase::generate_unique_id()
 // ______________________________________________________________________________________________________
 
 
-DishBase::DishBase(unsigned preparing_time, unsigned eating_time, std::string name, IDish::dish_state state, price dish_price,
+DishBase::DishBase(unsigned preparing_time, unsigned eating_time, std::string name, price dish_price,
                    ITrigger& global_trigger, IRaporter& global_raporter)
     : TriggeredCounter(global_trigger), Raportable(global_raporter),
       name(name), preparing_time(preparing_time), eating_time(eating_time), state(IDish::dish_state::CHOOSEN), dish_price(dish_price), 
@@ -25,11 +25,11 @@ DishBase::DishBase(unsigned preparing_time, unsigned eating_time, std::string na
 
 void DishBase::set_client(IClient* client)
 {
-    if (client != nullptr)
+    if (client == nullptr)
     {
         // Rzuæ wyj¹tek
         std::stringstream error_txt_stream;
-        error_txt_stream << "Dish " << id << ": client can be set only once";
+        error_txt_stream << "Dish " << id << ": client is not set";
         throw std::logic_error(error_txt_stream.str());
     }
 
@@ -38,11 +38,11 @@ void DishBase::set_client(IClient* client)
 
 void DishBase::set_kitchen(IKitchen* kitchen)
 {
-    if (kitchen != nullptr)
+    if (kitchen == nullptr)
     {
         // Rzuæ wyj¹tek
         std::stringstream error_txt_stream;
-        error_txt_stream << "Dish " << id << ": kitchen can bes set only once";
+        error_txt_stream << "Dish " << id << ": kitchen must not be null";
         throw std::logic_error(error_txt_stream.str());
     }
 
@@ -61,7 +61,7 @@ void DishBase::begin_preparing()
         throw std::logic_error(error_txt_stream.str());
     }
 
-    if (kitchen != nullptr)
+    if (kitchen == nullptr)
     {
         // Kuchnia musi byæ w tym momencie ju¿ okreœlona
         std::stringstream error_txt_stream;
@@ -71,7 +71,9 @@ void DishBase::begin_preparing()
 
     // raport
     std::ostringstream raport_steram;
-    raport_steram << "Dish " << id << ": is being prepared" << std::endl;
+    raport_steram << this->to_string() << ", id:" << id 
+                  << " for Client " << this->client->get_id() 
+                  << " is being prepared";
     raport(raport_steram.str());
 
     // Zainicjuj proces przygotowania
@@ -91,7 +93,9 @@ void DishBase::OnCounted()
     {
     case IDish::dish_state::PREPARATION:
         // Raportuj
-        raport_stream << "Dish " << id << ": is ready do deliver" << std::endl;
+        raport_stream << this->to_string() << ", id:" << id
+                      << " for Client " << this->client->get_id()
+                      << " is ready for delivery";
         raport(raport_stream.str());
 
         // Powiadom kuchniê o zmianie stanu - nie jest konieczny, bêdzie ignorowany 
@@ -101,8 +105,8 @@ void DishBase::OnCounted()
 
     case IDish::dish_state::CONSUMPTION:
         // Raportuj
-        raport_stream << "Dish " << id << ": is eaten" << std::endl;
-        raport(raport_stream.str());
+        // raport_stream << "Dish " << id << ": is eaten" << std::endl;
+        // raport(raport_stream.str());
 
         // Powiadom kuchniê o zmianie stanu - nie jest konieczny, bêdzie ignorowany 
         state = IDish::dish_state::EATEN;
@@ -127,7 +131,7 @@ void DishBase::begin_eat()
         throw std::logic_error(error_txt_stream.str());
     }
 
-    if ( client != nullptr)
+    if ( client == nullptr)
     {
         // Kuchnia musi byæ w tym momencie ju¿ okreœlona
         std::stringstream error_txt_stream;
@@ -136,17 +140,15 @@ void DishBase::begin_eat()
     }
 
     // raport
-    std::ostringstream raport_steram;
-    raport_steram << "Dish " << id << ": is begined to eat" << std::endl;
-    raport(raport_steram.str());
+    //std::ostringstream raport_steram;
+    //raport_steram << "Dish " << id << ": is begined to eat" << std::endl;
+    //raport(raport_steram.str());
 
     // Zainicjuj proces przygotowania
     set_counter(eating_time);
     start();
 
-    // Powiadom kuchniê o zmianie stanu - nie jest konieczny, bêdzie ignorowany 
     state = IDish::dish_state::CONSUMPTION;
-    //kitchen->on_dish_state_change(this);
 }
 
 price DishBase::get_price()

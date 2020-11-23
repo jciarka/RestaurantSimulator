@@ -20,7 +20,7 @@ private:
     IClient* client;
 
 public:
-    DishBase(unsigned preparing_time, unsigned eating_time, std::string name, IDish::dish_state state,
+    DishBase(unsigned preparing_time, unsigned eating_time, std::string name,
              price dish_price, ITrigger& global_trigger, IRaporter& global_raporter);
 
 public:

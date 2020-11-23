@@ -27,5 +27,5 @@ public:
     virtual IClient::client_state get_group_state() = 0;
 
 
-    virtual ~IGroup() = 0; // Delete clients 
+    virtual ~IGroup() = 0 {}; // Delete clients 
 };

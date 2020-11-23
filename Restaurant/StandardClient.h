@@ -11,8 +11,6 @@
 #include "Raportable.h"
 
 
-
-
 class StandardClient : public TriggeredCounter, public Raportable, public IClient
 {
 private:

@@ -54,9 +54,11 @@ void StandardClient::begin_feast()
     }
 
     // raport
-    std::ostringstream raport_steram;
-    raport_steram << "Client " << id << ": Begining feast" << std::endl;
-    raport(raport_steram.str());
+    std::ostringstream raport_stream;
+    raport_stream <<  "Table: " << "" <<
+                     " Group: " << "" <<
+                     " Client " << id << ": Begins feast";
+    raport(raport_stream.str());
 
     // Powiadom grupê o zmianie stanu - nie konieczne ale dla zachowania konwencji
     // grupa bêdzie to ignorowaæ
@@ -84,9 +86,11 @@ void StandardClient::take_card(const IMenu* menu)
     group->on_client_state_changed(this);
 
     // raport
-    std::ostringstream raport_steram;
-    raport_steram << "Client " << id << ": Took menu and begin to choose dishes" << std::endl;
-    raport(raport_steram.str());
+    std::ostringstream raport_stream;
+    raport_stream <<  "Table: " << "" <<
+                     " Group: " << "" <<
+                     " Client " << id << ": Took menu and begin to choose dishes";
+    raport(raport_stream.str());
 }
 
 void StandardClient::choose_dishes()
@@ -99,23 +103,29 @@ void StandardClient::choose_dishes()
     }
 
     // Prepare to raport
-    std::ostringstream raport_steram;
+    std::ostringstream raport_stream;
 
     // Choose main course
     srand(time(nullptr));
     unsigned dish_count = menu->get_main_course_size();
     unsigned choosen = rand() % dish_count;
     main_course = menu->get_main_course(choosen);
+    main_course->set_client(this);
 
-    raport_steram << "Client " << id << ": Choosed main_course - " << main_course->to_string() << std::endl;
+    raport_stream <<  "Table: " << "" <<
+                     " Group: " << "" <<
+                     " Client " << id << ": choosed " << main_course->to_string() << std::endl;
    
     // Choose beverage
     dish_count = menu->get_beverage_size();
     choosen = rand() % dish_count;
     beveage = menu->get_beverage(choosen);
-    raport_steram << "Client " << id << ": Choosed beverage - " << beveage->to_string() << std::endl;
+    beveage->set_client(this);
+    raport_stream <<  "Table: " << "" <<
+                     " Group: " << "" <<
+                     " Client " << id << ": choosed " << beveage->to_string();
 
-    raport(raport_steram.str());
+    raport(raport_stream.str());
 }
 
 // Triggered
@@ -130,7 +140,9 @@ void StandardClient::OnCounted()
         choose_dishes();
 
         // Raportuj
-        raport_stream << "Client " << id << "is ready to order" << std::endl;
+        raport_stream <<  "Table: " << "" <<
+                         " Group: " << "" <<
+                         " Client " << id << ": is ready to order";
         raport(raport_stream.str());
 
         // Powiadom grupê o zmianie stanu
@@ -170,7 +182,9 @@ std::vector<IOrder*> StandardClient::give_order()
 
     // Raportuj
     std::stringstream raport_stream;
-    raport_stream << "Client " << id << "is ready to order" << std::endl;
+    raport_stream <<  "Table: " << "" <<
+                     " Group: " << "" << 
+                     " Client " << id << ": has ordered";
     raport(raport_stream.str());
 
     // Powiadom grupê o zmianie stanu
@@ -200,7 +214,7 @@ void StandardClient::pick_up_order(IOrder* order)
 
         // Raportuj
         std::stringstream raport_stream;
-        raport_stream << "Client " << id << "starts consuming" << dish->to_string() << std::endl;
+        raport_stream << "Client " << id << "starts consuming " << dish->to_string();
         raport(raport_stream.str());
 
         if (state == IClient::client_state::WAITING_FOR_DISHES)
@@ -239,7 +253,9 @@ void StandardClient::on_dish_state_change(IDish* dish)
 
     // Raportuj
     std::stringstream raport_stream;
-    raport_stream << "Client " << id << "consumed" << dish->to_string() << std::endl;
+    raport_stream << "Table: " << "" <<
+                     " Group: " << "" <<
+                     " Client " << id << ": consumed " << dish->to_string();
     raport(raport_stream.str());
 
     if (beveage->get_state() == IDish::dish_state::EATEN && main_course->get_state() == IDish::dish_state::EATEN)
@@ -261,7 +277,9 @@ void StandardClient::pay()
 
     // Raportuj
     std::stringstream raport_stream;
-    raport_stream << "Client " << id << " is paying " << total << std::endl;
+    raport_stream << "Table: " << "" <<
+                     " Group: " << "" <<
+                     " Client " << id << ": paying " << total;
     raport(raport_stream.str());
 
     // Powiadom grupê o zmianie stanu

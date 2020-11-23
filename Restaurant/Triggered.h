@@ -12,7 +12,7 @@
 
 class Triggered : public ITriggered
 {
-private:
+protected:
 	ITrigger* global_trigger_ptr;
 
 public:

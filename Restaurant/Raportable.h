@@ -5,7 +5,7 @@
 
 class Raportable : public IRaportable
 {
-private:
+protected:
 	IRaporter* global_raporter_ptr;
 
 public:

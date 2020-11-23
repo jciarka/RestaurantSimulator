@@ -180,6 +180,8 @@
     <ClInclude Include="Soup.h" />
     <ClInclude Include="StandardClient.h" />
     <ClInclude Include="TerminalRaporter.h" />
+    <ClInclude Include="TestGroup.h" />
+    <ClInclude Include="TestKitchen.h" />
     <ClInclude Include="TestMenu.h" />
     <ClInclude Include="Trigger.h" />
     <ClInclude Include="Triggered.h" />

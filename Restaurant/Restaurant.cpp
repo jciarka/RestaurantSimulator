@@ -2,19 +2,57 @@
 //
 
 #include <iostream>
+#include "Order.h"
+#include "Trigger.h"
+#include "TerminalRaporter.h"
+#include "StandardClient.h"
+#include "TestMenu.h"
+#include "TestGroup.h"
+#include "TestKitchen.h"
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    Trigger trigger;
+    TerminaRaporter raporter;
+    IGroup* testgroup = new TestGroup;
+    StandardClient* testclient = new StandardClient(5, testgroup, nullptr, trigger, raporter);
+    TestMenu testmenu(trigger, raporter);
+    TestKitchen testkitchen;
+    testclient->begin_feast();
+    testclient->take_card(&testmenu);
+    
+    for (size_t i = 0; i < 15; i++)
+    {
+        trigger.execute_iteration();
+    }
+
+    std::vector<IOrder*> orders = testclient->give_order();
+
+    orders[0]->get_dish()->set_kitchen(&testkitchen);
+    orders[1]->get_dish()->set_kitchen(&testkitchen);
+
+    orders[0]->get_dish()->begin_preparing();
+    orders[1]->get_dish()->begin_preparing();
+
+    for (size_t i = 0; i < 15; i++)
+    {
+        trigger.execute_iteration();
+    }
+
+    testclient->pick_up_order(orders[0]);
+    testclient->pick_up_order(orders[1]);
+
+    for (size_t i = 0; i < 15; i++)
+    {
+        trigger.execute_iteration();
+    }
+    testclient->pay();
+
+    delete testclient;
+    delete testgroup;
+
+    for (size_t i = 0; i < 5; i++)
+    {
+        trigger.execute_iteration();
+    }
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file

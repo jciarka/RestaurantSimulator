@@ -19,6 +19,7 @@ class Trigger : public ITrigger
 {
 private:
     std::vector<ITriggered*> iterated_objects;
+    std::vector<ITriggered*> objects_to_add;
 
 public:
     virtual void execute_iteration() override;

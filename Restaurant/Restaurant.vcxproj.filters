@@ -209,5 +209,11 @@
     <ClInclude Include="DishBase.h">
       <Filter>Header Files\Dish\Headers</Filter>
     </ClInclude>
+    <ClInclude Include="TestGroup.h">
+      <Filter>Header Files\Test\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="TestKitchen.h">
+      <Filter>Header Files\Test\Headers</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
