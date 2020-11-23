@@ -1,9 +1,8 @@
 #pragma once
-
 #include "IDish.h"
 #include "TriggeredCounter.h"
 #include "Raportable.h"
-#include "IKitchen.h"
+
 
 class DishBase : public TriggeredCounter, public Raportable, public IDish
 {
@@ -22,17 +21,14 @@ private:
 
 public:
     DishBase(unsigned preparing_time, unsigned eating_time, std::string name, IDish::dish_state state,
-             price dish_price, IClient* client, ITrigger& global_trigger, IRaporter& global_raporter);
-
-
-    // pamiêtaj wskaŸnik IClient -> on_dish_state_change()
-    // IKitchen -> on_dish_state_change()
+             price dish_price, ITrigger& global_trigger, IRaporter& global_raporter);
 
 public:
 
     // general 
     virtual unsigned get_id() const override { return id; }
     virtual IDish::dish_state get_state() const override { return state; };
+    virtual std::string get_name() const override { return name; }
   
     // Interface for IKitchen
     virtual void begin_preparing() override;
@@ -42,6 +38,7 @@ public:
 
    
     // interface for IClient
+    virtual void set_client(IClient* client) override;
     virtual void begin_eat() override;    
     virtual price get_price() override;
 

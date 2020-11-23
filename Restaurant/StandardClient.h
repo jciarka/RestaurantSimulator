@@ -1,10 +1,16 @@
 #pragma once
+#include "fwd_include.h"
 
-#include "TriggeredCounter.h"
-#include "Raportable.h"
 #include "IClient.h"
+#include "IGroup.h"
+
+#include "DishBase.h"
 #include "Beverage.h"
 #include "MainCourse.h"
+#include "TriggeredCounter.h"
+#include "Raportable.h"
+
+
 
 
 class StandardClient : public TriggeredCounter, public Raportable, public IClient

@@ -1,5 +1,7 @@
 #include <sstream>
 #include "DishBase.h"
+#include "IClient.h"
+#include "IKitchen.h"
 
 
 // ______________________________________________________________________________________________________
@@ -14,20 +16,33 @@ unsigned DishBase::generate_unique_id()
 
 
 DishBase::DishBase(unsigned preparing_time, unsigned eating_time, std::string name, IDish::dish_state state, price dish_price,
-                   IClient* client, ITrigger& global_trigger, IRaporter& global_raporter)
+                   ITrigger& global_trigger, IRaporter& global_raporter)
     : TriggeredCounter(global_trigger), Raportable(global_raporter),
       name(name), preparing_time(preparing_time), eating_time(eating_time), state(IDish::dish_state::CHOOSEN), dish_price(dish_price), 
-      client(client), kitchen(nullptr), id(generate_unique_id())
+      client(nullptr), kitchen(nullptr), id(generate_unique_id())
 {
+}
+
+void DishBase::set_client(IClient* client)
+{
+    if (client != nullptr)
+    {
+        // Rzuæ wyj¹tek
+        std::stringstream error_txt_stream;
+        error_txt_stream << "Dish " << id << ": client can be set only once";
+        throw std::logic_error(error_txt_stream.str());
+    }
+
+    this->client = client;
 }
 
 void DishBase::set_kitchen(IKitchen* kitchen)
 {
-    if (kitchen == nullptr)
+    if (kitchen != nullptr)
     {
         // Rzuæ wyj¹tek
         std::stringstream error_txt_stream;
-        error_txt_stream << "Dish " << id << ": set_kitchen call tries to set nullpointer";
+        error_txt_stream << "Dish " << id << ": kitchen can bes set only once";
         throw std::logic_error(error_txt_stream.str());
     }
 

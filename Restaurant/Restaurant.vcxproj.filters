@@ -99,8 +99,20 @@
     <ClCompile Include="Raportable.cpp">
       <Filter>Source Files\Core</Filter>
     </ClCompile>
+    <ClCompile Include="Soup.cpp">
+      <Filter>Source Files\Dish</Filter>
+    </ClCompile>
     <ClCompile Include="DishBase.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Dish</Filter>
+    </ClCompile>
+    <ClCompile Include="Dessert.cpp">
+      <Filter>Source Files\Dish</Filter>
+    </ClCompile>
+    <ClCompile Include="Beverage.cpp">
+      <Filter>Source Files\Dish</Filter>
+    </ClCompile>
+    <ClCompile Include="MainCourse.cpp">
+      <Filter>Source Files\Dish</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

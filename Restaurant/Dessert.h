@@ -1,14 +1,11 @@
-#include "IDish.h"
+#pragma once
+#include "DishBase.h"
 
-class Dessert : public IDish
+class Dessert : public DishBase
 {
-    /*
-    TO DO:
-
-    // pamiêtaj wskaŸnik IClient -> on_dish_state_change()
-    // IKitchen -> on_dish_state_change()
 public:
-
-    virtual ~MainCourse() = 0;
-    */
+    Dessert(unsigned preparing_time, unsigned eating_time, std::string name, IDish::dish_state state,
+        price dish_price, ITrigger& global_trigger, IRaporter& global_raporter);
+    virtual std::string to_string() const override;
+    virtual ~Dessert() {};
 };

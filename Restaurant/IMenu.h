@@ -1,7 +1,6 @@
 #pragma once
 
 #include "fwd_include.h"
-
 #include "Beverage.h"
 #include "Soup.h"
 #include "MainCourse.h"

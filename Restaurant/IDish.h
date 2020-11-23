@@ -5,6 +5,7 @@
 #include <string>
 #include "Price.h"
 
+
 class IDish
 {
     // pamiêtaj wskaŸnik IClient -> on_dish_state_change()
@@ -22,12 +23,14 @@ public:
     // general 
     virtual unsigned get_id() const = 0;
     virtual dish_state get_state() const = 0;
+    virtual std::string get_name() const = 0;
 
     // Interface for IKitchen
     virtual void set_kitchen(IKitchen* kitchen) = 0;
     virtual void begin_preparing() = 0;
 
     // interface for IClient
+    virtual void set_client(IClient* client) = 0;
     virtual void begin_eat() = 0;
     virtual std::string to_string() const = 0;
     virtual price get_price() = 0;

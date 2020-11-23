@@ -139,10 +139,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Beverage.cpp" />
+    <ClCompile Include="Dessert.cpp" />
     <ClCompile Include="DishBase.cpp" />
+    <ClCompile Include="MainCourse.cpp" />
     <ClCompile Include="Order.cpp" />
     <ClCompile Include="Raportable.cpp" />
     <ClCompile Include="Restaurant.cpp" />
+    <ClCompile Include="Soup.cpp" />
     <ClCompile Include="StandardClient.cpp" />
     <ClCompile Include="Trigger.cpp" />
     <ClCompile Include="Triggered.cpp" />
