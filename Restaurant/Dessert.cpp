@@ -10,6 +10,6 @@ Dessert::Dessert(unsigned preparing_time, unsigned eating_time, std::string name
 std::string Dessert::to_string() const
 {
     std::stringstream description;
-    description << "dessert, type: " << DishBase::get_name() << " id: " << DishBase::get_id();
+    description << "dessert " << DishBase::get_name() << " " << DishBase::get_id();
     return std::string(description.str());
 }

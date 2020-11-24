@@ -76,6 +76,12 @@
     <Filter Include="Header Files\Test\Headers">
       <UniqueIdentifier>{6449298f-4402-4790-adcb-a4800e95f75b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Restaurant\Headers">
+      <UniqueIdentifier>{b5d5234e-ef64-46dd-b5fe-2b645c0bf0a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Tests">
+      <UniqueIdentifier>{67a17a8d-7740-4813-86c0-d34433f53846}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Restaurant.cpp">
@@ -113,6 +119,24 @@
     </ClCompile>
     <ClCompile Include="MainCourse.cpp">
       <Filter>Source Files\Dish</Filter>
+    </ClCompile>
+    <ClCompile Include="Kitchen.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="test1.cpp">
+      <Filter>Source Files\Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="ServiceQueue.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Waiter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="test2.cpp">
+      <Filter>Source Files\Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="Group.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -213,6 +237,21 @@
       <Filter>Header Files\Test\Headers</Filter>
     </ClInclude>
     <ClInclude Include="TestKitchen.h">
+      <Filter>Header Files\Test\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Kitchen.h">
+      <Filter>Header Files\Restaurant\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ServiceQueue.h">
+      <Filter>Header Files\Restaurant\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Waiter.h">
+      <Filter>Header Files\Restaurant\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Group.h">
+      <Filter>Header Files\Client\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Tests.h">
       <Filter>Header Files\Test\Headers</Filter>
     </ClInclude>
   </ItemGroup>

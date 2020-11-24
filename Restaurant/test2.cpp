@@ -1,7 +1,6 @@
 
 // Restaurant.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
-#include "Tests.h"
 
 #include <iostream>
 #include "Order.h"
@@ -11,20 +10,14 @@
 #include "TestMenu.h"
 #include "TestGroup.h"
 #include "Kitchen.h"
-#include "ServiceQueue.h"
-#include "Waiter.h"
 
-int main()
+void test2()
 {
-    test2();
-    /*
     Trigger trigger;
     TerminaRaporter raporter;
     IGroup* testgroup = new TestGroup;
     Kitchen kitchen(raporter);
     StandardClient* testclient = new StandardClient(5, testgroup, nullptr, trigger, raporter);
-    ServiceQueue servicequeue(raporter);
-    Waiter(&kitchen, &servicequeue, trigger, raporter);
     TestMenu testmenu(trigger, raporter);
     testclient->begin_feast();
     testclient->take_card(&testmenu);
@@ -78,5 +71,4 @@ int main()
     {
         trigger.execute_iteration();
     }
-    */
 }

@@ -1,7 +1,7 @@
-
+#pragma once
+#include "Tests.h"
 // Restaurant.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
-#include "Tests.h"
 
 #include <iostream>
 #include "Order.h"
@@ -10,22 +10,16 @@
 #include "StandardClient.h"
 #include "TestMenu.h"
 #include "TestGroup.h"
-#include "Kitchen.h"
-#include "ServiceQueue.h"
-#include "Waiter.h"
+#include "TestKitchen.h"
 
-int main()
+void test1()
 {
-    test2();
-    /*
     Trigger trigger;
     TerminaRaporter raporter;
     IGroup* testgroup = new TestGroup;
-    Kitchen kitchen(raporter);
     StandardClient* testclient = new StandardClient(5, testgroup, nullptr, trigger, raporter);
-    ServiceQueue servicequeue(raporter);
-    Waiter(&kitchen, &servicequeue, trigger, raporter);
     TestMenu testmenu(trigger, raporter);
+    TestKitchen testkitchen;
     testclient->begin_feast();
     testclient->take_card(&testmenu);
 
@@ -35,40 +29,25 @@ int main()
     }
 
     std::vector<IOrder*> orders = testclient->give_order();
-    for (auto order : orders)
-    {
-        kitchen.take_order(order);
-    }
-    orders.clear();
+
+    orders[0]->get_dish()->set_kitchen(&testkitchen);
+    orders[1]->get_dish()->set_kitchen(&testkitchen);
+
+    orders[0]->get_dish()->begin_preparing();
+    orders[1]->get_dish()->begin_preparing();
 
     for (size_t i = 0; i < 15; i++)
     {
         trigger.execute_iteration();
     }
 
-    IOrder* order;
-    order = kitchen.deliver_preapared();
-    if (order != nullptr)
-    {
-        testclient->pick_up_order(order);
-    }
+    testclient->pick_up_order(orders[0]);
+    testclient->pick_up_order(orders[1]);
 
     for (size_t i = 0; i < 15; i++)
     {
         trigger.execute_iteration();
     }
-
-    order = kitchen.deliver_preapared();
-    if (order != nullptr)
-    {
-        testclient->pick_up_order(order);
-    }
-
-    for (size_t i = 0; i < 15; i++)
-    {
-        trigger.execute_iteration();
-    }
-
     testclient->pay();
 
     delete testclient;
@@ -78,5 +57,6 @@ int main()
     {
         trigger.execute_iteration();
     }
-    */
 }
+
+

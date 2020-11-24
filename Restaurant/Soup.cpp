@@ -10,6 +10,6 @@ Soup::Soup(unsigned preparing_time, unsigned eating_time, std::string name,
 std::string Soup::to_string() const
 {
     std::stringstream description;
-    description << "soup, type: " << DishBase::get_name() << " id: " << DishBase::get_id();
+    description << "soup " << DishBase::get_name() << " " << DishBase::get_id();
     return std::string(description.str());
 }

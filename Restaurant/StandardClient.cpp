@@ -214,7 +214,10 @@ void StandardClient::pick_up_order(IOrder* order)
 
         // Raportuj
         std::stringstream raport_stream;
-        raport_stream << "Client " << id << "starts consuming " << dish->to_string();
+        raport_stream << "Table: " << "" <<
+                         " Group: " << "" <<
+                         " Client " << id << 
+                         ": starts consuming " << dish->to_string();
         raport(raport_stream.str());
 
         if (state == IClient::client_state::WAITING_FOR_DISHES)

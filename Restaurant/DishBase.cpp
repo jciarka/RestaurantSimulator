@@ -69,13 +69,14 @@ void DishBase::begin_preparing()
         throw std::logic_error(error_txt_stream.str());
     }
 
+    /*
     // raport
     std::ostringstream raport_steram;
     raport_steram << this->to_string() << ", id:" << id 
                   << " for Client " << this->client->get_id() 
                   << " is being prepared";
     raport(raport_steram.str());
-
+    */
     // Zainicjuj proces przygotowania
     set_counter(preparing_time);
     start();
@@ -92,18 +93,20 @@ void DishBase::OnCounted()
     switch (state)  
     {
     case IDish::dish_state::PREPARATION:
+        /*
         // Raportuj
         raport_stream << this->to_string() << ", id:" << id
                       << " for Client " << this->client->get_id()
                       << " is ready for delivery";
         raport(raport_stream.str());
-
+        */
         // Powiadom kuchniê o zmianie stanu - nie jest konieczny, bêdzie ignorowany 
         state = IDish::dish_state::PREPARED;
         kitchen->on_dish_state_change(this);
         break;
 
     case IDish::dish_state::CONSUMPTION:
+        /**/
         // Raportuj
         // raport_stream << "Dish " << id << ": is eaten" << std::endl;
         // raport(raport_stream.str());
@@ -138,12 +141,12 @@ void DishBase::begin_eat()
         error_txt_stream << "Dish " << id << ": begin_eat call when klient is not set";
         throw std::logic_error(error_txt_stream.str());
     }
-
+    /*
     // raport
     //std::ostringstream raport_steram;
     //raport_steram << "Dish " << id << ": is begined to eat" << std::endl;
     //raport(raport_steram.str());
-
+    */
     // Zainicjuj proces przygotowania
     set_counter(eating_time);
     start();

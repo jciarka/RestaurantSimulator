@@ -142,20 +142,27 @@
     <ClCompile Include="Beverage.cpp" />
     <ClCompile Include="Dessert.cpp" />
     <ClCompile Include="DishBase.cpp" />
+    <ClCompile Include="Group.cpp" />
+    <ClCompile Include="Kitchen.cpp" />
     <ClCompile Include="MainCourse.cpp" />
     <ClCompile Include="Order.cpp" />
     <ClCompile Include="Raportable.cpp" />
     <ClCompile Include="Restaurant.cpp" />
+    <ClCompile Include="ServiceQueue.cpp" />
     <ClCompile Include="Soup.cpp" />
     <ClCompile Include="StandardClient.cpp" />
+    <ClCompile Include="test1.cpp" />
+    <ClCompile Include="test2.cpp" />
     <ClCompile Include="Trigger.cpp" />
     <ClCompile Include="Triggered.cpp" />
     <ClCompile Include="TriggeredCounter.cpp" />
+    <ClCompile Include="Waiter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Beverage.h" />
     <ClInclude Include="Dessert.h" />
     <ClInclude Include="fwd_include.h" />
+    <ClInclude Include="Group.h" />
     <ClInclude Include="IClient.h" />
     <ClInclude Include="ICsvReader.h" />
     <ClInclude Include="IDish.h" />
@@ -173,19 +180,23 @@
     <ClInclude Include="ITriggered.h" />
     <ClInclude Include="ITriggeredCounter.h" />
     <ClInclude Include="IWaiter.h" />
+    <ClInclude Include="Kitchen.h" />
     <ClInclude Include="MainCourse.h" />
     <ClInclude Include="Order.h" />
     <ClInclude Include="Price.h" />
     <ClInclude Include="Raportable.h" />
+    <ClInclude Include="ServiceQueue.h" />
     <ClInclude Include="Soup.h" />
     <ClInclude Include="StandardClient.h" />
     <ClInclude Include="TerminalRaporter.h" />
     <ClInclude Include="TestGroup.h" />
     <ClInclude Include="TestKitchen.h" />
     <ClInclude Include="TestMenu.h" />
+    <ClInclude Include="Tests.h" />
     <ClInclude Include="Trigger.h" />
     <ClInclude Include="Triggered.h" />
     <ClInclude Include="TriggeredCounter.h" />
+    <ClInclude Include="Waiter.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
