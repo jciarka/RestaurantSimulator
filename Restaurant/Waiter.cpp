@@ -29,10 +29,10 @@ void Waiter::execute_iteration()
 		std::vector<IOrder*> orders;
 		std::stringstream error_txt_stream;
 
-		switch (group->get_group_state())		
+		switch (group->get_state())		
 		{
 		case IClient::client_state::READY_TO_ORDER:
-			for (auto client : group->give_clients())
+			for (auto client : group->get_clients())
 			{
 				for (auto order : client->give_order())
 				{
@@ -47,7 +47,7 @@ void Waiter::execute_iteration()
 			break;
 
 		case IClient::client_state::FINISHED_EATING:
-			for (auto client : group->give_clients())
+			for (auto client : group->get_clients())
 			{
 				client->pay();
 			}

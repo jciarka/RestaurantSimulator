@@ -11,15 +11,18 @@
 #include "TestMenu.h"
 #include "TestGroup.h"
 #include "TestKitchen.h"
+#include "TestTable.h"
 
 void test1()
 {
     Trigger trigger;
     TerminaRaporter raporter;
     IGroup* testgroup = new TestGroup;
-    StandardClient* testclient = new StandardClient(5, testgroup, nullptr, trigger, raporter);
+    TestTable testtable;
+    StandardClient* testclient = new StandardClient(5, IClient::client_state::READY_TO_BEGIN, testgroup, trigger, raporter);
     TestMenu testmenu(trigger, raporter);
     TestKitchen testkitchen;
+
     testclient->begin_feast();
     testclient->take_card(&testmenu);
 

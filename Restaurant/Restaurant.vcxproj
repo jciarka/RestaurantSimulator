@@ -151,6 +151,7 @@
     <ClCompile Include="ServiceQueue.cpp" />
     <ClCompile Include="Soup.cpp" />
     <ClCompile Include="StandardClient.cpp" />
+    <ClCompile Include="Table.cpp" />
     <ClCompile Include="test1.cpp" />
     <ClCompile Include="test2.cpp" />
     <ClCompile Include="Trigger.cpp" />
@@ -188,11 +189,13 @@
     <ClInclude Include="ServiceQueue.h" />
     <ClInclude Include="Soup.h" />
     <ClInclude Include="StandardClient.h" />
+    <ClInclude Include="Table.h" />
     <ClInclude Include="TerminalRaporter.h" />
     <ClInclude Include="TestGroup.h" />
     <ClInclude Include="TestKitchen.h" />
     <ClInclude Include="TestMenu.h" />
     <ClInclude Include="Tests.h" />
+    <ClInclude Include="TestTable.h" />
     <ClInclude Include="Trigger.h" />
     <ClInclude Include="Triggered.h" />
     <ClInclude Include="TriggeredCounter.h" />

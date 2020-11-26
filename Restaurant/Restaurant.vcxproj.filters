@@ -138,6 +138,9 @@
     <ClCompile Include="Group.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Table.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IClient.h">
@@ -253,6 +256,12 @@
     </ClInclude>
     <ClInclude Include="Tests.h">
       <Filter>Header Files\Test\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="TestTable.h">
+      <Filter>Header Files\Test\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Table.h">
+      <Filter>Header Files\Client\Headers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -10,6 +10,7 @@
 #include "TestMenu.h"
 #include "TestGroup.h"
 #include "Kitchen.h"
+#include "TestTable.h"
 
 void test2()
 {
@@ -17,8 +18,10 @@ void test2()
     TerminaRaporter raporter;
     IGroup* testgroup = new TestGroup;
     Kitchen kitchen(raporter);
-    StandardClient* testclient = new StandardClient(5, testgroup, nullptr, trigger, raporter);
+    TestTable testtable;
+    StandardClient* testclient = new StandardClient(5, IClient::client_state::READY_TO_BEGIN, testgroup, trigger, raporter);
     TestMenu testmenu(trigger, raporter);
+    
     testclient->begin_feast();
     testclient->take_card(&testmenu);
 

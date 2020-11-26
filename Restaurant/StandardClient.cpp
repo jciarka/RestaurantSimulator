@@ -33,19 +33,38 @@ StandardClient::StandardClient(unsigned choosing_time, IGroup* group, ITable* ta
 }
 */
 
-StandardClient::StandardClient(unsigned choosing_time, IGroup* group, ITable* table,
-    ITrigger& global_trigger, IRaporter& global_raporter)
-    : TriggeredCounter(global_trigger), Raportable(global_raporter), choosing_time(choosing_time),
-    group(group), table(table), state(IClient::client_state::WAITING_FOR_FRIENDS), menu(nullptr),
-    main_course(nullptr), beveage(nullptr), id(generate_unique_id())
+StandardClient::StandardClient(unsigned choosing_time, IClient::client_state start_state, IGroup* group,
+                               ITrigger& global_trigger, IRaporter& global_raporter)
+                               : TriggeredCounter(global_trigger), Raportable(global_raporter), choosing_time(choosing_time),
+                                 group(group), menu(nullptr), main_course(nullptr), beveage(nullptr),
+                                 id(generate_unique_id())
 {
+    if (!(state == IClient::client_state::WAITING_FOR_FRIENDS || state == IClient::client_state::READY_TO_BEGIN))
+    {
+        // Jeœli nie rzuæ wyj¹tek
+        std::stringstream error_txt_stream;
+        error_txt_stream << "Client " << id << ": wrong state at initiation";
+        throw std::logic_error(error_txt_stream.str());
+    }
+    this->state = state;
+}
 
+void StandardClient::set_group(IGroup* group)
+{
+    if (group == nullptr)
+    {
+        // Jeœli nie rzuæ wyj¹tek
+        std::stringstream error_txt_stream;
+        error_txt_stream << "Client " << id << ": set_group call with null poiter as parameter";
+        throw std::logic_error(error_txt_stream.str());
+    }
+    this->group = group;
 }
 
 void StandardClient::begin_feast()
 {
     // SprawdŸ czy wywo³anie we w³aœciwym momencie
-    if (state != IClient::client_state::WAITING_FOR_FRIENDS)
+    if (!(state == IClient::client_state::WAITING_FOR_FRIENDS || state == IClient::client_state::READY_TO_BEGIN))
     {
         // Jeœli nie rzuæ wyj¹tek
         std::stringstream error_txt_stream;

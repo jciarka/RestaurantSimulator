@@ -35,13 +35,14 @@ protected:
     virtual void OnCounted() override; //Logika odliczania
 
 public:
-    StandardClient(unsigned choosing_time, IGroup* group, ITable* table, ITrigger& global_trigger, IRaporter& global_raporter);
+    StandardClient(unsigned choosing_time, IClient::client_state start_state, IGroup* group, ITrigger& global_trigger, IRaporter& global_raporter);
 
     virtual unsigned get_id() const override { return id; };
     virtual client_state get_state() const override { return state; };
     
     // Interfejs dla IGroup
     virtual void begin_feast() override;
+    virtual void set_group(IGroup* group) override;
 
     // Interface for IKelner
     virtual void take_card(const IMenu* menu) override;

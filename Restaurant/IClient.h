@@ -19,14 +19,15 @@ public:
 
     // Aviable states for client
     enum class client_state {
-        WAITING_FOR_FRIENDS,
-        WAITING_FOR_CARD,
-        CHOOSING_DISHES,
-        READY_TO_ORDER,
-        WAITING_FOR_DISHES,
-        EATING,
-        FINISHED_EATING,
-        LEAVING,
+        WAITING_FOR_FRIENDS = 0,
+        READY_TO_BEGIN = 1,
+        WAITING_FOR_CARD = 2,
+        CHOOSING_DISHES = 3,
+        READY_TO_ORDER = 4,
+        WAITING_FOR_DISHES = 5,
+        EATING = 6,
+        FINISHED_EATING = 7,
+        LEAVING = 8,
     };
 
 
@@ -46,6 +47,7 @@ public:
 
     // Interfejs dla IGroup
     virtual void begin_feast() = 0;
+    virtual void set_group(IGroup* group) = 0;
 
     virtual ~IClient() = 0 {};  // Zniszcz dania, zniszcz menu zniszcz zamowienia
 };
