@@ -19,15 +19,16 @@ public:
 
     // Aviable states for client
     enum class client_state {
-        WAITING_FOR_FRIENDS = 0,
-        READY_TO_BEGIN = 1,
-        WAITING_FOR_CARD = 2,
-        CHOOSING_DISHES = 3,
-        READY_TO_ORDER = 4,
-        WAITING_FOR_DISHES = 5,
-        EATING = 6,
-        FINISHED_EATING = 7,
-        LEAVING = 8,
+        INITIATION = 0,
+        WAITING_FOR_FRIENDS = 1,
+        READY_TO_BEGIN = 2,
+        WAITING_FOR_CARD = 3,
+        CHOOSING_DISHES = 4,
+        READY_TO_ORDER = 5,
+        WAITING_FOR_DISHES = 6,
+        EATING = 7,
+        FINISHED_EATING = 8,
+        LEAVING = 9,
     };
 
 

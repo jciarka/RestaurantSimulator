@@ -21,6 +21,9 @@ public:
     virtual unsigned get_id() const override;
     virtual IClient::client_state get_state() const override;
 
+    // interfejs dla generatora grup
+    virtual void add_client(IClient* client) override;
+
     // interfejs dla kelnera
     virtual std::vector<IClient*> get_clients() const override;
     virtual ITable* get_table() const override;

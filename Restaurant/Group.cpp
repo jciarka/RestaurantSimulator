@@ -51,6 +51,28 @@ unsigned Group::get_members_num() const
 }
 
 
+void Group::add_client(IClient* client)
+{
+	if (!(state == IClient::client_state::WAITING_FOR_FRIENDS || state == IClient::client_state::READY_TO_BEGIN) 
+		|| table != nullptr)
+	{
+		std::stringstream error_txt_stream;
+		error_txt_stream << "Group " << id << ": add_client called not on an initiation step";
+		throw std::logic_error(error_txt_stream.str());
+	}
+
+	if(client == nullptr)
+	{
+		std::stringstream error_txt_stream;
+		error_txt_stream << "Group " << id << ": add_client called with nullpointer to client as parameter";
+		throw std::logic_error(error_txt_stream.str());
+	}
+
+	clients.push_back(client);
+	client->set_group(this);
+}
+
+
 std::vector<IClient*> Group::remove_clients()
 {
 	if (!(state == IClient::client_state::WAITING_FOR_FRIENDS || state == IClient::client_state::READY_TO_BEGIN))
@@ -110,28 +132,36 @@ void Group::merge(IGroup* group)
 		throw std::logic_error(error_txt_stream.str());
 	}
 
+	if (!(group->get_state() == IClient::client_state::READY_TO_BEGIN || group->get_state() == IClient::client_state::WAITING_FOR_FRIENDS))
+	{
+		error_txt_stream << "Group " << id << ": merge_group called with already eating group";
+		throw std::logic_error(error_txt_stream.str());
+	}
+
 	// Przenieœ klietnów
 	for (auto client : group->remove_clients())
 	{
 		client->set_group(this);
 		clients.push_back(client);
 	}
-
 	// Zaktualizuj stan grupy
 	state = group->get_state();
+	// Usuñ do³¹czan¹ grupê
+	delete group;
 
-	if (group->get_state() == IClient::client_state::READY_TO_BEGIN)
+	if (state == IClient::client_state::READY_TO_BEGIN)
 	{
 		begin_feast();
 	}
-	// If group->get_state() == IClient::client_state::WAITING_FOR_FRIENDS
+	// je¿eli state == IClient::client_state::WAITING_FOR_FRIENDS
 	// to oznacza, ¿e nadal nie wszystkie osoby przyby³y
 }
 
 IClient::client_state Group::get_state() const
 {
-	return IClient::client_state();
+	return state;
 }
+
 
 void Group::on_client_state_changed(IClient* clinet)
 {
@@ -155,7 +185,8 @@ void Group::on_client_state_changed(IClient* clinet)
 
 	case IClient::client_state::WAITING_FOR_CARD:
 		raport_stream << "Table: " << table->get_id() <<
-			             " Group: " << id << "Calls waiter for menu";
+			             " Group: " << id << " Calls waiter for menu";
+		raport(raport_stream.str());
 		// Wezwij kelnera z menu
 		service_queue->queue_service(this);
 		break;
@@ -165,7 +196,8 @@ void Group::on_client_state_changed(IClient* clinet)
 
 	case IClient::client_state::READY_TO_ORDER:
 		raport_stream << "Table: " << table->get_id() <<
-			             " Group: " << id << "Calls for waiter to order";
+			             " Group: " << id << " Calls waiter to order";
+		raport(raport_stream.str());
 		// Wezwij kelnera aby zamówiæ
 		service_queue->queue_service(this);
 		break;
@@ -178,14 +210,16 @@ void Group::on_client_state_changed(IClient* clinet)
 
 	case IClient::client_state::FINISHED_EATING:
 		raport_stream << "Table: " << table->get_id() <<
-			             " Group: " << id << "Calls for waiter to pay";
+			             " Group: " << id << " Calls waiter to pay";
+		raport(raport_stream.str());
 		// Wezwij kelnera aby zap³aciæ
 		service_queue->queue_service(this);
 		break;
 
 	case IClient::client_state::LEAVING:
 		raport_stream << "Table: " << table->get_id() <<
-			             " Group: " << id << "Is preparing to leave";
+			             " Group: " << id << " Is preparing to leave";
+		raport(raport_stream.str());
 		// Powiadom stolik ¿e gotowa do wyjœcia
 		table->on_group_state_change(this);
 		break;
@@ -199,7 +233,10 @@ Group::~Group()
 {
 	for (auto client : clients)
 	{
-		delete client;
-		client = nullptr;
+		if (client != nullptr)
+		{
+			delete client;
+			client = nullptr;
+		}
 	}
 }

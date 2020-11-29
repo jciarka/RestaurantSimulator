@@ -12,6 +12,12 @@ unsigned Table::generate_unique_id()
 // ______________________________________________________________________________________________________
 
 
+Table::Table(unsigned seats_num, ITrigger& global_trigger, IRaporter& global_raporter) 
+	         : Triggered(global_trigger), Raportable(global_raporter), id(generate_unique_id()),
+			   seats_number(seats_num), group(nullptr), group_preapring_to_leave(false)
+{
+}
+
 unsigned Table::get_id() const
 {
     return 0;
@@ -34,11 +40,6 @@ bool Table::is_available() const
 
 unsigned Table::get_empty_seats() const
 {
-	if (!is_available())
-	{
-		return 0;
-	}
-
 	if (group == nullptr)
 	{
 		return seats_number;
@@ -48,9 +49,13 @@ unsigned Table::get_empty_seats() const
 	{
 		return seats_number - group->get_members_num();
 	}
+
+	// Zwróæ 0 gdy grupa ju¿ przypisana do stolika, ale jest winnym stanie ni¿ WAITING_FOR_FRIENDS
+	return 0;
 }
 
-bool Table::check_can_place_group(IGroup* group)
+
+bool Table::can_place_group(IGroup* group) const
 {
 	if (group == nullptr)
 	{
@@ -60,24 +65,25 @@ bool Table::check_can_place_group(IGroup* group)
 	// SprawdŸ czy dodawana grupa jest w odpowiedim stanie oraz czy jest odpowiednia liczba miejsc przy stole
 	if (group->get_state() == IClient::client_state::WAITING_FOR_FRIENDS)
 	{
-		if (get_empty_seats() <= group->get_members_num())
-			return false;
+		// Jeœli grupa jest typu WAITING_FOR_FRIENDS przynajmniej jedno miejsce musi zostac wolne
+		if (group->get_members_num() < get_empty_seats())
+			return true;
 	}
 	else if (group->get_state() == IClient::client_state::READY_TO_BEGIN)
 	{
-		if (get_empty_seats() < group->get_members_num())
-			return false;
+		// Mo¿na zaj¹c wszytkie wolne miejsca
+		if (group->get_members_num() <= get_empty_seats())
+			return true;
 	}
-	else
-	{
-		return false;
-	}
-	return true;
+
+	// Jeœli niewystarczaj¹ca liczba miejsc lub grupa w innym stanie zwróæ false 
+	return false;
 }
+
 
 void Table::place_group(IGroup* group)
 {
-	if (!check_can_place_group(group))
+	if (!can_place_group(group))
 	{
 		std::stringstream error_txt_stream;
 		error_txt_stream << "Group is invalid to be posed at table: " << id;
@@ -110,6 +116,26 @@ void Table::on_group_state_change(IGroup* group)
 	if (group->get_state() == IClient::client_state::LEAVING)
 	{
 		group_preapring_to_leave = true;
+	}
+}
+
+void Table::execute_iteration()
+// Grupa kiedy opuszcza lokal nastawia group_preapring_to_leave
+// Nale¿y tak¹ grupê usun¹æ, ale nie mo¿na tego zrobiæ bezpoœredio 
+// w on_group_state_change wywo³¹nej przez t¹ grupê
+{
+	if (group_preapring_to_leave)
+	{
+		std::stringstream raport_stream;
+		raport_stream << "Table: " << get_id() <<
+			             " Group " << group->get_id() << " has left restaurant";
+		raport(raport_stream.str());
+
+		// usuñ grupê
+		delete group;
+		group = nullptr;
+		group_preapring_to_leave = false;
+
 	}
 }
 

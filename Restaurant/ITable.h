@@ -14,6 +14,7 @@ public:
     // interfejs dla generatora klientów
     virtual bool is_available() const = 0;
     virtual unsigned get_empty_seats() const = 0;
+    virtual bool can_place_group(IGroup* group) const = 0;
     virtual void place_group(IGroup* group) = 0;
 
     // interface dla grupy

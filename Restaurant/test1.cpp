@@ -19,7 +19,8 @@ void test1()
     TerminaRaporter raporter;
     IGroup* testgroup = new TestGroup;
     TestTable testtable;
-    StandardClient* testclient = new StandardClient(5, IClient::client_state::READY_TO_BEGIN, testgroup, trigger, raporter);
+    StandardClient* testclient = new StandardClient(5, trigger, raporter);
+    testclient->set_group(testgroup);
     TestMenu testmenu(trigger, raporter);
     TestKitchen testkitchen;
 

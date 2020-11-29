@@ -25,6 +25,10 @@ public:
     {
         //std::cout << " Klient nr " << clinet->get_id() << "zglasza zmiane stanu" << std::endl;
     } 
+
+    // interfejs dla generatora grup
+    virtual void add_client(IClient* client) override { return; };
+
     // interfejs dla sto³u
     virtual unsigned get_members_num() const override { return 0; };
     virtual void begin_feast() override { };
@@ -33,7 +37,7 @@ public:
     virtual std::vector<IClient*> remove_clients() { return get_clients(); };
     virtual ITable* get_table() const override { return nullptr; };
 
-    virtual IClient::client_state get_state() const override { return IClient::client_state::EATING; };
+    virtual IClient::client_state get_state() const override { return IClient::client_state::READY_TO_BEGIN; };
 
 
 

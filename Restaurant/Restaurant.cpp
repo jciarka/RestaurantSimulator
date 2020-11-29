@@ -13,71 +13,53 @@
 #include "Kitchen.h"
 #include "ServiceQueue.h"
 #include "Waiter.h"
+#include "Group.h"
+#include "Table.h"
 
 int main()
 {
-    test1();
-    test2();
-    /*
+    //test1();
+    //test2();
+    
+    // Inicjacaj bazy
+
     Trigger trigger;
     TerminaRaporter raporter;
-    IGroup* testgroup = new TestGroup;
-    Kitchen kitchen(raporter);
-    StandardClient* testclient = new StandardClient(5, testgroup, nullptr, trigger, raporter);
+
+    // Inicjacaj restauracji
     ServiceQueue servicequeue(raporter);
-    Waiter(&kitchen, &servicequeue, trigger, raporter);
+    Kitchen kitchen(raporter);
     TestMenu testmenu(trigger, raporter);
-    testclient->begin_feast();
-    testclient->take_card(&testmenu);
+    Waiter waiter(&testmenu, &kitchen, &servicequeue, trigger, raporter);
+    Table table(6, trigger, raporter);
+    
+    // Inicjacja klientów
+    IGroup* Group1 = new Group(false, &servicequeue, trigger, raporter);
 
-    for (size_t i = 0; i < 15; i++)
+    StandardClient* testclient1 = new StandardClient(5, trigger, raporter);
+    Group1->add_client(testclient1);
+    StandardClient* testclient2 = new StandardClient(6, trigger, raporter);
+    Group1->add_client(testclient2);
+    StandardClient* testclient3 = new StandardClient(7, trigger, raporter);
+    Group1->add_client(testclient3);
+    StandardClient* testclient4 = new StandardClient(8, trigger, raporter);
+    Group1->add_client(testclient4);
+
+
+    table.place_group(Group1);
+
+
+    // Symulacja
+    for (size_t i = 0; i < 100; i++)
     {
         trigger.execute_iteration();
     }
 
-    std::vector<IOrder*> orders = testclient->give_order();
-    for (auto order : orders)
-    {
-        kitchen.take_order(order);
-    }
-    orders.clear();
-
-    for (size_t i = 0; i < 15; i++)
-    {
-        trigger.execute_iteration();
-    }
-
-    IOrder* order;
-    order = kitchen.deliver_preapared();
-    if (order != nullptr)
-    {
-        testclient->pick_up_order(order);
-    }
-
-    for (size_t i = 0; i < 15; i++)
-    {
-        trigger.execute_iteration();
-    }
-
-    order = kitchen.deliver_preapared();
-    if (order != nullptr)
-    {
-        testclient->pick_up_order(order);
-    }
-
-    for (size_t i = 0; i < 15; i++)
-    {
-        trigger.execute_iteration();
-    }
-
-    testclient->pay();
-
-    delete testclient;
-    delete testgroup;
+    // Nic nie trzeba usuwaæ
 
     for (size_t i = 0; i < 5; i++)
     {
         trigger.execute_iteration();
     }
-    */
+    
 }

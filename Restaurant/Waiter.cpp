@@ -8,8 +8,8 @@
 
 
 
-Waiter::Waiter(IKitchen* kitchen, IServiceQueue* service_queue, ITrigger& global_trigger, IRaporter& global_raporter)
-	: Triggered(global_trigger), Raportable(global_raporter), kitchen(kitchen), service_queue(service_queue)
+Waiter::Waiter(IMenu* menu, IKitchen* kitchen, IServiceQueue* service_queue, ITrigger& global_trigger, IRaporter& global_raporter)
+	: Triggered(global_trigger), Raportable(global_raporter), kitchen(kitchen), service_queue(service_queue), menu(menu)
 {
 }
 
@@ -31,6 +31,14 @@ void Waiter::execute_iteration()
 
 		switch (group->get_state())		
 		{
+		case IClient::client_state::WAITING_FOR_CARD:
+			for (auto client : group->get_clients())
+			{
+				client->take_card(menu);
+			}
+			break;
+
+
 		case IClient::client_state::READY_TO_ORDER:
 			for (auto client : group->get_clients())
 			{

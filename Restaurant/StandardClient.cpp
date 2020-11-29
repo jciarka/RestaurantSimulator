@@ -5,6 +5,7 @@
 #include <time.h>
 #include "StandardClient.h"
 #include "IGroup.h"
+#include "ITable.h"
 #include "Order.h"
 #include "MainCourse.h"
 #include "Beverage.h"
@@ -22,42 +23,31 @@ unsigned StandardClient::generate_unique_id()
 }
 // ______________________________________________________________________________________________________
 
-/*
-StandardClient::StandardClient(unsigned choosing_time, IGroup* group, ITable* table,
-                               ITrigger& global_trigger, IRaporter& global_raporter)
-    : TriggeredCounter(global_trigger), Raportable(global_raporter), choosing_time(choosing_time),
-      group(group), table(table), state(IClient::client_state::WAITING_FOR_FRIENDS), menu(nullptr),
-      id(generate_unique_id())
-{
-    // dishes is empty at the beginning
-}
-*/
-
-StandardClient::StandardClient(unsigned choosing_time, IClient::client_state start_state, IGroup* group,
-                               ITrigger& global_trigger, IRaporter& global_raporter)
+StandardClient::StandardClient(unsigned choosing_time, ITrigger& global_trigger, IRaporter& global_raporter)
                                : TriggeredCounter(global_trigger), Raportable(global_raporter), choosing_time(choosing_time),
-                                 group(group), menu(nullptr), main_course(nullptr), beveage(nullptr),
-                                 id(generate_unique_id())
+                                 group(nullptr), menu(nullptr), main_course(nullptr), beveage(nullptr),
+                                 id(generate_unique_id()), state(client_state::INITIATION)
 {
-    if (!(state == IClient::client_state::WAITING_FOR_FRIENDS || state == IClient::client_state::READY_TO_BEGIN))
-    {
-        // Jeœli nie rzuæ wyj¹tek
-        std::stringstream error_txt_stream;
-        error_txt_stream << "Client " << id << ": wrong state at initiation";
-        throw std::logic_error(error_txt_stream.str());
-    }
-    this->state = state;
 }
 
 void StandardClient::set_group(IGroup* group)
 {
     if (group == nullptr)
     {
-        // Jeœli nie rzuæ wyj¹tek
         std::stringstream error_txt_stream;
-        error_txt_stream << "Client " << id << ": set_group call with null poiter as parameter";
+        error_txt_stream << "Client " << id << ": group can't be nullptr at clients creation";
         throw std::logic_error(error_txt_stream.str());
     }
+
+    if (!(group->get_state() == IClient::client_state::WAITING_FOR_FRIENDS || group->get_state() == IClient::client_state::READY_TO_BEGIN))
+    {
+        // Jeœli nie rzuæ wyj¹tek
+        std::stringstream error_txt_stream;
+        error_txt_stream << "Client " << id << ": wrong state at initiation";
+        throw std::logic_error(error_txt_stream.str());
+    }
+
+    state = group->get_state();
     this->group = group;
 }
 
@@ -74,8 +64,8 @@ void StandardClient::begin_feast()
 
     // raport
     std::ostringstream raport_stream;
-    raport_stream <<  "Table: " << "" <<
-                     " Group: " << "" <<
+    raport_stream <<  "Table: " << group->get_table()->get_id() <<
+                     " Group: " << group->get_id() <<
                      " Client " << id << ": Begins feast";
     raport(raport_stream.str());
 
@@ -106,8 +96,8 @@ void StandardClient::take_card(const IMenu* menu)
 
     // raport
     std::ostringstream raport_stream;
-    raport_stream <<  "Table: " << "" <<
-                     " Group: " << "" <<
+    raport_stream << "Table: " << group->get_table()->get_id() <<
+                     " Group: " << group->get_id() <<
                      " Client " << id << ": Took menu and begin to choose dishes";
     raport(raport_stream.str());
 }
@@ -131,8 +121,8 @@ void StandardClient::choose_dishes()
     main_course = menu->get_main_course(choosen);
     main_course->set_client(this);
 
-    raport_stream <<  "Table: " << "" <<
-                     " Group: " << "" <<
+    raport_stream << "Table: " << group->get_table()->get_id() <<
+                     " Group: " << group->get_id() <<
                      " Client " << id << ": choosed " << main_course->to_string() << std::endl;
    
     // Choose beverage
@@ -140,8 +130,8 @@ void StandardClient::choose_dishes()
     choosen = rand() % dish_count;
     beveage = menu->get_beverage(choosen);
     beveage->set_client(this);
-    raport_stream <<  "Table: " << "" <<
-                     " Group: " << "" <<
+    raport_stream << "Table: " << group->get_table()->get_id() <<
+                     " Group: " << group->get_id() <<
                      " Client " << id << ": choosed " << beveage->to_string();
 
     raport(raport_stream.str());
@@ -159,8 +149,8 @@ void StandardClient::OnCounted()
         choose_dishes();
 
         // Raportuj
-        raport_stream <<  "Table: " << "" <<
-                         " Group: " << "" <<
+        raport_stream << "Table: " << group->get_table()->get_id() <<
+                         " Group: " << group->get_id() <<
                          " Client " << id << ": is ready to order";
         raport(raport_stream.str());
 
@@ -201,8 +191,8 @@ std::vector<IOrder*> StandardClient::give_order()
 
     // Raportuj
     std::stringstream raport_stream;
-    raport_stream <<  "Table: " << "" <<
-                     " Group: " << "" << 
+    raport_stream << "Table: " << group->get_table()->get_id() <<
+                     " Group: " << group->get_id() <<
                      " Client " << id << ": has ordered";
     raport(raport_stream.str());
 
@@ -233,8 +223,8 @@ void StandardClient::pick_up_order(IOrder* order)
 
         // Raportuj
         std::stringstream raport_stream;
-        raport_stream << "Table: " << "" <<
-                         " Group: " << "" <<
+        raport_stream << "Table: " << group->get_table()->get_id() <<
+                         " Group: " << group->get_id() <<
                          " Client " << id << 
                          ": starts consuming " << dish->to_string();
         raport(raport_stream.str());
@@ -275,8 +265,8 @@ void StandardClient::on_dish_state_change(IDish* dish)
 
     // Raportuj
     std::stringstream raport_stream;
-    raport_stream << "Table: " << "" <<
-                     " Group: " << "" <<
+    raport_stream << "Table: " << group->get_table()->get_id() <<
+                     " Group: " << group->get_id() <<
                      " Client " << id << ": consumed " << dish->to_string();
     raport(raport_stream.str());
 
@@ -299,8 +289,8 @@ void StandardClient::pay()
 
     // Raportuj
     std::stringstream raport_stream;
-    raport_stream << "Table: " << "" <<
-                     " Group: " << "" <<
+    raport_stream << "Table: " << group->get_table()->get_id() <<
+                     " Group: " << group->get_id() <<
                      " Client " << id << ": paying " << total;
     raport(raport_stream.str());
 
@@ -309,7 +299,7 @@ void StandardClient::pay()
     group->on_client_state_changed(this);
 }
 
-StandardClient::~StandardClient() // Zniszcz dania, zniszcz menu 
+StandardClient::~StandardClient() // Zniszcz dania,
 {  
     delete main_course;
     main_course = nullptr;

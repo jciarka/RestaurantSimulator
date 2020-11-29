@@ -12,6 +12,7 @@ public:
     // interfejs dla generatora klientów
     virtual bool is_available() const override { return true; };
     virtual unsigned get_empty_seats() const override  { return 20; };
+    virtual bool can_place_group(IGroup* group) const override { return true; };
     virtual void place_group(IGroup* group) override { };
 
     // interface dla grupy
