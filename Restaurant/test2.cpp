@@ -15,7 +15,7 @@
 void test2()
 {
     Trigger trigger;
-    TerminaRaporter raporter;
+    TerminalRaporter raporter;
     IGroup* testgroup = new TestGroup;
     Kitchen kitchen(&raporter);
     TestTable testtable;

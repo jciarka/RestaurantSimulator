@@ -24,7 +24,7 @@ void test3()
     // Inicjacaj bazy
 
     Trigger trigger;
-    TerminaRaporter raporter;
+    TerminalRaporter raporter;
 
     // Inicjacaj restauracji
     ServiceQueue servicequeue(&raporter);

@@ -16,7 +16,7 @@
 void test1()
 {
     Trigger trigger;
-    TerminaRaporter raporter;
+    TerminalRaporter raporter;
     IGroup* testgroup = new TestGroup;
     TestTable testtable;
     StandardClient* testclient = new StandardClient(5, &trigger, &raporter);
