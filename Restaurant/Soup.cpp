@@ -7,6 +7,10 @@ Soup::Soup(unsigned preparing_time, unsigned eating_time, std::string name,
 {
 }
 
+Soup::Soup(Soup&& soup) : DishBase(std::move(soup))
+{
+}
+
 std::string Soup::to_string() const
 {
     std::stringstream description;

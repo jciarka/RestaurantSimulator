@@ -6,6 +6,8 @@ class MainCourse : public DishBase
 public:
     MainCourse(unsigned preparing_time, unsigned eating_time, std::string name,
         price dish_price, ITrigger* global_trigger, IRaporter* global_raporter);
+    MainCourse(MainCourse&& main_course);
+
     virtual std::string to_string() const override;
     virtual ~MainCourse() {};
 };

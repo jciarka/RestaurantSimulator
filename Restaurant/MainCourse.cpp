@@ -7,6 +7,10 @@ MainCourse::MainCourse(unsigned preparing_time, unsigned eating_time, std::strin
 {
 }
 
+MainCourse::MainCourse(MainCourse&& main_course) : DishBase(std::move(main_course))
+{
+}
+
 std::string MainCourse::to_string() const
 {
     std::stringstream description;

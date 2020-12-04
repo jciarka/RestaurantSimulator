@@ -118,7 +118,7 @@ void StandardClient::choose_dishes()
     srand(time(nullptr));
     unsigned dish_count = menu->get_main_course_size();
     unsigned choosen = rand() % dish_count;
-    main_course = menu->get_main_course(choosen);
+    main_course =new MainCourse(menu->get_main_course(choosen));
     main_course->set_client(this);
 
     raport_stream << "Table: " << group->get_table()->get_id() <<
@@ -128,7 +128,7 @@ void StandardClient::choose_dishes()
     // Choose beverage
     dish_count = menu->get_beverage_size();
     choosen = rand() % dish_count;
-    beveage = menu->get_beverage(choosen);
+    beveage = new Beverage(menu->get_beverage(choosen));
     beveage->set_client(this);
     raport_stream << "Table: " << group->get_table()->get_id() <<
                      " Group: " << group->get_id() <<

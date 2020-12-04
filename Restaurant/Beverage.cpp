@@ -7,6 +7,10 @@ Beverage::Beverage(unsigned preparing_time, unsigned eating_time, std::string na
 {
 }
 
+Beverage::Beverage(Beverage&& beverage) : DishBase(std::move(beverage))
+{
+}
+
 std::string Beverage::to_string() const
 {
     std::stringstream description;

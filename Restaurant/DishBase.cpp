@@ -1,4 +1,5 @@
 #include <sstream>
+#include <stdexcept>
 #include "DishBase.h"
 #include "IClient.h"
 #include "IKitchen.h"
@@ -21,6 +22,25 @@ DishBase::DishBase(unsigned preparing_time, unsigned eating_time, std::string na
       name(name), preparing_time(preparing_time), eating_time(eating_time), state(IDish::dish_state::CHOOSEN), dish_price(dish_price), 
       client(nullptr), kitchen(nullptr), id(generate_unique_id())
 {
+}
+
+DishBase::DishBase(DishBase&& dish) : TriggeredCounter(dish.global_trigger_ptr), Raportable(dish.global_raporter_ptr),
+name(dish.name), preparing_time(dish.preparing_time), eating_time(dish.eating_time), state(IDish::dish_state::CHOOSEN), dish_price(dish.dish_price),
+client(nullptr), kitchen(nullptr), id(dish.id)
+{
+    if (dish.client != nullptr)
+    {
+        // moving dish posible only before asigning to client
+        std::stringstream error_txt_stream;
+        error_txt_stream << "Dish: " << id << "can't move after beeing afigned to client";
+        throw std::logic_error(error_txt_stream.str());
+    }
+    dish.id = std::numeric_limits<unsigned>::max();
+    dish.name = "Invalid";
+    dish.preparing_time = 0;
+    dish.eating_time = 0;
+    dish.dish_price = 0;
+    dish.state = IDish::dish_state::EATEN;
 }
 
 void DishBase::set_client(IClient* client)

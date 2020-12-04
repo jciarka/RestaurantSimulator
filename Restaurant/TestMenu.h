@@ -13,24 +13,24 @@ public:
 
     virtual void execute_iteration() override { };
 
-    virtual Soup* get_soup(unsigned index) const override
+    virtual Soup get_soup(unsigned index) const override
     {
-        return new Soup(5, 5, "Rosó³", price(2050), global_trigger_ptr, global_raporter_ptr);
+        return Soup(5, 5, "Rosó³", price(2050), global_trigger_ptr, global_raporter_ptr);
     };
 
-    virtual MainCourse* get_main_course(unsigned index) const override
+    virtual MainCourse get_main_course(unsigned index) const override
     {
-        return new MainCourse(5U, 5U, "Schamowy z frytkami", price(3050), global_trigger_ptr, global_raporter_ptr);
+        return MainCourse(5U, 5U, "Schamowy z frytkami", price(3050), global_trigger_ptr, global_raporter_ptr);
     };
 
-    virtual Dessert* get_dessert(unsigned index) const override
+    virtual Dessert get_dessert(unsigned index) const override
     {
-        return new Dessert(5U, 5U, "Tiramisu", price(1500), global_trigger_ptr, global_raporter_ptr);
+        return Dessert(5U, 5U, "Tiramisu", price(1500), global_trigger_ptr, global_raporter_ptr);
     };
 
-    virtual Beverage* get_beverage(unsigned index) const override
+    virtual Beverage get_beverage(unsigned index) const override
     {
-        return new Beverage(2U, 10U, "Piwo", price(3050), global_trigger_ptr, global_raporter_ptr);
+        return Beverage(2U, 10U, "Piwo", price(3050), global_trigger_ptr, global_raporter_ptr);
     };
 
     virtual unsigned get_soup_size() const override { return 10; };

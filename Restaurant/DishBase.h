@@ -2,6 +2,7 @@
 #include "IDish.h"
 #include "TriggeredCounter.h"
 #include "Raportable.h"
+#include <limits>
 
 
 class DishBase : public TriggeredCounter, public Raportable, public IDish
@@ -22,6 +23,18 @@ private:
 public:
     DishBase(unsigned preparing_time, unsigned eating_time, std::string name,
              price dish_price, ITrigger* global_trigger, IRaporter* global_raporter);
+
+
+    /// <summary>
+    ///    Non const copy constructor
+    ///    non const order to emphasize change in original object
+    ///    two dishes can't have same id
+    ///    once moved dish can't be used any more
+    ///    move is possible only before asigning dish to client
+    ///    constructor provided as a solution for passing dish from menu to clients
+    /// </summary>
+    /// <param name="dish"></param>
+    DishBase(DishBase&& dish);
 
 public:
 

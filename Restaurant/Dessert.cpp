@@ -7,6 +7,10 @@ Dessert::Dessert(unsigned preparing_time, unsigned eating_time, std::string name
 {
 }
 
+Dessert::Dessert(Dessert&& dessert) : DishBase(std::move(dessert))
+{
+}
+
 std::string Dessert::to_string() const
 {
     std::stringstream description;
