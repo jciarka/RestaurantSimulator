@@ -8,7 +8,7 @@
 
 
 
-Waiter::Waiter(IMenu* menu, IKitchen* kitchen, IServiceQueue* service_queue, ITrigger& global_trigger, IRaporter& global_raporter)
+Waiter::Waiter(IMenu* menu, IKitchen* kitchen, IServiceQueue* service_queue, ITrigger* global_trigger, IRaporter* global_raporter)
 	: Triggered(global_trigger), Raportable(global_raporter), kitchen(kitchen), service_queue(service_queue), menu(menu)
 {
 }

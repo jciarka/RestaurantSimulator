@@ -12,7 +12,7 @@ unsigned Table::generate_unique_id()
 // ______________________________________________________________________________________________________
 
 
-Table::Table(unsigned seats_num, ITrigger& global_trigger, IRaporter& global_raporter) 
+Table::Table(unsigned seats_num, ITrigger* global_trigger, IRaporter* global_raporter) 
 	         : Triggered(global_trigger), Raportable(global_raporter), id(generate_unique_id()),
 			   seats_number(seats_num), group(nullptr), group_preapring_to_leave(false)
 {

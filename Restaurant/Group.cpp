@@ -15,7 +15,7 @@ unsigned Group::generate_unique_id()
 // ______________________________________________________________________________________________________
 
 Group::Group(bool waiting_for_friends, IServiceQueue* service_queue,
-	         ITrigger& global_trigger, IRaporter& global_raporter)
+	         ITrigger* global_trigger, IRaporter* global_raporter)
 	          : Triggered(global_trigger), Raportable(global_raporter),
 				id(generate_unique_id()), service_queue(service_queue)
 {

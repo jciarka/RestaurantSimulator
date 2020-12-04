@@ -23,7 +23,7 @@ unsigned StandardClient::generate_unique_id()
 }
 // ______________________________________________________________________________________________________
 
-StandardClient::StandardClient(unsigned choosing_time, ITrigger& global_trigger, IRaporter& global_raporter)
+StandardClient::StandardClient(unsigned choosing_time, ITrigger* global_trigger, IRaporter* global_raporter)
                                : TriggeredCounter(global_trigger), Raportable(global_raporter), choosing_time(choosing_time),
                                  group(nullptr), menu(nullptr), main_course(nullptr), beveage(nullptr),
                                  id(generate_unique_id()), state(client_state::INITIATION)

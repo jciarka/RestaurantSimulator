@@ -2,7 +2,7 @@
 #include <sstream>
 #include <algorithm>
 
-Kitchen::Kitchen(IRaporter& global_raporter) : Raportable(global_raporter)
+Kitchen::Kitchen(IRaporter* global_raporter) : Raportable(global_raporter)
 { }
 
 void Kitchen::take_order(IOrder* order)

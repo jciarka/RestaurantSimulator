@@ -1,7 +1,7 @@
 #include "ServiceQueue.h"
 #include <sstream>
 
-ServiceQueue::ServiceQueue(IRaporter& global_raporter) : Raportable(global_raporter)
+ServiceQueue::ServiceQueue(IRaporter* global_raporter) : Raportable(global_raporter)
 {
 
 }

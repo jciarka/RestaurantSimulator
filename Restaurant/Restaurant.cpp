@@ -20,46 +20,5 @@ int main()
 {
     //test1();
     //test2();
-    
-    // Inicjacaj bazy
-
-    Trigger trigger;
-    TerminaRaporter raporter;
-
-    // Inicjacaj restauracji
-    ServiceQueue servicequeue(raporter);
-    Kitchen kitchen(raporter);
-    TestMenu testmenu(trigger, raporter);
-    Waiter waiter(&testmenu, &kitchen, &servicequeue, trigger, raporter);
-    Table table(6, trigger, raporter);
-    
-    // Inicjacja klientów
-    IGroup* Group1 = new Group(false, &servicequeue, trigger, raporter);
-
-    StandardClient* testclient1 = new StandardClient(5, trigger, raporter);
-    Group1->add_client(testclient1);
-    StandardClient* testclient2 = new StandardClient(6, trigger, raporter);
-    Group1->add_client(testclient2);
-    StandardClient* testclient3 = new StandardClient(7, trigger, raporter);
-    Group1->add_client(testclient3);
-    StandardClient* testclient4 = new StandardClient(8, trigger, raporter);
-    Group1->add_client(testclient4);
-
-
-    table.place_group(Group1);
-
-
-    // Symulacja
-    for (size_t i = 0; i < 100; i++)
-    {
-        trigger.execute_iteration();
-    }
-
-    // Nic nie trzeba usuwaæ
-
-    for (size_t i = 0; i < 5; i++)
-    {
-        trigger.execute_iteration();
-    }
-    
+    test3();
 }

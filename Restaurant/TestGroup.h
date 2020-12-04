@@ -2,6 +2,7 @@
 #pragma once
 
 #include "IGroup.h"
+#include "TestTable.h"
 #include <iostream>
 
 class TestGroup : public IGroup
@@ -10,6 +11,12 @@ public:
     // wektor klientów 
     // wskaxnik na stolik
     // wskaŸnik na kolekjke serwsiow - raise_service(IGroup*)
+    ITable* table;
+
+    TestGroup() 
+    {
+        table = new TestTable();
+    }
 
     virtual unsigned get_id() const override { return 1; }
 
@@ -35,13 +42,19 @@ public:
     virtual void seat_at_table(ITable* table) override { };
     virtual void merge(IGroup* group) override { };
     virtual std::vector<IClient*> remove_clients() { return get_clients(); };
-    virtual ITable* get_table() const override { return nullptr; };
+    virtual ITable* get_table() const override { return table; };
 
     virtual IClient::client_state get_state() const override { return IClient::client_state::READY_TO_BEGIN; };
 
 
 
-    virtual ~TestGroup() override { }; // Delete clients 
+    virtual ~TestGroup() override 
+    {
+        if (table != nullptr)
+        {
+            delete table;
+        }
+    }; // Delete clients 
 };
 
 

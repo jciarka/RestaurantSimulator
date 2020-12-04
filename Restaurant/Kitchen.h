@@ -13,7 +13,7 @@ private:
     // kolejka IOreder do wydania
 
 public:
-    Kitchen(IRaporter& global_raporter);
+    Kitchen(IRaporter* global_raporter);
     virtual void take_order(IOrder* order) override;
     virtual IOrder* deliver_preapared() override;
     virtual void  on_dish_state_change(IDish* dish) override;

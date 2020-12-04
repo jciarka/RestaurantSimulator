@@ -12,7 +12,7 @@ private:
     IMenu* menu;
 
 public:
-    Waiter(IMenu* menu, IKitchen* kitchen, IServiceQueue* service_queue, ITrigger& global_trigger, IRaporter& global_raporter);
+    Waiter(IMenu* menu, IKitchen* kitchen, IServiceQueue* service_queue, ITrigger* global_trigger, IRaporter* global_raporter);
 
     virtual void execute_iteration() override;
 

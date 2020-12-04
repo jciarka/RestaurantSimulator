@@ -14,7 +14,7 @@ private:
     unsigned seats_number;
 
 public:
-    Table(unsigned seats_number, ITrigger& global_trigger, IRaporter& global_raporter);
+    Table(unsigned seats_number, ITrigger* global_trigger, IRaporter* global_raporter);
 
     virtual unsigned get_id() const;
 

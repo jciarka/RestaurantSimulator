@@ -17,11 +17,11 @@ void test2()
     Trigger trigger;
     TerminaRaporter raporter;
     IGroup* testgroup = new TestGroup;
-    Kitchen kitchen(raporter);
+    Kitchen kitchen(&raporter);
     TestTable testtable;
-    StandardClient* testclient = new StandardClient(5, trigger, raporter);
+    StandardClient* testclient = new StandardClient(5, &trigger, &raporter);
     testclient->set_group(testgroup);
-    TestMenu testmenu(trigger, raporter);
+    TestMenu testmenu(&trigger, &raporter);
     
     testclient->begin_feast();
     testclient->take_card(&testmenu);

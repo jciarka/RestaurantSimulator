@@ -17,6 +17,7 @@ protected:
 
 public:
 	Triggered(ITrigger& trigger);
+	Triggered(ITrigger* trigger);
 	~Triggered();
 
 	virtual void execute_iteration() = 0; // Metoda do definicji w klasach pochodnych

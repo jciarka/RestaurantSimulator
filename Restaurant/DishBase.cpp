@@ -16,7 +16,7 @@ unsigned DishBase::generate_unique_id()
 
 
 DishBase::DishBase(unsigned preparing_time, unsigned eating_time, std::string name, price dish_price,
-                   ITrigger& global_trigger, IRaporter& global_raporter)
+                   ITrigger* global_trigger, IRaporter* global_raporter)
     : TriggeredCounter(global_trigger), Raportable(global_raporter),
       name(name), preparing_time(preparing_time), eating_time(eating_time), state(IDish::dish_state::CHOOSEN), dish_price(dish_price), 
       client(nullptr), kitchen(nullptr), id(generate_unique_id())

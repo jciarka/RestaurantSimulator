@@ -35,7 +35,7 @@ protected:
     virtual void OnCounted() override; //Logika odliczania
 
 public:
-    StandardClient(unsigned choosing_time, ITrigger& global_trigger, IRaporter& global_raporter);
+    StandardClient(unsigned choosing_time, ITrigger* global_trigger, IRaporter* global_raporter);
 
     virtual unsigned get_id() const override { return id; };
     virtual client_state get_state() const override { return state; };

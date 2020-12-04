@@ -10,6 +10,8 @@ protected:
 
 public:
 	Raportable(IRaporter& global_raporter_ptr);
+	Raportable(IRaporter* global_raporter_ptr);
+
 	virtual void raport(std::string message) override;
 	virtual ~Raportable() { global_raporter_ptr = nullptr; };
 };

@@ -9,7 +9,7 @@ public:
     std::queue<IGroup*> service_queue;
 
 public:
-    ServiceQueue(IRaporter& global_raporter);
+    ServiceQueue(IRaporter* global_raporter);
 
     virtual void queue_service(IGroup* group) override;
     virtual IGroup* dequeue_service() override;

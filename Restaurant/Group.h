@@ -16,7 +16,7 @@ private:
     std::vector<IClient*> clients;
 
 public:
-    Group(bool waiting_for_friends, IServiceQueue* service_queue, ITrigger& global_trigger, IRaporter& global_raporter);
+    Group(bool waiting_for_friends, IServiceQueue* service_queue, ITrigger* global_trigger, IRaporter* global_raporter);
 
     virtual unsigned get_id() const override;
     virtual IClient::client_state get_state() const override;

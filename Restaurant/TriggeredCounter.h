@@ -13,6 +13,7 @@ protected:
 
 public:
 	TriggeredCounter(ITrigger& trigger) : Triggered(trigger), count(0), counting(true) {};
+	TriggeredCounter(ITrigger* trigger) : Triggered(trigger), count(0), counting(true) {};
 	virtual ~TriggeredCounter() {};
 
 	virtual void set_counter(unsigned value) override { count = value; };
