@@ -13,8 +13,14 @@ Waiter::Waiter(IMenu* menu, IKitchen* kitchen, IServiceQueue* service_queue, ITr
 {
 }
 
+
+/// <summary>
+/// Waiter logic
+/// </summary>
 void Waiter::execute_iteration()
 {
+
+	// Firstly try to deliver prepared order
 	IOrder* order = kitchen->deliver_preapared();
 	if (order != nullptr)
 	{
@@ -23,6 +29,7 @@ void Waiter::execute_iteration()
 		return;
 	}
 	
+	// Else get group from service queue and try to serve it
 	IGroup* group = service_queue->dequeue_service();
 	if (group != nullptr)
 	{

@@ -144,6 +144,9 @@
     <ClCompile Include="Table.cpp">
       <Filter>Source Files\Client</Filter>
     </ClCompile>
+    <ClCompile Include="HungryClient.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IClient.h">
@@ -264,6 +267,9 @@
       <Filter>Header Files\Test\Headers</Filter>
     </ClInclude>
     <ClInclude Include="Table.h">
+      <Filter>Header Files\Client\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="HungryClient.h">
       <Filter>Header Files\Client\Headers</Filter>
     </ClInclude>
   </ItemGroup>

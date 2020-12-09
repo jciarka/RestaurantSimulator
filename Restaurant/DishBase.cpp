@@ -47,7 +47,6 @@ void DishBase::set_client(IClient* client)
 {
     if (client == nullptr)
     {
-        // Rzuæ wyj¹tek
         std::stringstream error_txt_stream;
         error_txt_stream << "Dish " << id << ": client is not set";
         throw std::logic_error(error_txt_stream.str());
@@ -60,7 +59,6 @@ void DishBase::set_kitchen(IKitchen* kitchen)
 {
     if (kitchen == nullptr)
     {
-        // Rzuæ wyj¹tek
         std::stringstream error_txt_stream;
         error_txt_stream << "Dish " << id << ": kitchen must not be null";
         throw std::logic_error(error_txt_stream.str());
@@ -69,13 +67,14 @@ void DishBase::set_kitchen(IKitchen* kitchen)
     this->kitchen = kitchen;
 }
 
-
+/// <summary>
+/// Initiates preparing proces using dishe's counter
+/// </summary>
 void DishBase::begin_preparing()
 {
-    // SprawdŸ czy wywo³anie we w³aœciwym momencie
+    // Check if called at a wright time
     if (state != IDish::dish_state::CHOOSEN)
     {
-        // Jeœli nie rzuæ wyj¹tek
         std::stringstream error_txt_stream;
         error_txt_stream << "Dish " << id << ": begin_preparing call when dish is not choosen";
         throw std::logic_error(error_txt_stream.str());
@@ -83,29 +82,23 @@ void DishBase::begin_preparing()
 
     if (kitchen == nullptr)
     {
-        // Kuchnia musi byæ w tym momencie ju¿ okreœlona
+        // Kitchen must be set at tkis moment
         std::stringstream error_txt_stream;
         error_txt_stream << "Dish " << id << ": begin_preparing call when kitchen is not set";
         throw std::logic_error(error_txt_stream.str());
     }
 
-    /*
-    // raport
-    std::ostringstream raport_steram;
-    raport_steram << this->to_string() << ", id:" << id 
-                  << " for Client " << this->client->get_id() 
-                  << " is being prepared";
-    raport(raport_steram.str());
-    */
-    // Zainicjuj proces przygotowania
+    // Initiate preparation proces
     set_counter(preparing_time);
     start();
 
-    // Powiadom kuchniê o zmianie stanu - nie jest konieczny, bêdzie ignorowany 
+    // Change state
     state = IDish::dish_state::PREPARATION;
-    //kitchen->on_dish_state_change(this);
 }
 
+/// <summary>
+/// Counter logic - preparation and eating
+/// </summary>
 void DishBase::OnCounted()
 {
     std::stringstream raport_stream;
@@ -113,25 +106,14 @@ void DishBase::OnCounted()
     switch (state)  
     {
     case IDish::dish_state::PREPARATION:
-        /*
-        // Raportuj
-        raport_stream << this->to_string() << ", id:" << id
-                      << " for Client " << this->client->get_id()
-                      << " is ready for delivery";
-        raport(raport_stream.str());
-        */
-        // Powiadom kuchniê o zmianie stanu - nie jest konieczny, bêdzie ignorowany 
+
+        // Notify kitchen about state change
         state = IDish::dish_state::PREPARED;
         kitchen->on_dish_state_change(this);
         break;
 
     case IDish::dish_state::CONSUMPTION:
-        /**/
-        // Raportuj
-        // raport_stream << "Dish " << id << ": is eaten" << std::endl;
-        // raport(raport_stream.str());
-
-        // Powiadom kuchniê o zmianie stanu - nie jest konieczny, bêdzie ignorowany 
+        // Notify kitchen about state change 
         state = IDish::dish_state::EATEN;
         client->on_dish_state_change(this);
         break;
@@ -143,12 +125,14 @@ void DishBase::OnCounted()
     }
 }
 
+/// <summary>
+/// Initiates eating proces using dishe's counter
+/// </summary>
 void DishBase::begin_eat()
 {
-    // SprawdŸ czy wywo³anie we w³aœciwym momencie
+    // Check if called at wright time
     if (state != IDish::dish_state::PREPARED)
     {
-        // Jeœli nie rzuæ wyj¹tek
         std::stringstream error_txt_stream;
         error_txt_stream << "Dish " << id << ": begin_eat call when dish is not prepared";
         throw std::logic_error(error_txt_stream.str());
@@ -156,18 +140,13 @@ void DishBase::begin_eat()
 
     if ( client == nullptr)
     {
-        // Kuchnia musi byæ w tym momencie ju¿ okreœlona
+        // Kitchen must be set at tkis moment
         std::stringstream error_txt_stream;
         error_txt_stream << "Dish " << id << ": begin_eat call when klient is not set";
         throw std::logic_error(error_txt_stream.str());
     }
-    /*
-    // raport
-    //std::ostringstream raport_steram;
-    //raport_steram << "Dish " << id << ": is begined to eat" << std::endl;
-    //raport(raport_steram.str());
-    */
-    // Zainicjuj proces przygotowania
+    
+    // Initiate eating proces
     set_counter(eating_time);
     start();
 

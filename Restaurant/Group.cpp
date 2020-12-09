@@ -5,8 +5,8 @@
 
 
 // ______________________________________________________________________________________________________
-// Czêœæ statyczna
-unsigned Group::id_counter = 0; // Inicjacja pocz¹tkowej wartosci od której nadawane bêdzie id
+// Static part
+unsigned Group::id_counter = 0; // Initiation of begin number of id
 
 unsigned Group::generate_unique_id()
 {
@@ -34,6 +34,10 @@ unsigned Group::get_id() const
 	return id;
 }
 
+
+/// <summary>
+/// Returns cilents bare pointers vecotr
+/// </summary>
 std::vector<IClient*> Group::get_clients()
 {
 	std::vector<IClient*> clients_ptr_list;
@@ -48,18 +52,28 @@ std::vector<IClient*> Group::get_clients()
 	return clients_ptr_list;
 }
 
+/// <summary>
+/// Returns pointer to table or null if group not yet at table
+/// </summary>
 ITable* Group::get_table() const
 {
 	return table;
 }
 
 
+/// <summary>
+/// Returns the number of people in the group
+/// </summary>
 unsigned Group::get_members_num() const
 {
 	return clients.size();
 }
 
 
+/// <summary>
+/// Adds a cilient to group
+/// Possible only when group is waiting for friends
+/// </summary>
 void Group::add_client(std::unique_ptr<IClient> client)
 {
 	if (!(state == IClient::client_state::WAITING_FOR_FRIENDS || state == IClient::client_state::READY_TO_BEGIN) 
@@ -82,6 +96,11 @@ void Group::add_client(std::unique_ptr<IClient> client)
 }
 
 
+/// <summary>
+/// Remove clients form group in order to move them to another group
+/// Returns a unique_pointer to vector of unique_pointers to clients - strict ownership purposes
+/// Function called for group merge
+/// </summary>
 std::unique_ptr<std::vector<std::unique_ptr<IClient>>> Group::move_clients()
 {
 	if (!(state == IClient::client_state::WAITING_FOR_FRIENDS || state == IClient::client_state::READY_TO_BEGIN))
@@ -112,12 +131,15 @@ std::unique_ptr<std::vector<std::unique_ptr<IClient>>> Group::move_clients()
 	}
 	*/
 
-	
 	// transfer clients to new owner
 	return temp;
 }
 
-
+/// <summary>
+/// Makes group aware that it is posed at table,
+/// If group waiting for friends it keeps waiting,
+/// If group ready to order it begins feast
+/// </summary>
 void Group::seat_at_table(ITable* table)
 {
 	if (table == nullptr)
@@ -128,14 +150,17 @@ void Group::seat_at_table(ITable* table)
 	}
 	this->table = table;
 
-	// Jeœli w stanie READY_TO_BEGIN rozpocznij ucztê
+	// If in state READY_TO_BEGIN, begin feast
 	if (get_state() == IClient::client_state::READY_TO_BEGIN)
 	{
 		begin_feast();
 	}
-	// Jeœli w stanie WAITING_FOR_FRIENDS grupa oczekuje przy stole
+	// If in state WAITING_FOR_FRIENDS, groups keep waiting
 }
 
+/// <summary>
+/// Makes all member begins feast
+/// </summary>
 void Group::begin_feast()
 {
 	// Iteration over unique poiter vector - MUST add reference not to lose ownership
@@ -145,6 +170,11 @@ void Group::begin_feast()
 	}
 }
 
+/// <summary>
+/// Merge clients from group passed as parameters to this group
+/// If added group is ready to order, newly merged grup begins feast
+/// If added group is waiting for friends, newly merged grup keeps waiting
+/// </summary>
 void Group::merge(std::unique_ptr<IGroup> group)
 {
 	std::stringstream error_txt_stream;
@@ -166,7 +196,7 @@ void Group::merge(std::unique_ptr<IGroup> group)
 		throw std::logic_error(error_txt_stream.str());
 	}
 
-	// get clients for merge
+	// Get clients for merge
 	std::unique_ptr<std::vector<std::unique_ptr<IClient>>> clients_to_add = std::move(group->move_clients());
 	std::unique_ptr<IClient> client;
 	
@@ -181,8 +211,7 @@ void Group::merge(std::unique_ptr<IGroup> group)
 	}
 	clients_to_add->clear();
 	
-
-	// Refresh state of group <- new sate is state of merged group
+	// Refresh state of newly merged group <- new sate is state of added group
 	state = group->get_state();
 
 	if (state == IClient::client_state::READY_TO_BEGIN)
@@ -193,16 +222,23 @@ void Group::merge(std::unique_ptr<IGroup> group)
 	// group form which clients were merged is going to be deleted when pasing this scope
 }
 
+/// <summary>
+/// Returns state of this group
+/// </summary>
 IClient::client_state Group::get_state() const
 {
 	return state;
 }
 
 
+/// <summary>
+/// Logic exectuted when one fo clients state changes
+/// </summary>
 void Group::on_client_state_changed(IClient* clinet)
 {
-	// SprawdŸ czy stan wszystkich klientów o jeden wiêkszy ni¿ grupy
-	// Jeœli tak to zmieñ stan grupy
+	//
+	// Check that the status of all clients is one greater than the group
+	// If so, change group state
 	for (const std::unique_ptr<IClient>& client : clients)
 	{
 		if ( static_cast<int>(client->get_state()) != static_cast<int>(state) + 1 )
@@ -211,10 +247,10 @@ void Group::on_client_state_changed(IClient* clinet)
 		}
 	}
 	
-	// Zmieñ stan
+	// Change state
 	state = static_cast<IClient::client_state>(static_cast<int>(state) + 1);
 
-	// Wykonaj operacje
+	// Execute logic
 	std::ostringstream raport_stream;
 	switch (state)
 	{
@@ -223,7 +259,7 @@ void Group::on_client_state_changed(IClient* clinet)
 		raport_stream << "Table: " << table->get_id() <<
 			             " Group: " << id << " Calls waiter for menu";
 		raport(raport_stream.str());
-		// Wezwij kelnera z menu
+		// Call for waiter to get card
 		service_queue->queue_service(this);
 		break;
 
@@ -234,7 +270,7 @@ void Group::on_client_state_changed(IClient* clinet)
 		raport_stream << "Table: " << table->get_id() <<
 			             " Group: " << id << " Calls waiter to order";
 		raport(raport_stream.str());
-		// Wezwij kelnera aby zamówiæ
+		// Call for waiter to order
 		service_queue->queue_service(this);
 		break;
 
@@ -248,7 +284,7 @@ void Group::on_client_state_changed(IClient* clinet)
 		raport_stream << "Table: " << table->get_id() <<
 			             " Group: " << id << " Calls waiter to pay";
 		raport(raport_stream.str());
-		// Wezwij kelnera aby zap³aciæ
+		// Call for waiter to pay
 		service_queue->queue_service(this);
 		break;
 
@@ -256,7 +292,7 @@ void Group::on_client_state_changed(IClient* clinet)
 		raport_stream << "Table: " << table->get_id() <<
 			             " Group: " << id << " Is preparing to leave";
 		raport(raport_stream.str());
-		// Powiadom stolik ¿e gotowa do wyjœcia
+		// Notify the table that it is free now
 		table->on_group_state_change(this);
 		break;
 

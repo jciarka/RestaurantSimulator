@@ -14,8 +14,8 @@
 
 
 // ______________________________________________________________________________________________________
-// Czêœæ statyczna
-unsigned StandardClient::id_counter = 0; // Inicjacja pocz¹tkowej wartosci od której nadawane bêdzie id
+// STATIC PART
+unsigned StandardClient::id_counter = 0;
 
 unsigned StandardClient::generate_unique_id()
 {
@@ -41,7 +41,7 @@ void StandardClient::set_group(IGroup* group)
 
     if (!(group->get_state() == IClient::client_state::WAITING_FOR_FRIENDS || group->get_state() == IClient::client_state::READY_TO_BEGIN))
     {
-        // Jeœli nie rzuæ wyj¹tek
+        // Thow excetion if not
         std::stringstream error_txt_stream;
         error_txt_stream << "Client " << id << ": wrong state at initiation";
         throw std::logic_error(error_txt_stream.str());
@@ -53,48 +53,46 @@ void StandardClient::set_group(IGroup* group)
 
 void StandardClient::begin_feast()
 {
-    // SprawdŸ czy wywo³anie we w³aœciwym momencie
+    // Check if calling at the right time
     if (!(state == IClient::client_state::WAITING_FOR_FRIENDS || state == IClient::client_state::READY_TO_BEGIN))
     {
-        // Jeœli nie rzuæ wyj¹tek
+        // Thow excetion if not
         std::stringstream error_txt_stream;
         error_txt_stream << "Client " << id << ": begin feast call when client not waiting for friends";
         throw std::logic_error(error_txt_stream.str());
     }
 
-    // raport
+    // Raport
     std::ostringstream raport_stream;
     raport_stream <<  "Table: " << group->get_table()->get_id() <<
                      " Group: " << group->get_id() <<
                      " Client " << id << ": Begins feast";
     raport(raport_stream.str());
 
-    // Powiadom grupê o zmianie stanu - nie konieczne ale dla zachowania konwencji
-    // grupa bêdzie to ignorowaæ
+    // Notify the group about the change of state
     state = IClient::client_state::WAITING_FOR_CARD;
     group->on_client_state_changed(this);
 }
 
 void StandardClient::take_card(const IMenu* menu)
 {
-    // SprawdŸ czy wywo³anie we w³aœciwym momencie
+    // Check if calling at the right time
     if (state != IClient::client_state::WAITING_FOR_CARD)
     {
-        // Jeœli nie rzuæ wyj¹tek
         std::stringstream error_txt_stream;
         error_txt_stream << "Client " << id << ": take card call when client not waiting for card";
         throw std::logic_error(error_txt_stream.str());
     }
-    // Zapamiêtaj menu, zainicjuj proces zastanawiania siê nad wyborem
+    // Remember the menu, initiate the process of considering the choice
     this->menu = menu; // pointing global menu
     set_counter(choosing_time);
     start();
 
-    // Powiadom grupê o zmianie stanu
+    // Notify the group about the change of state
     state = IClient::client_state::CHOOSING_DISHES;
     group->on_client_state_changed(this);
 
-    // raport
+    // Raport
     std::ostringstream raport_stream;
     raport_stream << "Table: " << group->get_table()->get_id() <<
                      " Group: " << group->get_id() <<
@@ -102,6 +100,10 @@ void StandardClient::take_card(const IMenu* menu)
     raport(raport_stream.str());
 }
 
+/// <summary>
+/// Choose and create dishes from menu
+/// Set the dishes pointers poles
+/// </summary>
 void StandardClient::choose_dishes()
 {
     if (menu == nullptr)
@@ -138,6 +140,9 @@ void StandardClient::choose_dishes()
 }
 
 // Triggered
+/// <summary>
+/// Logic of time dependent event - choosing dishes
+/// </summary>
 void StandardClient::OnCounted()
 {
     std::stringstream raport_stream;
@@ -148,25 +153,29 @@ void StandardClient::OnCounted()
         // Choose dishes
         choose_dishes();
 
-        // Raportuj
+        // Raport
         raport_stream << "Table: " << group->get_table()->get_id() <<
                          " Group: " << group->get_id() <<
                          " Client " << id << ": is ready to order";
         raport(raport_stream.str());
 
-        // Powiadom grupê o zmianie stanu
+        // Notify the group about the change of state
         state = IClient::client_state::READY_TO_ORDER;
         group->on_client_state_changed(this);
         break;
 
     default:
-        // Jeœli nie rzuæ wyj¹tek
+        // In other states throw exception
         error_txt_stream << "Client " << id << ": on_counted call in invalid state";
         throw std::logic_error(error_txt_stream.str());
         break;
     }
 }
 
+
+/// <summary>
+/// Form order from dishes
+/// </summary>
 std::vector<IOrder*> StandardClient::create_orders()
 {
     std::vector<IOrder*> orders;
@@ -178,10 +187,9 @@ std::vector<IOrder*> StandardClient::create_orders()
 
 std::vector<IOrder*> StandardClient::give_order()
 {
-    // SprawdŸ czy wywo³anie we w³aœciwym momencie
+    // Check if calling at the right time
     if (state != IClient::client_state::READY_TO_ORDER)
     {
-        // Jeœli nie rzuæ wyj¹tek
         std::stringstream error_txt_stream;
         error_txt_stream << "Client " << id << ": give_order call when client not ready to order";
         throw std::logic_error(error_txt_stream.str());
@@ -189,14 +197,14 @@ std::vector<IOrder*> StandardClient::give_order()
 
     std::vector<IOrder*> orders = create_orders();
 
-    // Raportuj
+    // Raport
     std::stringstream raport_stream;
     raport_stream << "Table: " << group->get_table()->get_id() <<
                      " Group: " << group->get_id() <<
                      " Client " << id << ": has ordered";
     raport(raport_stream.str());
 
-    // Powiadom grupê o zmianie stanu
+    // Notify the group about the change of state
     state = IClient::client_state::WAITING_FOR_DISHES;
     group->on_client_state_changed(this);
 
@@ -221,7 +229,7 @@ void StandardClient::pick_up_order(IOrder* order)
         // Main course and beverage are consumed at the same time
         dish->begin_eat();
 
-        // Raportuj
+        // Raport
         std::stringstream raport_stream;
         raport_stream << "Table: " << group->get_table()->get_id() <<
                          " Group: " << group->get_id() <<
@@ -231,14 +239,14 @@ void StandardClient::pick_up_order(IOrder* order)
 
         if (state == IClient::client_state::WAITING_FOR_DISHES)
         {
-            // Powiadom grupê o zmianie stanu
+            // Notify the group about the change of state
             state = IClient::client_state::EATING;
             group->on_client_state_changed(this);
         }
     }
     else
     {
-        // Jeœli nie rzuæ wyj¹tek
+        // In other states throw exceptions
         std::stringstream error_txt_stream;
         error_txt_stream << "Client " << id << ": pick_up_order call when client not waiting for order and not eating";
         throw std::logic_error(error_txt_stream.str());
@@ -247,32 +255,25 @@ void StandardClient::pick_up_order(IOrder* order)
 
 void StandardClient::on_dish_state_change(IDish* dish)
 {
-    if (dish != beveage && dish != main_course)
-    {
-        // Jeœli nie rzuæ wyj¹tek
-        std::stringstream error_txt_stream;
-        error_txt_stream << "Client " << id << ": recieved notify that someone's else dish was eaten";
-        throw std::logic_error(error_txt_stream.str());
-    }
-
     if (dish->get_state() == IDish::dish_state::EATEN && state != IClient::client_state::EATING)
     {
-        // Jeœli nie rzuæ wyj¹tek
+        // If client wasn't eating, but dish got eaten throw exception
         std::stringstream error_txt_stream;
         error_txt_stream << "Client " << id << ": client wasn't eating, but dish got eaten";
         throw std::logic_error(error_txt_stream.str());
     }
 
-    // Raportuj
+    // Raport
     std::stringstream raport_stream;
     raport_stream << "Table: " << group->get_table()->get_id() <<
                      " Group: " << group->get_id() <<
                      " Client " << id << ": consumed " << dish->to_string();
     raport(raport_stream.str());
 
+    // Standard client condition for fisnish eating
     if (beveage->get_state() == IDish::dish_state::EATEN && main_course->get_state() == IDish::dish_state::EATEN)
     {
-        // Powiadom grupê o zmianie stanu
+        // Notify the group about the change of state
         state = IClient::client_state::FINISHED_EATING;
         group->on_client_state_changed(this);
     }
@@ -287,19 +288,19 @@ void StandardClient::pay()
 {
     price total = count_total();
 
-    // Raportuj
+    // Raport
     std::stringstream raport_stream;
     raport_stream << "Table: " << group->get_table()->get_id() <<
                      " Group: " << group->get_id() <<
                      " Client " << id << ": paying " << total;
     raport(raport_stream.str());
 
-    // Powiadom grupê o zmianie stanu
+    // Notify the group about the change of state
     state = IClient::client_state::LEAVING;
     group->on_client_state_changed(this);
 }
 
-StandardClient::~StandardClient() // Zniszcz dania,
+StandardClient::~StandardClient() // Delete dishes,
 {  
     delete main_course;
     main_course = nullptr;

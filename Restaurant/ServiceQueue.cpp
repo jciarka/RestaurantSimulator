@@ -6,6 +6,9 @@ ServiceQueue::ServiceQueue(IRaporter* global_raporter) : Raportable(global_rapor
 
 }
 
+/// <summary>
+/// Add calling group pointer to queue
+/// </summary>
 void ServiceQueue::queue_service(IGroup* group)
 {
 	if (group == nullptr)
@@ -17,14 +20,16 @@ void ServiceQueue::queue_service(IGroup* group)
 	service_queue.push(group);
 }
 
+/// <summary>
+/// Return first group from queue for service
+/// </summary>
 IGroup* ServiceQueue::dequeue_service()
 {
 	if (service_queue.empty())
 		return nullptr;
 
-	// Pobierz najstarzy element
+	// Get group that called ealriest
 	IGroup* group = service_queue.front();
-	// Usuñ go z kolejki
 	service_queue.pop();
 	return group;
 }

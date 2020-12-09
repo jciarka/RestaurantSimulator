@@ -19,18 +19,23 @@ void Kitchen::take_order(IOrder* order)
 	raport(raport_steram.str());
 }
 
+/// <summary>
+/// Pass to waiter oldest prepared dish that is not delivered yet
+/// </summary>
 IOrder* Kitchen::deliver_preapared()
 {
 	if (prepared.empty())
 		return nullptr;
 	
-	// Pobierz najstarzy element
+	// Get oldest element in service queue
 	IOrder* order = prepared.front();
-	// Usuñ go z kolejki
 	prepared.pop();
 	return order;
 }
 
+/// <summary>
+/// Move prepared dishes to queue of dishes to deliver
+/// </summary>
 void Kitchen::on_dish_state_change(IDish* dish)
 {
 	if (dish->get_state() != IDish::dish_state::PREPARED)
@@ -40,7 +45,7 @@ void Kitchen::on_dish_state_change(IDish* dish)
 		throw std::logic_error(error_txt_stream.str());
 	}
 	
-	// ZnajdŸ zamówienie wektorze at_preparation
+	// Find wright order in at_preparation vector
 	auto order_pos = std::find_if(at_preparation.begin(), at_preparation.end(),
 		[&](IOrder* order) { return order->get_dish() == dish; });
 	if (order_pos == at_preparation.end())
@@ -50,14 +55,14 @@ void Kitchen::on_dish_state_change(IDish* dish)
 		throw std::logic_error(error_txt_stream.str());
 	}
 
-	// Dodaj do kolejki prepared
+	// Add to prepared queue - orderes that are waiting for delivery
 	IOrder* order = *order_pos;
 	prepared.push(order);
 
-	// Usuñ z wektora at_preparation
+	// Delete from at_preparation vector
 	at_preparation.erase(order_pos);
 
-	// raportuj
+	// Raport
 	std::ostringstream raport_steram;
 	raport_steram << "Kitchen: " << dish->to_string()
 		<< " for Client " << order->get_client()->get_id()

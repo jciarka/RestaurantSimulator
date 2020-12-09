@@ -143,6 +143,7 @@
     <ClCompile Include="Dessert.cpp" />
     <ClCompile Include="DishBase.cpp" />
     <ClCompile Include="Group.cpp" />
+    <ClCompile Include="HungryClient.cpp" />
     <ClCompile Include="Kitchen.cpp" />
     <ClCompile Include="MainCourse.cpp" />
     <ClCompile Include="Order.cpp" />
@@ -165,6 +166,7 @@
     <ClInclude Include="Dessert.h" />
     <ClInclude Include="fwd_include.h" />
     <ClInclude Include="Group.h" />
+    <ClInclude Include="HungryClient.h" />
     <ClInclude Include="IClient.h" />
     <ClInclude Include="ICsvReader.h" />
     <ClInclude Include="IDish.h" />

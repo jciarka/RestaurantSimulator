@@ -17,22 +17,22 @@ private:
     static unsigned id_counter;
     static unsigned generate_unique_id();
 
+protected:
     IClient::client_state state;
     unsigned id;
     unsigned choosing_time;
     const IMenu* menu;
-    // std::vector<IDish*> dishes;
     Beverage* beveage;
     MainCourse* main_course;
-    IGroup* group;  // Na potrzeby wypisywania
-    ITable* table;  // Na potrzeby wypisywania
+    IGroup* group;
+    ITable* table;
 
-    virtual void choose_dishes(); // Bêdzie modyfikowana klasach potomnych
+    // Functions to override in more specyfic clients
+    virtual void choose_dishes();
     virtual std::vector<IOrder*> create_orders();
     virtual price count_total();
-
-protected:
-    virtual void OnCounted() override; //Logika odliczania
+    virtual void OnCounted() override; // Counter logic
+    // pick_up_order and on_dish_state_change also must be overriden
 
 public:
     StandardClient(unsigned choosing_time, ITrigger* global_trigger, IRaporter* global_raporter);
@@ -55,5 +55,5 @@ public:
 
     virtual void pay() override;
 
-    virtual ~StandardClient();// Zniszcz dania, zniszcz menu 
+    virtual ~StandardClient(); 
 };
