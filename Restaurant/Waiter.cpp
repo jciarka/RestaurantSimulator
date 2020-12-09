@@ -21,11 +21,10 @@ void Waiter::execute_iteration()
 {
 
 	// Firstly try to deliver prepared order
-	IOrder* order = kitchen->deliver_preapared();
+	IDish* order = kitchen->deliver_preapared();
 	if (order != nullptr)
 	{
-		IClient* client = order->get_client();
-		client->pick_up_order(order);
+		order->deliver();
 		return;
 	}
 	
@@ -33,7 +32,7 @@ void Waiter::execute_iteration()
 	IGroup* group = service_queue->dequeue_service();
 	if (group != nullptr)
 	{
-		std::vector<IOrder*> orders;
+		std::vector<IDish*> orders;
 		std::stringstream error_txt_stream;
 
 		switch (group->get_state())		

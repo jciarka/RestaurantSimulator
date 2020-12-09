@@ -15,22 +15,22 @@ public:
 
     virtual Soup get_soup(unsigned index) const override
     {
-        return Soup(5, 5, "Rosó³", price(2050), global_trigger_ptr, global_raporter_ptr);
+        return Soup(100, 7U, "Chicken soup", price(2050), global_trigger_ptr, global_raporter_ptr);
     };
 
     virtual MainCourse get_main_course(unsigned index) const override
     {
-        return MainCourse(5U, 5U, "Schamowy z frytkami", price(3050), global_trigger_ptr, global_raporter_ptr);
+        return MainCourse(6U, 6U, "Devolay with chips", price(3050), global_trigger_ptr, global_raporter_ptr);
     };
 
     virtual Dessert get_dessert(unsigned index) const override
     {
-        return Dessert(5U, 5U, "Tiramisu", price(1500), global_trigger_ptr, global_raporter_ptr);
+        return Dessert(4U, 5U, "Tiramisu", price(1500), global_trigger_ptr, global_raporter_ptr);
     };
 
     virtual Beverage get_beverage(unsigned index) const override
     {
-        return Beverage(2U, 10U, "Piwo", price(3050), global_trigger_ptr, global_raporter_ptr);
+        return Beverage(2U, 10U, "Beer", price(3050), global_trigger_ptr, global_raporter_ptr);
     };
 
     virtual unsigned get_soup_size() const override { return 10; };

@@ -1,90 +1,59 @@
 
+#include "SweetLovingClient.h"
+
 #include <stdexcept>
-#include <sstream>
+//#include <sstream>
 #include <stdlib.h>
 #include <time.h>
-#include "HungryClient.h"
-#include "StandardClient.h"
-#include "IGroup.h"
-#include "ITable.h"
 #include "Order.h"
 #include "MainCourse.h"
 #include "Beverage.h"
 #include "Price.h"
 
+/*
 
-HungryClient::HungryClient(unsigned choosing_time, ITrigger* global_trigger, IRaporter* global_raporter)
-    : StandardClient(choosing_time, global_trigger, global_raporter)
+SweetLovingClient::SweetLovingClient(unsigned choosing_time, ITrigger* global_trigger, IRaporter* global_raporter)
+                                   : StandardClient(choosing_time, global_trigger, global_raporter)
 {
-}
-
-
-void HungryClient::choose_dishes()
-{
-    // Choose soup
-    std::ostringstream raport_stream;
-
-    // Rand number of soup
-    srand(time(nullptr));
-    unsigned soup_count = menu->get_soup_size();
-    unsigned choosen = rand() % soup_count;
-
-
-    soup = new Soup(menu->get_soup(choosen));
-    soup->set_client(this);
-
-    // Raport
-    raport_stream << "Table: " << group->get_table()->get_id() <<
-        " Group: " << group->get_id() <<
-        " Client " << id << ": choosed " << soup->to_string() << std::endl;
-    raport(raport_stream.str());
-
-    // Choose main course and beverage
-    StandardClient::choose_dishes();
 }
 
 
 /*
-
-HungryClient::HungryClient(unsigned choosing_time, ITrigger* global_trigger, IRaporter* global_raporter)
-	                       : soup(nullptr), StandardClient(choosing_time, global_trigger, global_raporter)
+void SweetLovingClient::choose_dishes()
 {
-}
-
-
-void HungryClient::choose_dishes()
-{
-	// Choose soup
+    // Choose soup
     std::ostringstream raport_stream;
+
+    // Choose main course and beverage
+    StandardClient::choose_dishes();
+
 
     // Rand number of soup
     srand(time(nullptr));
-    unsigned soup_count = menu->get_soup_size();
-    unsigned choosen = rand() % soup_count;
+    unsigned dessert_count = menu->get_dessert_size();
+    unsigned choosen = rand() % dessert_count;
 
-
-    soup = new Soup(menu->get_soup(choosen));
-    soup->set_client(this);
+    dessert = new Dessert(menu->get_dessert(choosen));
+    dessert->set_client(this);
 
     // Raport
     raport_stream << "Table: " << group->get_table()->get_id() <<
-        " Group: " << group->get_id() <<
-        " Client " << id << ": choosed " << soup->to_string() << std::endl;
-
-	// Choose main course and beverage
-	StandardClient::choose_dishes();
+                     " Group: " << group->get_id() <<
+                     " Client " << id << ": choosed " << dessert->to_string() << std::endl;
+    raport(raport_stream.str());
 }
 
 
-std::vector<IDish*> HungryClient::create_orders()
+/*
+std::vector<IDish*> SweetLovingClient::create_orders()
 {
-	 std::vector<IDish*> order = StandardClient::create_orders();
-	 order.push_back(soup);
-	 return order;
+    std::vector<IDish*> order = StandardClient::create_orders();
+    order.push_back(dessert);
+    return order;
 }
 
 
-void HungryClient::pick_up_order(IDish* dish)
+void SweetLovingClient::pick_up_order(IDish* dish)
 {
     if (!(state == IClient::client_state::WAITING_FOR_DISHES || state == IClient::client_state::EATING))
     {
@@ -92,17 +61,17 @@ void HungryClient::pick_up_order(IDish* dish)
         std::stringstream error_txt_stream;
         error_txt_stream << "Client " << id << ": pick_up_order call when client not waiting for order and not eating";
         throw std::logic_error(error_txt_stream.str());
-    
+
     }
 
     std::stringstream raport_stream;
     raport_stream << "Table: " << group->get_table()->get_id() <<
-                     " Group: " << group->get_id() <<
-                     " Client " << id <<
-                     ": starts consuming " << dish->to_string();
+        " Group: " << group->get_id() <<
+        " Client " << id <<
+        ": starts consuming " << dish->to_string();
 
     // Resolve dish
-    if (dish == soup || dish == beveage)
+    if (dish == main_course || dish == beveage)
     {
         // Begin eating soup immediately
         dish->begin_eat();
@@ -116,10 +85,10 @@ void HungryClient::pick_up_order(IDish* dish)
         }
         return;
     }
-    else if (dish == main_course)
+    else if (dish == dessert)
     {
         // Begin eating main_course only when soup is finished
-        if (soup->get_state() == IDish::dish_state::EATEN)
+        if (main_course->get_state() == IDish::dish_state::EATEN)
         {
             dish->begin_eat();
             raport(raport_stream.str());
@@ -135,7 +104,7 @@ void HungryClient::pick_up_order(IDish* dish)
 
 }
 
-void HungryClient::on_dish_state_change(IDish* dish)
+void SweetLovingClient::on_dish_state_change(IDish* dish)
 {
     if (dish->get_state() == IDish::dish_state::EATEN && state != IClient::client_state::EATING)
     {
@@ -148,19 +117,19 @@ void HungryClient::on_dish_state_change(IDish* dish)
     // Raport
     std::stringstream raport_stream;
     raport_stream << "Table: " << group->get_table()->get_id() <<
-                     " Group: " << group->get_id() <<
-                     " Client " << id << ": consumed " << dish->to_string();
+        " Group: " << group->get_id() <<
+        " Client " << id << ": consumed " << dish->to_string();
     raport(raport_stream.str());
 
     // If main course delivered and finished eating soup
     // now can start eating main_course
-    if (dish == soup && main_course->get_state() == IDish::dish_state::DELIVERED)
+    if (dish == main_course && dessert->get_state() == IDish::dish_state::DELIVERED)
     {
         main_course->begin_eat();
     }
 
     // Standard client condition for fisnish eating
-    if (beveage->get_state() == IDish::dish_state::EATEN && main_course->get_state() == IDish::dish_state::EATEN)
+    if (beveage->get_state() == IDish::dish_state::EATEN && dessert->get_state() == IDish::dish_state::EATEN)
     {
         // Notify the group about the change of state
         state = IClient::client_state::FINISHED_EATING;
@@ -168,18 +137,18 @@ void HungryClient::on_dish_state_change(IDish* dish)
     }
 }
 
-price HungryClient::count_total()
+price SweetLovingClient::count_total()
 {
-	return StandardClient::count_total() + soup->get_price();
+    return StandardClient::count_total() + dessert->get_price();
 }
 
-HungryClient::~HungryClient()
+SweetLovingClient::~SweetLovingClient()
 {
-	if (soup != nullptr)
-	{
-		delete soup;
-		soup = nullptr;
-	}
+    if (dessert != nullptr)
+    {
+        delete dessert;
+        dessert = nullptr;
+    }
 }
 
 */

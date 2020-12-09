@@ -141,9 +141,11 @@
   <ItemGroup>
     <ClCompile Include="Beverage.cpp" />
     <ClCompile Include="Dessert.cpp" />
+    <ClCompile Include="DessertLovingClient.cpp" />
     <ClCompile Include="DishBase.cpp" />
     <ClCompile Include="Group.cpp" />
     <ClCompile Include="HungryClient.cpp" />
+    <ClCompile Include="HungryDessertLovingClient.cpp" />
     <ClCompile Include="Kitchen.cpp" />
     <ClCompile Include="MainCourse.cpp" />
     <ClCompile Include="Order.cpp" />
@@ -156,6 +158,9 @@
     <ClCompile Include="test1.cpp" />
     <ClCompile Include="test2.cpp" />
     <ClCompile Include="test3.cpp" />
+    <ClCompile Include="test_dessertlovingclient.cpp" />
+    <ClCompile Include="test_hungrydessertlovingclient.cpp" />
+    <ClCompile Include="test_hungry_client1.cpp" />
     <ClCompile Include="Trigger.cpp" />
     <ClCompile Include="Triggered.cpp" />
     <ClCompile Include="TriggeredCounter.cpp" />
@@ -164,9 +169,11 @@
   <ItemGroup>
     <ClInclude Include="Beverage.h" />
     <ClInclude Include="Dessert.h" />
+    <ClInclude Include="DessertLovingClient.h" />
     <ClInclude Include="fwd_include.h" />
     <ClInclude Include="Group.h" />
     <ClInclude Include="HungryClient.h" />
+    <ClInclude Include="HungryDessertLovingClient.h" />
     <ClInclude Include="IClient.h" />
     <ClInclude Include="ICsvReader.h" />
     <ClInclude Include="IDish.h" />
@@ -175,7 +182,6 @@
     <ClInclude Include="IGroupGenerator.h" />
     <ClInclude Include="IKitchen.h" />
     <ClInclude Include="IMenu.h" />
-    <ClInclude Include="IOrder.h" />
     <ClInclude Include="IRaportable.h" />
     <ClInclude Include="IRaporter.h" />
     <ClInclude Include="IServiceQueue.h" />

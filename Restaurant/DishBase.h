@@ -49,6 +49,8 @@ public:
 
     virtual void OnCounted() override;
 
+    // interface for Waiter
+    virtual void deliver() override;
    
     // interface for IClient
     virtual void set_client(IClient* client) override;

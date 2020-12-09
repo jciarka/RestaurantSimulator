@@ -8,6 +8,9 @@
 #include "Trigger.h"
 #include "TerminalRaporter.h"
 #include "StandardClient.h"
+#include "HungryClient.h"
+#include "DessertLovingClient.h"
+#include "HungryDessertLovingClient.h"
 #include "TestMenu.h"
 #include "TestGroup.h"
 #include "Kitchen.h"
@@ -60,13 +63,13 @@ void test3()
 
         std::unique_ptr<IGroup> Group1{ new Group(true, &servicequeue, &trigger, &raporter) };
 
-        std::unique_ptr<IClient> testclient1 = std::make_unique<StandardClient>(5, &trigger, &raporter);
+        std::unique_ptr<IClient> testclient1 = std::make_unique<HungryClient>(5, &trigger, &raporter);
         Group1->add_client(std::move(testclient1));
         std::unique_ptr<IClient> testclient2 = std::make_unique<StandardClient>(6, &trigger, &raporter);
         Group1->add_client(std::move(testclient2));
         std::unique_ptr<IClient> testclient3 = std::make_unique<StandardClient>(7, &trigger, &raporter);
         Group1->add_client(std::move(testclient3));
-        std::unique_ptr<IClient> testclient4 = std::make_unique<StandardClient>(8, &trigger, &raporter);
+        std::unique_ptr<IClient> testclient4 = std::make_unique<DessertLovingClient>(8, &trigger, &raporter);
         Group1->add_client(std::move(testclient4));
 
         table.place_group(std::move(Group1));
@@ -79,11 +82,11 @@ void test3()
 
         std::unique_ptr<IGroup> Group1_prim { new Group(true, &servicequeue, &trigger, &raporter) };
 
-        std::unique_ptr<IClient> testclient1_prim = std::make_unique<StandardClient>(5, &trigger, &raporter);
+        std::unique_ptr<IClient> testclient1_prim = std::make_unique<HungryDessertLovingClient>(5, &trigger, &raporter);
         Group1_prim->add_client(std::move(testclient1_prim));
-        std::unique_ptr<IClient> testclient2_prim = std::make_unique<StandardClient>(6, &trigger, &raporter);
+        std::unique_ptr<IClient> testclient2_prim = std::make_unique<DessertLovingClient>(6, &trigger, &raporter);
         Group1_prim->add_client(std::move(testclient2_prim));
-        std::unique_ptr<IClient> testclient3_prim = std::make_unique<StandardClient>(7, &trigger, &raporter);
+        std::unique_ptr<IClient> testclient3_prim = std::make_unique<HungryClient>(7, &trigger, &raporter);
         Group1_prim->add_client(std::move(testclient3_prim));
         std::unique_ptr<IClient> testclient4_prim = std::make_unique<StandardClient>(8, &trigger, &raporter);
         Group1_prim->add_client(std::move(testclient4_prim));
@@ -105,12 +108,12 @@ void test3()
         // Contains 6 people
         std::unique_ptr<IGroup> Group2_prim{ new Group(true /*Group waiting for friends*/, &servicequeue, &trigger, &raporter) };
 
-        Group2_prim->add_client(std::move(std::make_unique<StandardClient>(3, &trigger, &raporter)));
+        Group2_prim->add_client(std::move(std::make_unique<DessertLovingClient>(3, &trigger, &raporter)));
         Group2_prim->add_client(std::move(std::make_unique<StandardClient>(2, &trigger, &raporter)));
-        Group2_prim->add_client(std::move(std::make_unique<StandardClient>(7, &trigger, &raporter)));
+        Group2_prim->add_client(std::move(std::make_unique<DessertLovingClient>(7, &trigger, &raporter)));
         Group2_prim->add_client(std::move(std::make_unique<StandardClient>(1, &trigger, &raporter)));
-        Group2_prim->add_client(std::move(std::make_unique<StandardClient>(1, &trigger, &raporter)));
-        Group2_prim->add_client(std::move(std::make_unique<StandardClient>(1, &trigger, &raporter)));
+        Group2_prim->add_client(std::move(std::make_unique<HungryDessertLovingClient>(1, &trigger, &raporter)));
+        Group2_prim->add_client(std::move(std::make_unique<HungryDessertLovingClient>(1, &trigger, &raporter)));
 
 
         // At table 4 of 10 seats occupied
@@ -138,13 +141,13 @@ void test3()
         std::unique_ptr<IGroup> Group2{ new Group(false, &servicequeue, &trigger, &raporter) };
         std::unique_ptr<IClient> testclient5 = std::make_unique<StandardClient>(3, &trigger, &raporter);
         Group2->add_client(std::move(testclient5));
-        std::unique_ptr<IClient> testclient6 = std::make_unique<StandardClient>(2, &trigger, &raporter);
+        std::unique_ptr<IClient> testclient6 = std::make_unique<HungryClient>(2, &trigger, &raporter);
         Group2->add_client(std::move(testclient6));
-        std::unique_ptr<IClient> testclient7 = std::make_unique<StandardClient>(7, &trigger, &raporter);
+        std::unique_ptr<IClient> testclient7 = std::make_unique<HungryClient>(7, &trigger, &raporter);
         Group2->add_client(std::move(testclient7));
         std::unique_ptr<IClient> testclient8 = std::make_unique<StandardClient>(1, &trigger, &raporter);
         Group2->add_client(std::move(testclient8));
-        std::unique_ptr<IClient> testclient9 = std::make_unique<StandardClient>(1, &trigger, &raporter);
+        std::unique_ptr<IClient> testclient9 = std::make_unique<HungryDessertLovingClient>(1, &trigger, &raporter);
         Group2->add_client(std::move(testclient9));
 
         // Can't join group1_prim - group much to big
@@ -177,7 +180,7 @@ void test3()
         /// 
 
         std::unique_ptr<IGroup> Group3_prim{ new Group(false, &servicequeue, &trigger, &raporter) };
-        Group3_prim->add_client(std::make_unique<StandardClient>(3, &trigger, &raporter));
+        Group3_prim->add_client(std::make_unique<HungryClient>(3, &trigger, &raporter));
 
         // Can't place with group that has beginned 
         assert(!table.can_place_group(Group3_prim.get()));
@@ -192,7 +195,7 @@ void test3()
 
 
         // Symulation
-        for (size_t i = 0; i < 100; i++)
+        for (size_t i = 0; i < 200; i++)
         {
             trigger.execute_iteration();
 

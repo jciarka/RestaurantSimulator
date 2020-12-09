@@ -25,7 +25,8 @@ unsigned StandardClient::generate_unique_id()
 
 StandardClient::StandardClient(unsigned choosing_time, ITrigger* global_trigger, IRaporter* global_raporter)
                                : TriggeredCounter(global_trigger), Raportable(global_raporter), choosing_time(choosing_time),
-                                 group(nullptr), menu(nullptr), main_course(nullptr), beveage(nullptr),
+                                 group(nullptr), menu(nullptr), 
+                                 beveage(nullptr), soup(nullptr), main_course(nullptr),  dessert(nullptr),
                                  id(generate_unique_id()), state(client_state::INITIATION)
 {
 }
@@ -176,16 +177,33 @@ void StandardClient::OnCounted()
 /// <summary>
 /// Form order from dishes
 /// </summary>
-std::vector<IOrder*> StandardClient::create_orders()
+std::vector<IDish*> StandardClient::create_orders()
 {
-    std::vector<IOrder*> orders;
-    orders.push_back(new Order(beveage, this));
-    orders.push_back(new Order(main_course, this));
+    std::vector<IDish*> orders;
+    if (beveage != nullptr)
+    {
+        orders.push_back(beveage);
+    }
+
+    if (soup != nullptr)
+    {
+        orders.push_back(soup);
+    }
+    
+    if (main_course != nullptr)
+    {
+        orders.push_back(main_course);
+    }
+
+    if (dessert != nullptr)
+    {
+        orders.push_back(dessert);
+    }
     return orders;
 }
 
 
-std::vector<IOrder*> StandardClient::give_order()
+std::vector<IDish*> StandardClient::give_order()
 {
     // Check if calling at the right time
     if (state != IClient::client_state::READY_TO_ORDER)
@@ -195,7 +213,7 @@ std::vector<IOrder*> StandardClient::give_order()
         throw std::logic_error(error_txt_stream.str());
     }
 
-    std::vector<IOrder*> orders = create_orders();
+    std::vector<IDish*> orders = create_orders();
 
     // Raport
     std::stringstream raport_stream;
@@ -211,31 +229,33 @@ std::vector<IOrder*> StandardClient::give_order()
     return orders;
 }
 
-void StandardClient::pick_up_order(IOrder* order)
+bool StandardClient::null_or_eaten(IDish* dish)
+{
+    if (dish == nullptr)
+    {
+        return true;
+    }
+    else if (dish->get_state() == IDish::dish_state::EATEN)
+    {
+        return true;
+    }
+    return false;
+}
+
+
+void StandardClient::pick_up_order(IDish* dish)
 {
     if (state == IClient::client_state::WAITING_FOR_DISHES || state == IClient::client_state::EATING)
     {
-        // Resolve dish and delete order
-        IDish* dish = order->get_dish();
-        delete order; 
 
-        if (dish != beveage && dish != main_course)
+        if (!(state == IClient::client_state::WAITING_FOR_DISHES || state == IClient::client_state::EATING))
         {
-            // Jeœli nie rzuæ wyj¹tek
+            // In other states throw exceptions
             std::stringstream error_txt_stream;
-            error_txt_stream << "Client " << id << ": recieved someone's else dish";
+            error_txt_stream << "Client " << id << ": pick_up_order call when client not waiting for order and not eating";
             throw std::logic_error(error_txt_stream.str());
-        }
-        // Main course and beverage are consumed at the same time
-        dish->begin_eat();
 
-        // Raport
-        std::stringstream raport_stream;
-        raport_stream << "Table: " << group->get_table()->get_id() <<
-                         " Group: " << group->get_id() <<
-                         " Client " << id << 
-                         ": starts consuming " << dish->to_string();
-        raport(raport_stream.str());
+        }
 
         if (state == IClient::client_state::WAITING_FOR_DISHES)
         {
@@ -243,15 +263,119 @@ void StandardClient::pick_up_order(IOrder* order)
             state = IClient::client_state::EATING;
             group->on_client_state_changed(this);
         }
-    }
-    else
-    {
+
+
+        std::stringstream raport_stream;
+        raport_stream << "Table: " << group->get_table()->get_id() <<
+            " Group: " << group->get_id() <<
+            " Client " << id <<
+            ": starts consuming " << dish->to_string();
+
+
+        // Resolve dish
+        if (dish == beveage)
+        {
+            // Begin eating soup immediately
+            dish->begin_eat();
+            raport(raport_stream.str());
+            return;
+        }
+        else if (dish == soup)
+        {
+            // Begin eating soup immediately
+            dish->begin_eat();
+            raport(raport_stream.str());
+            return;
+        }
+        else if (dish == main_course)
+        {
+            // Begin eating main_course only when soup is finished or wasn't ordered
+            if (null_or_eaten(soup))
+            {
+                dish->begin_eat();
+                raport(raport_stream.str());
+            }
+            // else wait untill soup is eaten
+            return;
+        }
+        else if (dish == dessert)
+        {
+            // Begin eating main_course only when soup is finished
+            if (null_or_eaten(soup) && null_or_eaten(main_course))
+            {
+                dish->begin_eat();
+                raport(raport_stream.str());
+            }
+            // else wait untill soup is eaten
+            return;
+        }
+
         // In other states throw exceptions
         std::stringstream error_txt_stream;
         error_txt_stream << "Client " << id << ": pick_up_order call when client not waiting for order and not eating";
         throw std::logic_error(error_txt_stream.str());
     }
 }
+
+bool StandardClient::not_null_and_delivered(IDish* dish)
+{
+    if (dish == nullptr)
+    {
+        return false;
+    }
+    else if (dish->get_state() != IDish::dish_state::DELIVERED)
+    {
+        return false;
+    }
+    return true;
+}
+
+std::vector<IDish*> StandardClient::get_dishes_in_order()
+{
+    std::vector<IDish*> temp;
+    if (beveage != nullptr)
+        temp.push_back(beveage);
+    if (soup != nullptr)
+        temp.push_back(soup);
+    if (main_course != nullptr)
+        temp.push_back(main_course);
+    if (dessert != nullptr)
+        temp.push_back(dessert);
+    return temp;
+}
+
+IDish* StandardClient::find_next_if_delivered(IDish* dish)
+{
+    // Create a vector of dishes in order
+    std::vector<IDish*> dishes = get_dishes_in_order();
+
+    // Find next ordered dish
+    auto dish_pos = find(dishes.begin(), dishes.end(), dish);
+    if ((++dish_pos) != dishes.end())
+    {
+        // if this dish is delivered - start eating
+        if ((*dish_pos)->get_state() == IDish::dish_state::DELIVERED)
+        {
+            return *dish_pos;
+        }
+        // else pass
+    }
+    return nullptr;
+}
+
+bool StandardClient::check_all_eaten()
+{
+    std::vector<IDish*> dishes = get_dishes_in_order();
+    for (auto dish : dishes)
+    {
+        if (dish->get_state() != IDish::dish_state::EATEN)
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
 
 void StandardClient::on_dish_state_change(IDish* dish)
 {
@@ -270,8 +394,24 @@ void StandardClient::on_dish_state_change(IDish* dish)
                      " Client " << id << ": consumed " << dish->to_string();
     raport(raport_stream.str());
 
-    // Standard client condition for fisnish eating
-    if (beveage->get_state() == IDish::dish_state::EATEN && main_course->get_state() == IDish::dish_state::EATEN)
+
+    // If next dish in order is already delivered - start eating it    
+    IDish* next = find_next_if_delivered(dish);
+    if (next != nullptr)
+    {
+        next->begin_eat();
+
+        // Raport
+        std::stringstream raport_stream;
+        raport_stream << "Table: " << group->get_table()->get_id() <<
+            " Group: " << group->get_id() <<
+            " Client " << id <<
+            ": starts consuming " << next->to_string();
+        raport(raport_stream.str());
+    }
+
+    // If all dishes are eaten change state
+    if (check_all_eaten())
     {
         // Notify the group about the change of state
         state = IClient::client_state::FINISHED_EATING;
@@ -281,7 +421,13 @@ void StandardClient::on_dish_state_change(IDish* dish)
 
 price StandardClient::count_total()
 {
-    return beveage->get_price() + main_course->get_price();
+    price price(0);
+    std::vector<IDish*> dishes = get_dishes_in_order();
+    for (auto dish : dishes)
+    {
+        price = price + dish->get_price();
+    }
+    return price;
 }
 
 void StandardClient::pay()
@@ -301,11 +447,23 @@ void StandardClient::pay()
 }
 
 StandardClient::~StandardClient() // Delete dishes,
-{  
-    delete main_course;
-    main_course = nullptr;
-    delete beveage;
-    beveage = nullptr;
+{
+    if (beveage != nullptr)
+    {
+        delete beveage;
+    }
+    if (soup != nullptr)
+    {
+        delete soup;
+    }
+    if (main_course != nullptr)
+    {
+        delete main_course;
+    }
+    if (dessert != nullptr)
+    {
+        delete dessert;
+    }
 }
 
 // ______________________________________________________________________________________________________

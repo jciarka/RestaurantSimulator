@@ -38,9 +38,9 @@ public:
 
     // Interface for IKelner
     virtual void take_card(const IMenu* menu) = 0;
-    virtual std::vector<IOrder*> give_order() = 0; // Creates new Order 
+    virtual std::vector<IDish*> give_order() = 0; // Creates new Order 
                                             // and new Dishes (MUST REMEMBER TO delete the after eating)
-    virtual void pick_up_order(IOrder* order) = 0; //Deletes fullfilled order
+    virtual void pick_up_order(IDish* dish) = 0; 
     virtual void pay() = 0;
 
     // Interfejs dla IDish

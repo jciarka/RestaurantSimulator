@@ -31,7 +31,7 @@ void test2()
         trigger.execute_iteration();
     }
 
-    std::vector<IOrder*> orders = testclient->give_order();
+    std::vector<IDish*> orders = testclient->give_order();
     for (auto order : orders)
     {
         kitchen.take_order(order);
@@ -43,11 +43,11 @@ void test2()
         trigger.execute_iteration();
     }
 
-    IOrder* order;
+    IDish* order;
     order = kitchen.deliver_preapared();
     if (order != nullptr)
     {
-        testclient->pick_up_order(order);
+        order->deliver();
     }
 
     for (size_t i = 0; i < 15; i++)
@@ -58,7 +58,7 @@ void test2()
     order = kitchen.deliver_preapared();
     if (order != nullptr)
     {
-        testclient->pick_up_order(order);
+        order->deliver();
     }
 
     for (size_t i = 0; i < 15; i++)

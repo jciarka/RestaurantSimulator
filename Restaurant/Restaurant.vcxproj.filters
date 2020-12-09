@@ -147,6 +147,21 @@
     <ClCompile Include="HungryClient.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="test_hungry_client1.cpp">
+      <Filter>Source Files\Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="DessertLovingClient.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="test_dessertlovingclient.cpp">
+      <Filter>Source Files\Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="HungryDessertLovingClient.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="test_hungrydessertlovingclient.cpp">
+      <Filter>Source Files\Tests</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IClient.h">
@@ -162,9 +177,6 @@
       <Filter>Header Files\Dish\Interfaces</Filter>
     </ClInclude>
     <ClInclude Include="IMenu.h">
-      <Filter>Header Files\Dish\Interfaces</Filter>
-    </ClInclude>
-    <ClInclude Include="IOrder.h">
       <Filter>Header Files\Dish\Interfaces</Filter>
     </ClInclude>
     <ClInclude Include="ITriggered.h">
@@ -270,6 +282,12 @@
       <Filter>Header Files\Client\Headers</Filter>
     </ClInclude>
     <ClInclude Include="HungryClient.h">
+      <Filter>Header Files\Client\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="DessertLovingClient.h">
+      <Filter>Header Files\Client\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="HungryDessertLovingClient.h">
       <Filter>Header Files\Client\Headers</Filter>
     </ClInclude>
   </ItemGroup>

@@ -94,6 +94,11 @@ void DishBase::begin_preparing()
 
     // Change state
     state = IDish::dish_state::PREPARATION;
+
+    // Raport
+    std::ostringstream raport_stream;
+    raport_stream << "Kitchen: beginning preparation of " << to_string() << " for client " << client->get_id();
+    raport(raport_stream.str());
 }
 
 /// <summary>
@@ -110,6 +115,9 @@ void DishBase::OnCounted()
         // Notify kitchen about state change
         state = IDish::dish_state::PREPARED;
         kitchen->on_dish_state_change(this);
+
+        raport_stream << "Kitchen: " << to_string() << " for client " << client->get_id() << " prepared";
+        raport(raport_stream.str());
         break;
 
     case IDish::dish_state::CONSUMPTION:
@@ -125,16 +133,33 @@ void DishBase::OnCounted()
     }
 }
 
+
+/// <summary>
+/// Delivers dish for waiter
+/// </summary>
+void DishBase::deliver()
+{
+    if (state != IDish::dish_state::PREPARED)
+    {
+        std::stringstream error_txt_stream;
+        error_txt_stream << "Dish " << id << ": deliver call when dish is not prepared";
+        throw std::logic_error(error_txt_stream.str());
+    }
+
+    state = IDish::dish_state::DELIVERED;
+    client->pick_up_order(this);
+}
+
 /// <summary>
 /// Initiates eating proces using dishe's counter
 /// </summary>
 void DishBase::begin_eat()
 {
     // Check if called at wright time
-    if (state != IDish::dish_state::PREPARED)
+    if (state != IDish::dish_state::DELIVERED)
     {
         std::stringstream error_txt_stream;
-        error_txt_stream << "Dish " << id << ": begin_eat call when dish is not prepared";
+        error_txt_stream << "Dish " << id << ": begin_eat call when dish is not delivered";
         throw std::logic_error(error_txt_stream.str());
     }
 

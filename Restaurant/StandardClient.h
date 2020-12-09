@@ -6,7 +6,9 @@
 
 #include "DishBase.h"
 #include "Beverage.h"
+#include "Soup.h"
 #include "MainCourse.h"
+#include "Dessert.h"
 #include "TriggeredCounter.h"
 #include "Raportable.h"
 
@@ -22,17 +24,26 @@ protected:
     unsigned id;
     unsigned choosing_time;
     const IMenu* menu;
-    Beverage* beveage;
-    MainCourse* main_course;
     IGroup* group;
     ITable* table;
 
+    Beverage* beveage;
+    Soup* soup;
+    MainCourse* main_course;
+    Dessert* dessert;
+
     // Functions to override in more specyfic clients
     virtual void choose_dishes();
-    virtual std::vector<IOrder*> create_orders();
+    virtual std::vector<IDish*> create_orders();
     virtual price count_total();
     virtual void OnCounted() override; // Counter logic
     // pick_up_order and on_dish_state_change also must be overriden
+    
+    std::vector<IDish*> get_dishes_in_order();
+    bool null_or_eaten(IDish* dish);
+    bool not_null_and_delivered(IDish* dish);
+    IDish* find_next_if_delivered(IDish* dish);
+    bool check_all_eaten();
 
 public:
     StandardClient(unsigned choosing_time, ITrigger* global_trigger, IRaporter* global_raporter);
@@ -46,9 +57,9 @@ public:
 
     // Interface for IKelner
     virtual void take_card(const IMenu* menu) override;
-    virtual std::vector<IOrder*> give_order() override; // Creates new Order 
+    virtual std::vector<IDish*> give_order() override; // Creates new Order 
                                             // and new Dishes (MUST REMEMBER TO delete the after eating)
-    virtual void pick_up_order(IOrder* order) override;
+    virtual void pick_up_order(IDish* order) override;
 
     // Interfejs dla IDish
     virtual void on_dish_state_change(IDish* dish) override;

@@ -32,7 +32,7 @@ public:
 
     // interface for IClient
     virtual void set_client(IClient* client) = 0;
-    virtual void deliver();
+    virtual void deliver() = 0;
     virtual void begin_eat() = 0;
     virtual std::string to_string() const = 0;
     virtual price get_price() = 0;
