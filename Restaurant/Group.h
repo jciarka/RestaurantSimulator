@@ -13,7 +13,7 @@ private:
     IClient::client_state state;
     ITable* table;
     IServiceQueue* const service_queue;
-    std::vector<IClient*> clients;
+    std::vector<std::unique_ptr<IClient> > clients;
 
 public:
     Group(bool waiting_for_friends, IServiceQueue* service_queue, ITrigger* global_trigger, IRaporter* global_raporter);
@@ -22,10 +22,10 @@ public:
     virtual IClient::client_state get_state() const override;
 
     // interfejs dla generatora grup
-    virtual void add_client(IClient* client) override;
+    virtual void add_client(std::unique_ptr<IClient> client) override;
 
     // interfejs dla kelnera
-    virtual std::vector<IClient*> get_clients() const override;
+    virtual std::vector<IClient*> get_clients() override;
     virtual ITable* get_table() const override;
 
     // interfejs dla klienta
@@ -36,8 +36,8 @@ public:
     virtual void seat_at_table(ITable* table) override;
     virtual void begin_feast() override;
 
-    virtual std::vector<IClient*> remove_clients() override;
-    virtual void merge(IGroup* group) override;
+    virtual std::unique_ptr<std::vector<std::unique_ptr<IClient> > > move_clients() override;
+    virtual void merge(std::unique_ptr<IGroup> group) override;
 
     // Triggered
     virtual void execute_iteration() override { };

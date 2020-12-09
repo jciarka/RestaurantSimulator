@@ -34,9 +34,18 @@ unsigned Group::get_id() const
 	return id;
 }
 
-std::vector<IClient*> Group::get_clients() const
+std::vector<IClient*> Group::get_clients()
 {
-	return clients; // copy of vector
+	std::vector<IClient*> clients_ptr_list;
+	// Operation below do not change ownership of unique ptr - reference is necessary!
+	for (std::unique_ptr<IClient>& unique_client : clients)
+	{
+		// we turn out and share bare pointer
+		// aim of unique ptr is just execution of clinets destructors when necesarry - with destructor of group class
+		// all other objects procesing bare poiner SHOLUD NOT call delete 
+		clients_ptr_list.push_back(unique_client.get());
+	}
+	return clients_ptr_list;
 }
 
 ITable* Group::get_table() const
@@ -51,7 +60,7 @@ unsigned Group::get_members_num() const
 }
 
 
-void Group::add_client(IClient* client)
+void Group::add_client(std::unique_ptr<IClient> client)
 {
 	if (!(state == IClient::client_state::WAITING_FOR_FRIENDS || state == IClient::client_state::READY_TO_BEGIN) 
 		|| table != nullptr)
@@ -68,12 +77,12 @@ void Group::add_client(IClient* client)
 		throw std::logic_error(error_txt_stream.str());
 	}
 
-	clients.push_back(client);
 	client->set_group(this);
+	clients.push_back(std::move(client));
 }
 
 
-std::vector<IClient*> Group::remove_clients()
+std::unique_ptr<std::vector<std::unique_ptr<IClient>>> Group::move_clients()
 {
 	if (!(state == IClient::client_state::WAITING_FOR_FRIENDS || state == IClient::client_state::READY_TO_BEGIN))
 	{
@@ -82,14 +91,32 @@ std::vector<IClient*> Group::remove_clients()
 		throw std::logic_error(error_txt_stream.str());
 	}
 
-	// Po scaleniu do innej grupy trzeba usun¹æ z tego obiektu wszyskich kilientów,
-	// Jeœli tego nie zrobimy w po usunieciu tego obiektu zniszczymy klietów, 
-	// chocia¿ bêd¹ logicznie w innej grupie
+	// create container for objects
+	std::unique_ptr<std::vector<std::unique_ptr<IClient>>> temp = std::make_unique< std::vector<std::unique_ptr<IClient> > >();
+	
+	// Best way for moving out unique pointers from vector with no problems with lost ownership
+	for (size_t i = 0; i < clients.size(); i++)
+	{
+		temp->push_back(std::move(clients[i]));
+	}
 
-	std::vector<IClient*> temp = clients;
+	// remove empty null_pointers
 	clients.clear();
-	return clients;
+	
+	// Alternative way for moving out unique pointers from vector with no problems with lost ownership
+	/*
+	while (!(clients.empty()))
+	{
+		temp->push_back(std::move(*clients.begin()));
+		clients.erase(clients.begin());
+	}
+	*/
+
+	
+	// transfer clients to new owner
+	return temp;
 }
+
 
 void Group::seat_at_table(ITable* table)
 {
@@ -111,13 +138,14 @@ void Group::seat_at_table(ITable* table)
 
 void Group::begin_feast()
 {
-	for (auto client : clients)
+	// Iteration over unique poiter vector - MUST add reference not to lose ownership
+	for (const std::unique_ptr<IClient>& client : clients)
 	{
 		client->begin_feast();
 	}
 }
 
-void Group::merge(IGroup* group)
+void Group::merge(std::unique_ptr<IGroup> group)
 {
 	std::stringstream error_txt_stream;
 	if (state != IClient::client_state::WAITING_FOR_FRIENDS)
@@ -138,23 +166,31 @@ void Group::merge(IGroup* group)
 		throw std::logic_error(error_txt_stream.str());
 	}
 
-	// Przenieœ klietnów
-	for (auto client : group->remove_clients())
+	// get clients for merge
+	std::unique_ptr<std::vector<std::unique_ptr<IClient>>> clients_to_add = std::move(group->move_clients());
+	std::unique_ptr<IClient> client;
+	
+	// Move clients
+	// we are transfring ownership - simplest way is to itereate with default for
+	// iterators like begin() may cause problem when used unwisely
+	for (size_t i = 0; i < clients_to_add->size(); i++)
 	{
+		client = (std::move(clients_to_add->operator[](i)));
 		client->set_group(this);
-		clients.push_back(client);
+		clients.push_back(std::move(client));
 	}
-	// Zaktualizuj stan grupy
+	clients_to_add->clear();
+	
+
+	// Refresh state of group <- new sate is state of merged group
 	state = group->get_state();
-	// Usuñ do³¹czan¹ grupê
-	delete group;
 
 	if (state == IClient::client_state::READY_TO_BEGIN)
 	{
 		begin_feast();
 	}
-	// je¿eli state == IClient::client_state::WAITING_FOR_FRIENDS
-	// to oznacza, ¿e nadal nie wszystkie osoby przyby³y
+
+	// group form which clients were merged is going to be deleted when pasing this scope
 }
 
 IClient::client_state Group::get_state() const
@@ -167,7 +203,7 @@ void Group::on_client_state_changed(IClient* clinet)
 {
 	// SprawdŸ czy stan wszystkich klientów o jeden wiêkszy ni¿ grupy
 	// Jeœli tak to zmieñ stan grupy
-	for (auto client : clients)
+	for (const std::unique_ptr<IClient>& client : clients)
 	{
 		if ( static_cast<int>(client->get_state()) != static_cast<int>(state) + 1 )
 		{
@@ -231,12 +267,5 @@ void Group::on_client_state_changed(IClient* clinet)
 
 Group::~Group()
 {
-	for (auto client : clients)
-	{
-		if (client != nullptr)
-		{
-			delete client;
-			client = nullptr;
-		}
-	}
+	// clients are going to be destroyed after pasing this scope
 }

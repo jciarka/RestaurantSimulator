@@ -5,6 +5,15 @@
 // Wywo³anie iteracji - wywo³¹nie ha¿dego z handlerów
 void Trigger::execute_iteration()
 {
+	// Remove deleted objects
+	auto position = std::find(iterated_objects.begin(), iterated_objects.end(), nullptr);
+	while (position != iterated_objects.end())
+	{
+		iterated_objects.erase(position);
+		position = std::find(iterated_objects.begin(), iterated_objects.end(), nullptr);
+	}
+
+
 	for (size_t i = 0; i < iterated_objects.size(); i++)
 	{
 		if (iterated_objects[i] != nullptr)
@@ -20,15 +29,6 @@ void Trigger::execute_iteration()
 		objects_to_add.erase(objects_to_add.begin());
 		iterated_objects.push_back(triggered_object);
 	}
-
-	// Remove deleted objects
-	auto position = std::find(iterated_objects.begin(), iterated_objects.end(), nullptr);
-	while (position != iterated_objects.end())
-	{
-		iterated_objects.erase(position);
-		position = std::find(iterated_objects.begin(), iterated_objects.end(), nullptr);
-	}
-
 
 	return;
 }
@@ -53,5 +53,11 @@ void Trigger::remove_iterated_object(ITriggered* triggered_object)
 	if (object_to_remove != iterated_objects.end())
 	{
 		*object_to_remove = nullptr;
+	}
+
+	object_to_remove = std::find(objects_to_add.begin(), objects_to_add.end(), triggered_object);
+	if (object_to_remove != objects_to_add.end())
+	{
+		objects_to_add.erase(object_to_remove);
 	}
 }

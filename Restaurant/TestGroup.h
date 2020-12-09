@@ -5,6 +5,7 @@
 #include "TestTable.h"
 #include <iostream>
 
+
 class TestGroup : public IGroup
 {
 public:
@@ -21,7 +22,7 @@ public:
     virtual unsigned get_id() const override { return 1; }
 
     // interfejs dla kelnera
-    std::vector<IClient*> get_clients() const override
+    virtual std::vector<IClient*> get_clients() override
     {
         std::vector<IClient*> clients;
         return clients;
@@ -34,14 +35,19 @@ public:
     } 
 
     // interfejs dla generatora grup
-    virtual void add_client(IClient* client) override { return; };
+    virtual void add_client(std::unique_ptr<IClient> client) override { return; };
 
     // interfejs dla sto³u
     virtual unsigned get_members_num() const override { return 0; };
     virtual void begin_feast() override { };
     virtual void seat_at_table(ITable* table) override { };
-    virtual void merge(IGroup* group) override { };
-    virtual std::vector<IClient*> remove_clients() { return get_clients(); };
+    virtual void merge(std::unique_ptr<IGroup> group) override { };
+    virtual std::unique_ptr<std::vector<std::unique_ptr<IClient> > > move_clients() override
+    {
+        std::unique_ptr<std::vector<std::unique_ptr<IClient> > > temp { nullptr };
+        return temp;
+    } 
+
     virtual ITable* get_table() const override { return table; };
 
     virtual IClient::client_state get_state() const override { return IClient::client_state::READY_TO_BEGIN; };

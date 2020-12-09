@@ -17,10 +17,10 @@ public:
     virtual IClient::client_state get_state() const = 0;
 
     // interfejs dla kelnera
-    virtual std::vector<IClient*> get_clients() const = 0;
+    virtual std::vector<IClient*> get_clients() = 0;
 
     // interfejs dla generatora grup
-    virtual void add_client(IClient* client) = 0;
+    virtual void add_client(std::unique_ptr<IClient> client) = 0;
 
     // interfejs dla klienta
     virtual void on_client_state_changed(IClient* clinet) = 0;
@@ -32,8 +32,8 @@ public:
     virtual void begin_feast() = 0;
 
     // funkcja remove clients dedykowana do ³¹czenia grup - musi dealokowaæ wszelkie zasoby w do³¹czanej grupie
-    virtual std::vector<IClient*> remove_clients() = 0;
-    virtual void merge(IGroup* group) = 0;
+    virtual std::unique_ptr<std::vector<std::unique_ptr<IClient> > > move_clients() = 0;
+    virtual void merge(std::unique_ptr<IGroup> group) = 0;
 
     virtual ~IGroup() = 0 {}; // Delete clients 
 };

@@ -12,15 +12,16 @@
 #include "TestGroup.h"
 #include "TestKitchen.h"
 #include "TestTable.h"
+#include "Group.h"
 
 void test1()
 {
     Trigger trigger;
     TerminalRaporter raporter;
-    IGroup* testgroup = new TestGroup;
+    TestGroup testgroup;
     TestTable testtable;
     StandardClient* testclient = new StandardClient(5, &trigger, &raporter);
-    testclient->set_group(testgroup);
+    testclient->set_group(&testgroup);
     TestMenu testmenu(&trigger, &raporter);
     TestKitchen testkitchen;
 
@@ -53,9 +54,6 @@ void test1()
         trigger.execute_iteration();
     }
     testclient->pay();
-
-    delete testclient;
-    delete testgroup;
 
     for (size_t i = 0; i < 5; i++)
     {
