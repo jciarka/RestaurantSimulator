@@ -144,22 +144,31 @@
     <ClCompile Include="Table.cpp">
       <Filter>Source Files\Client</Filter>
     </ClCompile>
-    <ClCompile Include="HungryClient.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="test_hungry_client1.cpp">
       <Filter>Source Files\Tests</Filter>
-    </ClCompile>
-    <ClCompile Include="DessertLovingClient.cpp">
-      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="test_dessertlovingclient.cpp">
       <Filter>Source Files\Tests</Filter>
     </ClCompile>
+    <ClCompile Include="test_hungrydessertlovingclient.cpp">
+      <Filter>Source Files\Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="HungryClient.cpp">
+      <Filter>Source Files\Client</Filter>
+    </ClCompile>
+    <ClCompile Include="DessertLovingClient.cpp">
+      <Filter>Source Files\Client</Filter>
+    </ClCompile>
     <ClCompile Include="HungryDessertLovingClient.cpp">
+      <Filter>Source Files\Client</Filter>
+    </ClCompile>
+    <ClCompile Include="GroupsQueue.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="test_hungrydessertlovingclient.cpp">
+    <ClCompile Include="test_clients_queue.cpp">
+      <Filter>Source Files\Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="test4.cpp">
       <Filter>Source Files\Tests</Filter>
     </ClCompile>
   </ItemGroup>
@@ -289,6 +298,9 @@
     </ClInclude>
     <ClInclude Include="HungryDessertLovingClient.h">
       <Filter>Header Files\Client\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="GroupsQueue.h">
+      <Filter>Header Files\Restaurant\Headers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

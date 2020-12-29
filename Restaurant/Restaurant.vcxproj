@@ -144,6 +144,7 @@
     <ClCompile Include="DessertLovingClient.cpp" />
     <ClCompile Include="DishBase.cpp" />
     <ClCompile Include="Group.cpp" />
+    <ClCompile Include="GroupsQueue.cpp" />
     <ClCompile Include="HungryClient.cpp" />
     <ClCompile Include="HungryDessertLovingClient.cpp" />
     <ClCompile Include="Kitchen.cpp" />
@@ -158,6 +159,8 @@
     <ClCompile Include="test1.cpp" />
     <ClCompile Include="test2.cpp" />
     <ClCompile Include="test3.cpp" />
+    <ClCompile Include="test4.cpp" />
+    <ClCompile Include="test_clients_queue.cpp" />
     <ClCompile Include="test_dessertlovingclient.cpp" />
     <ClCompile Include="test_hungrydessertlovingclient.cpp" />
     <ClCompile Include="test_hungry_client1.cpp" />
@@ -172,6 +175,7 @@
     <ClInclude Include="DessertLovingClient.h" />
     <ClInclude Include="fwd_include.h" />
     <ClInclude Include="Group.h" />
+    <ClInclude Include="GroupsQueue.h" />
     <ClInclude Include="HungryClient.h" />
     <ClInclude Include="HungryDessertLovingClient.h" />
     <ClInclude Include="IClient.h" />

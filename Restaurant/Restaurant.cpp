@@ -10,6 +10,8 @@ int main()
     //test_dessert_loving_client_1();
     //test_hungry_dessert_loving_client_1();
     //test2();
-    test3();
+    //test3();
+    //test_clients_queue();
+    test4();
     return 0;
 }
