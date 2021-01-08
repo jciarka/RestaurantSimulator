@@ -82,6 +82,12 @@
     <Filter Include="Source Files\Tests">
       <UniqueIdentifier>{67a17a8d-7740-4813-86c0-d34433f53846}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Infractructure">
+      <UniqueIdentifier>{146a3675-1ee6-4c4b-aefe-f7903850db55}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Input Files">
+      <UniqueIdentifier>{9c23cd87-d59f-4b22-9fa1-962970dc05ba}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Restaurant.cpp">
@@ -171,6 +177,24 @@
     <ClCompile Include="test4.cpp">
       <Filter>Source Files\Tests</Filter>
     </ClCompile>
+    <ClCompile Include="Menu.cpp">
+      <Filter>Source Files\Dish</Filter>
+    </ClCompile>
+    <ClCompile Include="CvsMenuReader.cpp">
+      <Filter>Source Files\Infractructure</Filter>
+    </ClCompile>
+    <ClCompile Include="test5.cpp">
+      <Filter>Source Files\Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="CsvTableReader.cpp">
+      <Filter>Source Files\Infractructure</Filter>
+    </ClCompile>
+    <ClCompile Include="GroupGenerator.cpp">
+      <Filter>Source Files\Restaurant</Filter>
+    </ClCompile>
+    <ClCompile Include="CsvGeneratorReader.cpp">
+      <Filter>Source Files\Infractructure</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IClient.h">
@@ -251,9 +275,6 @@
     <ClInclude Include="fwd_include.h">
       <Filter>Header Files\Core</Filter>
     </ClInclude>
-    <ClInclude Include="ICsvReader.h">
-      <Filter>Header Files\Infractructure\Interfaces</Filter>
-    </ClInclude>
     <ClInclude Include="Price.h">
       <Filter>Header Files\Infractructure\Headers</Filter>
     </ClInclude>
@@ -302,5 +323,43 @@
     <ClInclude Include="GroupsQueue.h">
       <Filter>Header Files\Restaurant\Headers</Filter>
     </ClInclude>
+    <ClInclude Include="Menu.h">
+      <Filter>Header Files\Dish\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CsvMenuReader.h">
+      <Filter>Header Files\Infractructure\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CsvTableReader.h">
+      <Filter>Header Files\Infractructure\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="GroupGenerator.h">
+      <Filter>Header Files\Restaurant\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CsvGeneratorReader.h">
+      <Filter>Header Files\Infractructure\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="RestaurantManager.h">
+      <Filter>Header Files\Restaurant\Headers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\..\Desktop\beverage.csv">
+      <Filter>Input Files</Filter>
+    </None>
+    <None Include="..\..\..\..\Desktop\dessert.csv">
+      <Filter>Input Files</Filter>
+    </None>
+    <None Include="..\..\..\..\Desktop\main_course.csv">
+      <Filter>Input Files</Filter>
+    </None>
+    <None Include="..\..\..\..\Desktop\soup.csv">
+      <Filter>Input Files</Filter>
+    </None>
+    <None Include="..\..\..\..\Desktop\tables.csv">
+      <Filter>Input Files</Filter>
+    </None>
+    <None Include="..\..\..\..\Desktop\odds.csv">
+      <Filter>Input Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

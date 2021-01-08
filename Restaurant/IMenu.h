@@ -11,7 +11,7 @@ class IMenu
 {
 public:
     virtual Soup get_soup(unsigned index) const = 0; //Alokacja pamiêci, zwróc wskaŸnik
-    virtual MainCourse get_main_course(unsigned index) const = 0; //Alokacja pamiêci, zwróc wskaŸnik
+    virtual MainCourse get_main_course(unsigned index) const = 0; 
     virtual Dessert get_dessert(unsigned index) const = 0; //Alokacja pamiêci, zwróc wskaŸnik
     virtual Beverage get_beverage(unsigned index) const = 0; //Alokacja pamiêci, zwróc wskaŸnik
     virtual unsigned get_soup_size() const = 0;

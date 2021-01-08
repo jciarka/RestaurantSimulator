@@ -39,3 +39,4 @@ public:
     virtual unsigned get_beverage_size() const override { return 10; };
     virtual ~TestMenu()  {};
 };
+

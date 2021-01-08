@@ -140,10 +140,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Beverage.cpp" />
+    <ClCompile Include="CsvGeneratorReader.cpp" />
+    <ClCompile Include="CsvTableReader.cpp" />
+    <ClCompile Include="CvsMenuReader.cpp" />
     <ClCompile Include="Dessert.cpp" />
     <ClCompile Include="DessertLovingClient.cpp" />
     <ClCompile Include="DishBase.cpp" />
     <ClCompile Include="Group.cpp" />
+    <ClCompile Include="GroupGenerator.cpp" />
     <ClCompile Include="GroupsQueue.cpp" />
     <ClCompile Include="HungryClient.cpp" />
     <ClCompile Include="HungryDessertLovingClient.cpp" />
@@ -160,6 +164,7 @@
     <ClCompile Include="test2.cpp" />
     <ClCompile Include="test3.cpp" />
     <ClCompile Include="test4.cpp" />
+    <ClCompile Include="test5.cpp" />
     <ClCompile Include="test_clients_queue.cpp" />
     <ClCompile Include="test_dessertlovingclient.cpp" />
     <ClCompile Include="test_hungrydessertlovingclient.cpp" />
@@ -168,18 +173,22 @@
     <ClCompile Include="Triggered.cpp" />
     <ClCompile Include="TriggeredCounter.cpp" />
     <ClCompile Include="Waiter.cpp" />
+    <ClCompile Include="Menu.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Beverage.h" />
+    <ClInclude Include="CsvGeneratorReader.h" />
+    <ClInclude Include="CsvMenuReader.h" />
+    <ClInclude Include="CsvTableReader.h" />
     <ClInclude Include="Dessert.h" />
     <ClInclude Include="DessertLovingClient.h" />
     <ClInclude Include="fwd_include.h" />
     <ClInclude Include="Group.h" />
+    <ClInclude Include="GroupGenerator.h" />
     <ClInclude Include="GroupsQueue.h" />
     <ClInclude Include="HungryClient.h" />
     <ClInclude Include="HungryDessertLovingClient.h" />
     <ClInclude Include="IClient.h" />
-    <ClInclude Include="ICsvReader.h" />
     <ClInclude Include="IDish.h" />
     <ClInclude Include="DishBase.h" />
     <ClInclude Include="IGroup.h" />
@@ -196,9 +205,11 @@
     <ClInclude Include="IWaiter.h" />
     <ClInclude Include="Kitchen.h" />
     <ClInclude Include="MainCourse.h" />
+    <ClInclude Include="Menu.h" />
     <ClInclude Include="Order.h" />
     <ClInclude Include="Price.h" />
     <ClInclude Include="Raportable.h" />
+    <ClInclude Include="RestaurantManager.h" />
     <ClInclude Include="ServiceQueue.h" />
     <ClInclude Include="Soup.h" />
     <ClInclude Include="StandardClient.h" />
@@ -213,6 +224,14 @@
     <ClInclude Include="Triggered.h" />
     <ClInclude Include="TriggeredCounter.h" />
     <ClInclude Include="Waiter.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\..\Desktop\beverage.csv" />
+    <None Include="..\..\..\..\Desktop\dessert.csv" />
+    <None Include="..\..\..\..\Desktop\main_course.csv" />
+    <None Include="..\..\..\..\Desktop\odds.csv" />
+    <None Include="..\..\..\..\Desktop\soup.csv" />
+    <None Include="..\..\..\..\Desktop\tables.csv" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
