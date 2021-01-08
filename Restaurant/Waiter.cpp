@@ -6,11 +6,25 @@
 #include <vector>
 #include <sstream>
 
+// ______________________________________________________________________________________________________
+// STATIC PART
+unsigned Waiter::id_counter = 0;
+
+unsigned Waiter::generate_unique_id()
+{
+	return ++id_counter;
+}
+// ______________________________________________________________________________________________________
 
 
 Waiter::Waiter(IMenu* menu, IKitchen* kitchen, IServiceQueue* service_queue, ITrigger* global_trigger, IRaporter* global_raporter)
-	: Triggered(global_trigger), Raportable(global_raporter), kitchen(kitchen), service_queue(service_queue), menu(menu)
+	: Triggered(global_trigger), Raportable(global_raporter), kitchen(kitchen), service_queue(service_queue), menu(menu), id(generate_unique_id())
 {
+}
+
+unsigned Waiter::get_id() const
+{
+	return id;
 }
 
 
@@ -24,6 +38,12 @@ void Waiter::execute_iteration()
 	IDish* order = kitchen->deliver_preapared();
 	if (order != nullptr)
 	{
+		// Raport
+		std::ostringstream raport_stream;
+		raport_stream << *this << " delivering " << *order;
+		raport(raport_stream.str());
+
+		// deliver
 		order->deliver();
 		return;
 	}
@@ -34,10 +54,17 @@ void Waiter::execute_iteration()
 	{
 		std::vector<IDish*> orders;
 		std::stringstream error_txt_stream;
+		std::ostringstream raport_stream;
+
 
 		switch (group->get_state())		
 		{
 		case IClient::client_state::WAITING_FOR_CARD:
+			// Raport
+			raport_stream << *this << " delivering cards to " << *group;
+			raport(raport_stream.str());
+			
+			// Serve
 			for (auto client : group->get_clients())
 			{
 				client->take_card(menu);
@@ -46,6 +73,11 @@ void Waiter::execute_iteration()
 
 
 		case IClient::client_state::READY_TO_ORDER:
+			// Raport
+			raport_stream << *this << " taking order from " << *group;
+			raport(raport_stream.str());
+
+			// Serve
 			for (auto client : group->get_clients())
 			{
 				for (auto order : client->give_order())
@@ -61,6 +93,11 @@ void Waiter::execute_iteration()
 			break;
 
 		case IClient::client_state::FINISHED_EATING:
+			// Raport
+			raport_stream << *this << " taking payment form: " << *group;
+			raport(raport_stream.str());
+
+			// Serve
 			for (auto client : group->get_clients())
 			{
 				client->pay();

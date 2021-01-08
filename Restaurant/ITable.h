@@ -21,4 +21,6 @@ public:
     virtual void on_group_state_change(IGroup* group) = 0;
 
     virtual ~ITable() = 0 { };
+
+    friend std::ostream& operator<<(std::ostream& os, const ITable& table);
 };

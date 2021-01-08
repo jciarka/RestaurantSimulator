@@ -34,9 +34,7 @@ void HungryClient::choose_dishes()
     soup->set_client(this);
 
     // Raport
-    raport_stream << "Table: " << group->get_table()->get_id() <<
-        " Group: " << group->get_id() <<
-        " Client " << id << ": choosed " << soup->to_string() << std::endl;
+    raport_stream << *this << " choosed " << *soup;
     raport(raport_stream.str());
 
     // Choose main course and beverage

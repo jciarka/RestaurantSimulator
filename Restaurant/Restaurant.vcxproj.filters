@@ -168,9 +168,6 @@
     <ClCompile Include="HungryDessertLovingClient.cpp">
       <Filter>Source Files\Client</Filter>
     </ClCompile>
-    <ClCompile Include="GroupsQueue.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="test_clients_queue.cpp">
       <Filter>Source Files\Tests</Filter>
     </ClCompile>
@@ -194,6 +191,24 @@
     </ClCompile>
     <ClCompile Include="CsvGeneratorReader.cpp">
       <Filter>Source Files\Infractructure</Filter>
+    </ClCompile>
+    <ClCompile Include="IDish.cpp">
+      <Filter>Source Files\Dish</Filter>
+    </ClCompile>
+    <ClCompile Include="ITable.cpp">
+      <Filter>Source Files\Client</Filter>
+    </ClCompile>
+    <ClCompile Include="IGroup.cpp">
+      <Filter>Source Files\Client</Filter>
+    </ClCompile>
+    <ClCompile Include="IClient.cpp">
+      <Filter>Source Files\Client</Filter>
+    </ClCompile>
+    <ClCompile Include="IWaiter.cpp">
+      <Filter>Source Files\Restaurant</Filter>
+    </ClCompile>
+    <ClCompile Include="GroupsQueue.cpp">
+      <Filter>Source Files\Restaurant</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

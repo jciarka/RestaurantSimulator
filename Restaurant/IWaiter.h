@@ -1,13 +1,13 @@
 #pragma once
 #include "fwd_include.h"
+#include <iostream>
 
 class IWaiter
 {
-    // pamiÍtaj wskaünik 
-    // IKitchen -> take_order()
-    // IKitchen -> get_preapared()
-    // wskaünik na kolekjke serwsiow - IGroup* take_servce()
-
 public:
     virtual ~IWaiter() = 0 {};
+
+    virtual unsigned get_id() const = 0;
+
+    friend std::ostream& operator<<(std::ostream& os, const IWaiter& waiter);
 };

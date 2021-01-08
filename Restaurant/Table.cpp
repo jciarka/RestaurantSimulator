@@ -20,7 +20,7 @@ Table::Table(unsigned seats_num, ITrigger* global_trigger, IRaporter* global_rap
 
 unsigned Table::get_id() const
 {
-    return 0;
+    return id;
 }
 
 
@@ -164,8 +164,7 @@ void Table::execute_iteration()
 		group_preapring_to_leave = false;
 
 		std::stringstream raport_stream;
-		raport_stream << "Table: " << get_id() <<
-			             " Group " << group->get_id() << " has left restaurant";
+		raport_stream << *group << " has left restaurant";
 		raport(raport_stream.str());
 
 		// delete group

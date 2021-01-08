@@ -256,8 +256,7 @@ void Group::on_client_state_changed(IClient* clinet)
 	{
 
 	case IClient::client_state::WAITING_FOR_CARD:
-		raport_stream << "Table: " << table->get_id() <<
-			             " Group: " << id << " Calls waiter for menu";
+		raport_stream << *this << " Calls waiter for menu";
 		raport(raport_stream.str());
 		// Call for waiter to get card
 		service_queue->queue_service(this);
@@ -267,8 +266,7 @@ void Group::on_client_state_changed(IClient* clinet)
 		break;
 
 	case IClient::client_state::READY_TO_ORDER:
-		raport_stream << "Table: " << table->get_id() <<
-			             " Group: " << id << " Calls waiter to order";
+		raport_stream << *this << " Calls waiter to order";
 		raport(raport_stream.str());
 		// Call for waiter to order
 		service_queue->queue_service(this);
@@ -281,16 +279,14 @@ void Group::on_client_state_changed(IClient* clinet)
 		break;
 
 	case IClient::client_state::FINISHED_EATING:
-		raport_stream << "Table: " << table->get_id() <<
-			             " Group: " << id << " Calls waiter to pay";
+		raport_stream << *this << " Calls waiter to pay";
 		raport(raport_stream.str());
 		// Call for waiter to pay
 		service_queue->queue_service(this);
 		break;
 
 	case IClient::client_state::LEAVING:
-		raport_stream << "Table: " << table->get_id() <<
-			             " Group: " << id << " Is preparing to leave";
+		raport_stream << *this << " Is preparing to leave";
 		raport(raport_stream.str());
 		// Notify the table that it is free now
 		table->on_group_state_change(this);

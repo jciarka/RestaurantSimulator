@@ -5,12 +5,8 @@
 #include <string>
 #include "Price.h"
 
-
 class IDish
 {
-    // pamiêtaj wskaŸnik IClient -> on_dish_state_change()
-    // IKitchen -> on_dish_state_change()
-
 public:
     enum class dish_state {
         CHOOSEN,
@@ -39,5 +35,8 @@ public:
 
     virtual ~IDish() = 0 {};
 
-    //friend std::ostream& operator<<(std::ostream& os, const IDish& dish) { return os << dish.to_string(); }
-};
+    friend std::ostream& operator<<(std::ostream& os, const IDish& dish);
+}; 
+
+
+

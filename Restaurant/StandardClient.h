@@ -67,4 +67,6 @@ public:
     virtual void pay() override;
 
     virtual ~StandardClient(); 
+
+    friend std::ostream& operator<<(std::ostream& os, const StandardClient& client);
 };

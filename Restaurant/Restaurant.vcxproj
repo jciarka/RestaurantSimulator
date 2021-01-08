@@ -151,6 +151,11 @@
     <ClCompile Include="GroupsQueue.cpp" />
     <ClCompile Include="HungryClient.cpp" />
     <ClCompile Include="HungryDessertLovingClient.cpp" />
+    <ClCompile Include="IClient.cpp" />
+    <ClCompile Include="IDish.cpp" />
+    <ClCompile Include="IGroup.cpp" />
+    <ClCompile Include="ITable.cpp" />
+    <ClCompile Include="IWaiter.cpp" />
     <ClCompile Include="Kitchen.cpp" />
     <ClCompile Include="MainCourse.cpp" />
     <ClCompile Include="Order.cpp" />

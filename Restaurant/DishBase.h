@@ -34,7 +34,7 @@ public:
     ///    constructor provided as a solution for passing dish from menu to clients
     /// </summary>
     /// <param name="dish"></param>
-    DishBase(DishBase&& dish);
+    DishBase(DishBase&& dish) noexcept;
 
 public:
 

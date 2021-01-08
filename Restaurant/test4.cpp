@@ -45,7 +45,9 @@ void test4()
     ServiceQueue servicequeue(&raporter);
     Kitchen kitchen(&raporter);
     TestMenu testmenu(&trigger, &raporter);
-    Waiter waiter(&testmenu, &kitchen, &servicequeue, &trigger, &raporter);
+    Waiter waiter1(&testmenu, &kitchen, &servicequeue, &trigger, &raporter);
+    Waiter waiter2(&testmenu, &kitchen, &servicequeue, &trigger, &raporter);
+    Waiter waiter3(&testmenu, &kitchen, &servicequeue, &trigger, &raporter);
 
     // Table for 10 people
     std::vector<ITable*> tables;
@@ -101,7 +103,7 @@ void test4()
             trigger.execute_iteration();
 
             std::stringstream info;
-            info << "---------------------------------------iter" << j++;
+            info << std::endl << "---------------------------------------iter" << j++ << std::endl;
             raporter.raport(info.str());
         }
 
@@ -111,11 +113,11 @@ void test4()
         std::unique_ptr<IGroup> Group2_prim{ new Group(true /*Group waiting for friends*/, &servicequeue, &trigger, &raporter) };
 
         Group2_prim->add_client(std::move(std::make_unique<DessertLovingClient>(3, &trigger, &raporter)));
-        Group2_prim->add_client(std::move(std::make_unique<StandardClient>(2, &trigger, &raporter)));
+        Group2_prim->add_client(std::move(std::make_unique<StandardClient>(5, &trigger, &raporter)));
         Group2_prim->add_client(std::move(std::make_unique<DessertLovingClient>(7, &trigger, &raporter)));
-        Group2_prim->add_client(std::move(std::make_unique<StandardClient>(1, &trigger, &raporter)));
-        Group2_prim->add_client(std::move(std::make_unique<HungryDessertLovingClient>(1, &trigger, &raporter)));
-        Group2_prim->add_client(std::move(std::make_unique<HungryDessertLovingClient>(1, &trigger, &raporter)));
+        Group2_prim->add_client(std::move(std::make_unique<StandardClient>(4, &trigger, &raporter)));
+        Group2_prim->add_client(std::move(std::make_unique<HungryDessertLovingClient>(3, &trigger, &raporter)));
+        Group2_prim->add_client(std::move(std::make_unique<HungryDessertLovingClient>(3, &trigger, &raporter)));
 
         groups_queue.add_group(std::move(Group2_prim));
 
@@ -132,9 +134,9 @@ void test4()
         Group2->add_client(std::move(testclient6));
         std::unique_ptr<IClient> testclient7 = std::make_unique<HungryClient>(7, &trigger, &raporter);
         Group2->add_client(std::move(testclient7));
-        std::unique_ptr<IClient> testclient8 = std::make_unique<StandardClient>(1, &trigger, &raporter);
+        std::unique_ptr<IClient> testclient8 = std::make_unique<StandardClient>(2, &trigger, &raporter);
         Group2->add_client(std::move(testclient8));
-        std::unique_ptr<IClient> testclient9 = std::make_unique<HungryDessertLovingClient>(1, &trigger, &raporter);
+        std::unique_ptr<IClient> testclient9 = std::make_unique<HungryDessertLovingClient>(2, &trigger, &raporter);
         Group2->add_client(std::move(testclient9));
 
         groups_queue.add_group(std::move(Group2));
@@ -146,7 +148,7 @@ void test4()
             trigger.execute_iteration();
 
             std::stringstream info;
-            info << "---------------------------------------iter" << j++;
+            info << std::endl << "---------------------------------------iter" << j++ << std::endl;
             raporter.raport(info.str());
         }
 
@@ -167,7 +169,7 @@ void test4()
             trigger.execute_iteration();
 
             std::stringstream info;
-            info << "---------------------------iter" << j++;
+            info << std::endl << "---------------------------------------iter" << j++ << std::endl;
             raporter.raport(info.str());
         }
 

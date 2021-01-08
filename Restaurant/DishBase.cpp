@@ -24,17 +24,10 @@ DishBase::DishBase(unsigned preparing_time, unsigned eating_time, std::string na
 {
 }
 
-DishBase::DishBase(DishBase&& dish) : TriggeredCounter(dish.global_trigger_ptr), Raportable(dish.global_raporter_ptr),
+DishBase::DishBase(DishBase&& dish) noexcept : TriggeredCounter(dish.global_trigger_ptr), Raportable(dish.global_raporter_ptr),
 name(dish.name), preparing_time(dish.preparing_time), eating_time(dish.eating_time), state(IDish::dish_state::CHOOSEN), dish_price(dish.dish_price),
 client(nullptr), kitchen(nullptr), id(dish.id)
 {
-    if (dish.client != nullptr)
-    {
-        // moving dish posible only before asigning to client
-        std::stringstream error_txt_stream;
-        error_txt_stream << "Dish: " << id << "can't move after beeing afigned to client";
-        throw std::logic_error(error_txt_stream.str());
-    }
     dish.id = std::numeric_limits<unsigned>::max();
     dish.name = "Invalid";
     dish.preparing_time = 0;
@@ -48,7 +41,7 @@ void DishBase::set_client(IClient* client)
     if (client == nullptr)
     {
         std::stringstream error_txt_stream;
-        error_txt_stream << "Dish " << id << ": client is not set";
+        error_txt_stream << "Dish " << id << " client is not set";
         throw std::logic_error(error_txt_stream.str());
     }
 
@@ -60,7 +53,7 @@ void DishBase::set_kitchen(IKitchen* kitchen)
     if (kitchen == nullptr)
     {
         std::stringstream error_txt_stream;
-        error_txt_stream << "Dish " << id << ": kitchen must not be null";
+        error_txt_stream << "Dish " << id << " kitchen must not be null";
         throw std::logic_error(error_txt_stream.str());
     }
 
@@ -76,7 +69,7 @@ void DishBase::begin_preparing()
     if (state != IDish::dish_state::CHOOSEN)
     {
         std::stringstream error_txt_stream;
-        error_txt_stream << "Dish " << id << ": begin_preparing call when dish is not choosen";
+        error_txt_stream << "Dish " << id << " begin_preparing call when dish is not choosen";
         throw std::logic_error(error_txt_stream.str());
     }
 
@@ -84,7 +77,7 @@ void DishBase::begin_preparing()
     {
         // Kitchen must be set at tkis moment
         std::stringstream error_txt_stream;
-        error_txt_stream << "Dish " << id << ": begin_preparing call when kitchen is not set";
+        error_txt_stream << "Dish " << id << " begin_preparing call when kitchen is not set";
         throw std::logic_error(error_txt_stream.str());
     }
 
@@ -97,7 +90,7 @@ void DishBase::begin_preparing()
 
     // Raport
     std::ostringstream raport_stream;
-    raport_stream << "Kitchen: beginning preparation of " << to_string() << " for client " << client->get_id();
+    raport_stream << "Kitchen beginning preparation of " << *this << " for " << *client;
     raport(raport_stream.str());
 }
 
@@ -116,7 +109,7 @@ void DishBase::OnCounted()
         state = IDish::dish_state::PREPARED;
         kitchen->on_dish_state_change(this);
 
-        raport_stream << "Kitchen: " << to_string() << " for client " << client->get_id() << " prepared";
+        raport_stream << "Kitchen " << *this << " for " << *client << " prepared";
         raport(raport_stream.str());
         break;
 
@@ -127,7 +120,7 @@ void DishBase::OnCounted()
         break;
 
     default:
-        error_txt_stream << "Dish " << id << ": on_counted call when dish is not beeing prepared or eaten" << std::endl;
+        error_txt_stream << "Dish " << id << " on_counted call when dish is not beeing prepared or eaten" << std::endl;
         throw std::logic_error(error_txt_stream.str());
         break;
     }
@@ -142,7 +135,7 @@ void DishBase::deliver()
     if (state != IDish::dish_state::PREPARED)
     {
         std::stringstream error_txt_stream;
-        error_txt_stream << "Dish " << id << ": deliver call when dish is not prepared";
+        error_txt_stream << "Dish " << id << " deliver call when dish is not prepared";
         throw std::logic_error(error_txt_stream.str());
     }
 
@@ -159,7 +152,7 @@ void DishBase::begin_eat()
     if (state != IDish::dish_state::DELIVERED)
     {
         std::stringstream error_txt_stream;
-        error_txt_stream << "Dish " << id << ": begin_eat call when dish is not delivered";
+        error_txt_stream << "Dish " << id << " begin_eat call when dish is not delivered";
         throw std::logic_error(error_txt_stream.str());
     }
 
@@ -167,7 +160,7 @@ void DishBase::begin_eat()
     {
         // Kitchen must be set at tkis moment
         std::stringstream error_txt_stream;
-        error_txt_stream << "Dish " << id << ": begin_eat call when klient is not set";
+        error_txt_stream << "Dish " << id << " begin_eat call when klient is not set";
         throw std::logic_error(error_txt_stream.str());
     }
     

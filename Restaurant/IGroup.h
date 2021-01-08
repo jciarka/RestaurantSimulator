@@ -35,5 +35,7 @@ public:
     virtual std::unique_ptr<std::vector<std::unique_ptr<IClient> > > move_clients() = 0;
     virtual void merge(std::unique_ptr<IGroup> group) = 0;
 
-    virtual ~IGroup() = 0 {}; // Delete clients 
+    virtual ~IGroup() = 0 {}; // Delete clients
+
+    friend std::ostream& operator<<(std::ostream& os, const IGroup& group);
 };

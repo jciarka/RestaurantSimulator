@@ -65,9 +65,7 @@ void StandardClient::begin_feast()
 
     // Raport
     std::ostringstream raport_stream;
-    raport_stream <<  "Table: " << group->get_table()->get_id() <<
-                     " Group: " << group->get_id() <<
-                     " Client " << id << ": Begins feast";
+    raport_stream <<  *this << " Begins feast";
     raport(raport_stream.str());
 
     // Notify the group about the change of state
@@ -81,7 +79,7 @@ void StandardClient::take_card(const IMenu* menu)
     if (state != IClient::client_state::WAITING_FOR_CARD)
     {
         std::stringstream error_txt_stream;
-        error_txt_stream << "Client " << id << ": take card call when client not waiting for card";
+        error_txt_stream << "Client " << " take card call when client not waiting for card";
         throw std::logic_error(error_txt_stream.str());
     }
     // Remember the menu, initiate the process of considering the choice
@@ -95,9 +93,7 @@ void StandardClient::take_card(const IMenu* menu)
 
     // Raport
     std::ostringstream raport_stream;
-    raport_stream << "Table: " << group->get_table()->get_id() <<
-                     " Group: " << group->get_id() <<
-                     " Client " << id << ": Took menu and begin to choose dishes";
+    raport_stream << *this << " Took menu and begin to choose dishes";
     raport(raport_stream.str());
 }
 
@@ -110,7 +106,7 @@ void StandardClient::choose_dishes()
     if (menu == nullptr)
     {
         std::stringstream error_txt_stream;
-        error_txt_stream << "Client " << id << ": choose dishes call in invalid state";
+        error_txt_stream << "Client " << id << " choose dishes call in invalid state";
         throw std::logic_error(error_txt_stream.str());
     }
 
@@ -124,18 +120,14 @@ void StandardClient::choose_dishes()
     main_course =new MainCourse(menu->get_main_course(choosen));
     main_course->set_client(this);
 
-    raport_stream << "Table: " << group->get_table()->get_id() <<
-                     " Group: " << group->get_id() <<
-                     " Client " << id << ": choosed " << main_course->to_string() << std::endl;
+    raport_stream << *this << " choosed " << *main_course << std::endl;
    
     // Choose beverage
     dish_count = menu->get_beverage_size();
     choosen = rand() % dish_count;
     beveage = new Beverage(menu->get_beverage(choosen));
     beveage->set_client(this);
-    raport_stream << "Table: " << group->get_table()->get_id() <<
-                     " Group: " << group->get_id() <<
-                     " Client " << id << ": choosed " << beveage->to_string();
+    raport_stream << *this << " choosed " << *beveage;
 
     raport(raport_stream.str());
 }
@@ -155,9 +147,7 @@ void StandardClient::OnCounted()
         choose_dishes();
 
         // Raport
-        raport_stream << "Table: " << group->get_table()->get_id() <<
-                         " Group: " << group->get_id() <<
-                         " Client " << id << ": is ready to order";
+        raport_stream << *this << " is ready to order";
         raport(raport_stream.str());
 
         // Notify the group about the change of state
@@ -167,7 +157,7 @@ void StandardClient::OnCounted()
 
     default:
         // In other states throw exception
-        error_txt_stream << "Client " << id << ": on_counted call in invalid state";
+        error_txt_stream << "Client " << id << " on_counted call in invalid state";
         throw std::logic_error(error_txt_stream.str());
         break;
     }
@@ -209,7 +199,7 @@ std::vector<IDish*> StandardClient::give_order()
     if (state != IClient::client_state::READY_TO_ORDER)
     {
         std::stringstream error_txt_stream;
-        error_txt_stream << "Client " << id << ": give_order call when client not ready to order";
+        error_txt_stream << "Client " << id << " give_order call when client not ready to order";
         throw std::logic_error(error_txt_stream.str());
     }
 
@@ -217,9 +207,7 @@ std::vector<IDish*> StandardClient::give_order()
 
     // Raport
     std::stringstream raport_stream;
-    raport_stream << "Table: " << group->get_table()->get_id() <<
-                     " Group: " << group->get_id() <<
-                     " Client " << id << ": has ordered";
+    raport_stream << *this << " has ordered";
     raport(raport_stream.str());
 
     // Notify the group about the change of state
@@ -252,7 +240,7 @@ void StandardClient::pick_up_order(IDish* dish)
         {
             // In other states throw exceptions
             std::stringstream error_txt_stream;
-            error_txt_stream << "Client " << id << ": pick_up_order call when client not waiting for order and not eating";
+            error_txt_stream << "Client " << id << " pick_up_order call when client not waiting for order and not eating";
             throw std::logic_error(error_txt_stream.str());
 
         }
@@ -266,10 +254,7 @@ void StandardClient::pick_up_order(IDish* dish)
 
 
         std::stringstream raport_stream;
-        raport_stream << "Table: " << group->get_table()->get_id() <<
-            " Group: " << group->get_id() <<
-            " Client " << id <<
-            ": starts consuming " << dish->to_string();
+        raport_stream << *this << " starts consuming " << *dish;
 
 
         // Resolve dish
@@ -389,9 +374,7 @@ void StandardClient::on_dish_state_change(IDish* dish)
 
     // Raport
     std::stringstream raport_stream;
-    raport_stream << "Table: " << group->get_table()->get_id() <<
-                     " Group: " << group->get_id() <<
-                     " Client " << id << ": consumed " << dish->to_string();
+    raport_stream << *this << " consumed " << *dish;
     raport(raport_stream.str());
 
 
@@ -403,10 +386,7 @@ void StandardClient::on_dish_state_change(IDish* dish)
 
         // Raport
         std::stringstream raport_stream;
-        raport_stream << "Table: " << group->get_table()->get_id() <<
-            " Group: " << group->get_id() <<
-            " Client " << id <<
-            ": starts consuming " << next->to_string();
+        raport_stream << *this << " starts consuming " << *next;
         raport(raport_stream.str());
     }
 
@@ -436,9 +416,7 @@ void StandardClient::pay()
 
     // Raport
     std::stringstream raport_stream;
-    raport_stream << "Table: " << group->get_table()->get_id() <<
-                     " Group: " << group->get_id() <<
-                     " Client " << id << ": paying " << total;
+    raport_stream << *this << " paying " << total;
     raport(raport_stream.str());
 
     // Notify the group about the change of state
@@ -469,3 +447,7 @@ StandardClient::~StandardClient() // Delete dishes,
 // ______________________________________________________________________________________________________
 // Czêœc obiektu
 
+std::ostream& operator<<(std::ostream& os, const StandardClient& client)
+{
+    return os << "Client " << client.id << " (" << *(client.group) << ")";
+}

@@ -19,11 +19,8 @@ DessertLovingClient::DessertLovingClient(unsigned choosing_time, ITrigger* globa
 
 void DessertLovingClient::choose_dishes()
 {
-
-
     // Choose main course and beverage
     StandardClient::choose_dishes();
-
 
     // Rand number of soup
     srand(time(nullptr));
@@ -35,8 +32,6 @@ void DessertLovingClient::choose_dishes()
 
     // Raport
     std::ostringstream raport_stream;
-    raport_stream << "Table: " << group->get_table()->get_id() <<
-                     " Group: " << group->get_id() <<
-                     " Client " << id << ": choosed " << dessert->to_string() << std::endl;
+    raport_stream << *this << " choosed " << *dessert;
     raport(raport_stream.str());
 }

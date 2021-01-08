@@ -51,4 +51,6 @@ public:
     virtual void set_group(IGroup* group) = 0;
 
     virtual ~IClient() = 0 {};  // Zniszcz dania, zniszcz menu zniszcz zamowienia
+
+    friend std::ostream& operator<<(std::ostream& os, const IClient& client);
 };
