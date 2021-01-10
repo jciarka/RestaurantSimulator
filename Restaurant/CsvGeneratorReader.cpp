@@ -10,13 +10,14 @@ std::vector<unsigned> CsvGeneratorReader::readthefile(std::string filename)
 {
 	std::ifstream generatorcsv;
 	generatorcsv.open(filename);
+	std::vector<unsigned> return_vector;
 	while (generatorcsv.good())
 	{
 		std::string odds;
 		getline(generatorcsv, odds, ',');
 		unsigned uns_odds = std::stoul(odds, nullptr, 10);
-		odds.push_back(uns_odds);
+		return_vector.push_back(uns_odds);
 	}
 	generatorcsv.close();
-	return odds;
+	return return_vector;
 };

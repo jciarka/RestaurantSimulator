@@ -33,13 +33,21 @@ void test5(std::string filename0, std::string filename1, std::string filename2, 
 		tables.push_back(new Table(table_sizes[i], &trigger, &raporter));
 	};
 	unsigned uns_numer_of_waiters = std::stoul(numer_of_waiters, nullptr, 10);
-	
+	std::vector<Waiter*> waiters;
 	for (int i = 0; i < uns_numer_of_waiters; i++)
 	{
-		Waiter waiter(&menu, &kitchen, &servicequeue, &trigger, &raporter);
+		waiters.push_back(new Waiter(&menu, &kitchen, &servicequeue, &trigger, &raporter));
 	};
 	GroupQueue groups_queue(&tables, &trigger, &raporter);
 	CsvGeneratorReader csvgeneratorreader;
 	std::vector<unsigned> odds = csvgeneratorreader.readthefile(filename5);
 	GroupGenerator groupgenerator(odds, groups_queue, &servicequeue, &trigger, &raporter);
+	for (size_t i = 0; i < 200; i++)
+	{
+		trigger.execute_iteration();
+
+		std::stringstream info;
+		info << std::endl << "---------------------------------------iter" << i << std::endl;
+		raporter.raport(info.str());
+	}
 };

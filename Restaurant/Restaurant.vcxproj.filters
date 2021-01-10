@@ -210,6 +210,15 @@
     <ClCompile Include="GroupsQueue.cpp">
       <Filter>Source Files\Restaurant</Filter>
     </ClCompile>
+    <ClCompile Include="RestaurantManager.cpp">
+      <Filter>Source Files\Restaurant</Filter>
+    </ClCompile>
+    <ClCompile Include="FileRaporter.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="CombinedRaporter.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IClient.h">
@@ -355,6 +364,12 @@
     </ClInclude>
     <ClInclude Include="RestaurantManager.h">
       <Filter>Header Files\Restaurant\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FileRaporter.h">
+      <Filter>Header Files\Core\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CombinedRaporter.h">
+      <Filter>Header Files\Core\Headers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

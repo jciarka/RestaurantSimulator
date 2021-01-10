@@ -3,6 +3,7 @@
 //
 #include "Tests.h"
 #include <string>
+#include "RestaurantManager.h"
 
 int main(int argc, char** argv)
 {
@@ -14,16 +15,21 @@ int main(int argc, char** argv)
     //test2();
     //test3();
     //test_clients_queue();
-    test4();
-    /*
+    //test4();
+    
     std::string filename0 = argv[1];
     std::string filename1 = argv[2];
     std::string filename2 = argv[3];
     std::string filename3 = argv[4];
     std::string filename4 = argv[5];
     std::string numer_of_waiters = argv[6];
-    std::string filename5 = argv[6];
-    test5(filename0, filename1, filename2, filename3, filename4, numer_of_waiters, filename5);
-    */
+    std::string filename5 = argv[7];
+    //test5(filename0, filename1, filename2, filename3, filename4, numer_of_waiters, filename5);
+    RestaurantManager restaurant(filename0, filename1, filename2, filename3, filename4, numer_of_waiters, filename5);
+    for (int i = 0; i < 200; i++) 
+    {
+        restaurant.execute_iteration();
+    }
+
     return 0;
 }

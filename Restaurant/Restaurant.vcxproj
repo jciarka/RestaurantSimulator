@@ -140,12 +140,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Beverage.cpp" />
+    <ClCompile Include="CombinedRaporter.cpp" />
     <ClCompile Include="CsvGeneratorReader.cpp" />
     <ClCompile Include="CsvTableReader.cpp" />
     <ClCompile Include="CvsMenuReader.cpp" />
     <ClCompile Include="Dessert.cpp" />
     <ClCompile Include="DessertLovingClient.cpp" />
     <ClCompile Include="DishBase.cpp" />
+    <ClCompile Include="FileRaporter.cpp" />
     <ClCompile Include="Group.cpp" />
     <ClCompile Include="GroupGenerator.cpp" />
     <ClCompile Include="GroupsQueue.cpp" />
@@ -161,6 +163,7 @@
     <ClCompile Include="Order.cpp" />
     <ClCompile Include="Raportable.cpp" />
     <ClCompile Include="Restaurant.cpp" />
+    <ClCompile Include="RestaurantManager.cpp" />
     <ClCompile Include="ServiceQueue.cpp" />
     <ClCompile Include="Soup.cpp" />
     <ClCompile Include="StandardClient.cpp" />
@@ -182,11 +185,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Beverage.h" />
+    <ClInclude Include="CombinedRaporter.h" />
     <ClInclude Include="CsvGeneratorReader.h" />
     <ClInclude Include="CsvMenuReader.h" />
     <ClInclude Include="CsvTableReader.h" />
     <ClInclude Include="Dessert.h" />
     <ClInclude Include="DessertLovingClient.h" />
+    <ClInclude Include="FileRaporter.h" />
     <ClInclude Include="fwd_include.h" />
     <ClInclude Include="Group.h" />
     <ClInclude Include="GroupGenerator.h" />
