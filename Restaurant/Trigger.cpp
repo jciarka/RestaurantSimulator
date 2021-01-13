@@ -2,7 +2,7 @@
 #include <vector>
 #include <stdexcept>
 
-// Wywo³anie iteracji - wywo³¹nie ha¿dego z handlerów
+// Call all event handlers in subscribing objects
 void Trigger::execute_iteration()
 {
 	// Remove deleted objects
@@ -49,12 +49,14 @@ void Trigger::add_iterated_object(ITriggered* triggered_object)
 
 void Trigger::remove_iterated_object(ITriggered* triggered_object)
 {
+	// Mark object to remove if present in subscribing object list
 	auto object_to_remove = std::find(iterated_objects.begin(), iterated_objects.end(), triggered_object);
 	if (object_to_remove != iterated_objects.end())
 	{
 		*object_to_remove = nullptr;
 	}
 
+	// Remove object from objects_to_add queue if object not added to subscribing object list yet
 	object_to_remove = std::find(objects_to_add.begin(), objects_to_add.end(), triggered_object);
 	if (object_to_remove != objects_to_add.end())
 	{

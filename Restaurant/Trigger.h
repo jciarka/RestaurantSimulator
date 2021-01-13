@@ -2,18 +2,16 @@
 #include <vector>
 #include "ITrigger.h"
 
-/// <summary>
-/// Klasa Trigger zawiera wskaŸniki na wszytkie obiekty 
-/// w restauracji które musz¹ wykonywaæ pewne czynnoœci w re¿imie czasowym
-/// 
-/// Za dodawnaie obiektów odpowiadaj¹ same obiekty w restauracji - 
-/// nale¿ zadbaæ aby dodawa³y siê do listy Trigera w momencie ich inicjacji
-/// oraz usuwa³y siê w chwili destrukcji
-/// 
-/// Wywolywana jest metoda execute_iteration wszystkich subskrybowanych obiektów
-/// przez metodê execute_iteration() klasy Trigger
-/// </summary>
-/// 
+
+// The Trigger class holds pointers to all objects
+// in restaurants requiring the use of tools in the time regime
+//
+// Object deriving from ITriggered are added to the Triger list at the time of their initiation
+// and are deleted at the time of destruction
+//
+// The execute_iteration method calls execute_iteration methods of all subscribed objects
+
+
 
 class Trigger : public ITrigger
 {

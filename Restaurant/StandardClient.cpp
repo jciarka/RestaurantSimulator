@@ -42,7 +42,7 @@ void StandardClient::set_group(IGroup* group)
 
     if (!(group->get_state() == IClient::client_state::WAITING_FOR_FRIENDS || group->get_state() == IClient::client_state::READY_TO_BEGIN))
     {
-        // Thow excetion if not
+        // Thow excetion if not state at initiation
         std::stringstream error_txt_stream;
         error_txt_stream << "Client " << id << ": wrong state at initiation";
         throw std::logic_error(error_txt_stream.str());
@@ -444,8 +444,6 @@ StandardClient::~StandardClient() // Delete dishes,
     }
 }
 
-// ______________________________________________________________________________________________________
-// Czêœc obiektu
 
 std::ostream& operator<<(std::ostream& os, const StandardClient& client)
 {

@@ -18,13 +18,13 @@ public:
 
     virtual unsigned get_id() const;
 
-    // interfejs dla generatora klientów
+    // Interface for clients_generator
     virtual bool is_available() const override;
     virtual unsigned get_empty_seats() const override;
     virtual bool can_place_group(const IGroup* group) const override;
     virtual void place_group(std::unique_ptr<IGroup> group) override;
 
-    // interface dla grupy
+    // interface for Group
     virtual void on_group_state_change(IGroup* group) override;
 
     // Triggered

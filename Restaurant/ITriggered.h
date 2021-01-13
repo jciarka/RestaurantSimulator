@@ -1,10 +1,7 @@
 #pragma once
 
-/// <summary>
-/// Interfers dla obiektu subskrybuj¹cego zdarzenie z kalsy Trigger
-/// Musi on definiowaæ funkcjê execute_iteration() wywo³ywan¹ przez klasê Trigger
-/// </summary>
-
+// Interface for the object subscribing the Trigger event
+// It must define an execute_iteration () function called by the class Trigger
 
 class ITriggered
 {

@@ -17,16 +17,14 @@ public:
     Order(IDish* dish, IClient* client) : dish(dish), client(client), state(IOrder::order_state::ORDERED), 
                                           id(generate_unique_id()) {};
 
-
-    // interface methods
     virtual unsigned get_id() const override { return id; };
     virtual order_state get_state() const override { return state; };
 
-    // Interfejs dla klienta
+    // Interface for Client
     virtual IDish* get_dish() override { return dish; };
     virtual IClient* get_client() override { return client; };
 
-    // Interface for kitchen
+    // Interface for Kitchen
     virtual void begin_preparing() { dish->begin_preparing(); };
 
 

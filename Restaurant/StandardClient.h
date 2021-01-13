@@ -37,7 +37,6 @@ protected:
     virtual std::vector<IDish*> create_orders();
     virtual price count_total();
     virtual void OnCounted() override; // Counter logic
-    // pick_up_order and on_dish_state_change also must be overriden
     
     std::vector<IDish*> get_dishes_in_order();
     bool null_or_eaten(IDish* dish);
@@ -51,17 +50,17 @@ public:
     virtual unsigned get_id() const override { return id; };
     virtual client_state get_state() const override { return state; };
     
-    // Interfejs dla IGroup
+    // Interface for IGroup
     virtual void begin_feast() override;
     virtual void set_group(IGroup* group) override;
 
-    // Interface for IKelner
+    // Interface for IWaiter
     virtual void take_card(const IMenu* menu) override;
     virtual std::vector<IDish*> give_order() override; // Creates new Order 
                                             // and new Dishes (MUST REMEMBER TO delete the after eating)
     virtual void pick_up_order(IDish* order) override;
 
-    // Interfejs dla IDish
+    // Interface for IDish
     virtual void on_dish_state_change(IDish* dish) override;
 
     virtual void pay() override;

@@ -2,7 +2,7 @@
 #include <sstream>
 
 // ______________________________________________________________________________________________________
-// Czêœæ statyczna
+// Static part
 unsigned Table::id_counter = 0; // Inicjacja pocz¹tkowej wartosci od której nadawane bêdzie id
 
 unsigned Table::generate_unique_id()

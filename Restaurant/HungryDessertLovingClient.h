@@ -6,7 +6,7 @@
 class HungryDessertLovingClient : public StandardClient
 {
 protected:
-    // Functions to override in more specyfic clients
+    // Functions to override
     virtual void choose_dishes() override;
 
 public:

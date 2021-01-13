@@ -6,8 +6,8 @@
 
 
 // ______________________________________________________________________________________________________
-// Czêœæ statyczna
-unsigned DishBase::id_counter = 0; // Inicjacja pocz¹tkowej wartosci od której nadawane bêdzie id
+// Static part
+unsigned DishBase::id_counter = 0; // Intitial value at program start
 
 unsigned DishBase::generate_unique_id()
 {
@@ -75,7 +75,7 @@ void DishBase::begin_preparing()
 
     if (kitchen == nullptr)
     {
-        // Kitchen must be set at tkis moment
+        // Kitchen must be set at this moment
         std::stringstream error_txt_stream;
         error_txt_stream << "Dish " << id << " begin_preparing call when kitchen is not set";
         throw std::logic_error(error_txt_stream.str());

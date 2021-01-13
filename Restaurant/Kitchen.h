@@ -9,8 +9,6 @@ class Kitchen :  public Raportable , public IKitchen
 private:
     std::vector<IDish*> at_preparation;
     std::queue<IDish*> prepared;
-    // vector Iorder w prztgotowaniu -> begin preparing()
-    // kolejka IOreder do wydania
 
 public:
     Kitchen(IRaporter* global_raporter);

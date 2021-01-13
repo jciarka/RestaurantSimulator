@@ -5,9 +5,6 @@
 
 class IKitchen
 {
-    // vector Iorder w prztgotowaniu -> begin preparing()
-    // kolejka IOreder do wydania
-
 public:
     virtual void take_order(IDish* order) = 0;
     virtual IDish* deliver_preapared() = 0;

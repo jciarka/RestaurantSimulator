@@ -36,21 +36,21 @@ public:
     virtual unsigned get_id() const = 0;
     virtual client_state get_state() const = 0;
 
-    // Interface for IKelner
+    // Interface for IWaiter
     virtual void take_card(const IMenu* menu) = 0;
     virtual std::vector<IDish*> give_order() = 0; // Creates new Order 
                                             // and new Dishes (MUST REMEMBER TO delete the after eating)
     virtual void pick_up_order(IDish* dish) = 0; 
     virtual void pay() = 0;
 
-    // Interfejs dla IDish
+    // Interface for IDish
     virtual void on_dish_state_change(IDish* dish) = 0;
 
-    // Interfejs dla IGroup
+    // Interface for IGroup
     virtual void begin_feast() = 0;
     virtual void set_group(IGroup* group) = 0;
 
-    virtual ~IClient() = 0 {};  // Zniszcz dania, zniszcz menu zniszcz zamowienia
+    virtual ~IClient() = 0 {};
 
     friend std::ostream& operator<<(std::ostream& os, const IClient& client);
 };

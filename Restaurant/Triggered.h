@@ -2,13 +2,11 @@
 #include "ITriggered.h"
 #include "ITrigger.h"
 
-/// <summary>
-/// Klasa bazowa dla obiektu subskrybuj¹cego zdarzenie z kalsy Trigger
-/// Defionowany jest konstruktor subskrybujacy zdarzenie z kalsy Trigger
-/// i destruktor usuwaj¹cy to zdarzenie
-/// 
-/// Klasa dziedziczaca musi on definiowaæ funkcjê execute_iteration() wywo³ywan¹ przez klasê Trigger
-/// </summary>
+/// The base class for the object subscribing to the event from the Trigger class
+/// A constructor subscribe the event in the provided Trigger object
+/// and a destructor removes this event from Trigger object
+///
+/// The inheriting class must define the execute_iteration () function called by the class Trigger
 
 class Triggered : public ITriggered
 {
