@@ -93,7 +93,7 @@ void StandardClient::take_card(const IMenu* menu)
 
     // Raport
     std::ostringstream raport_stream;
-    raport_stream << *this << " Took menu and begin to choose dishes";
+    raport_stream << *this << " Took menu and begun to choose dishes";
     raport(raport_stream.str());
 }
 
@@ -120,14 +120,14 @@ void StandardClient::choose_dishes()
     main_course =new MainCourse(menu->get_main_course(choosen));
     main_course->set_client(this);
 
-    raport_stream << *this << " choosed " << *main_course << std::endl;
+    raport_stream << *this << " chose " << *main_course << std::endl;
    
     // Choose beverage
     dish_count = menu->get_beverage_size();
     choosen = rand() % dish_count;
     beveage = new Beverage(menu->get_beverage(choosen));
     beveage->set_client(this);
-    raport_stream << *this << " choosed " << *beveage;
+    raport_stream << *this << " chose " << *beveage;
 
     raport(raport_stream.str());
 }

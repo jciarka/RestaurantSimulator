@@ -6,10 +6,7 @@
 
 class CsvMenuReader
 {
-private:
-	ITrigger* global_trigger_ptr;
-	IRaporter* global_raporter_ptr;
 public:
-	CsvMenuReader(ITrigger* global_trigger_ptr, IRaporter* global_raporter_ptr);
+	CsvMenuReader() {};
 	std::vector<std::string> readthefile(std::string filename);
 };

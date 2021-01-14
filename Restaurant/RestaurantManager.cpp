@@ -2,12 +2,14 @@
 #include "CsvMenuReader.h"
 #include "CsvTableReader.h"
 #include "CsvGeneratorReader.h"
+#include <chrono>
+#include <thread>
 
 RestaurantManager::RestaurantManager(std::string soupcsv, std::string maincoursecsv, std::string dessertcsv, std::string beveragecsv, std::string tablecsv, std::string numer_of_waiters, std::string oddscsv)
 	: kitchen(&raporter), servicequeue(&raporter), groups_queue(&tables, &trigger, &raporter)
 {
 	interation_number = 0;
-	CsvMenuReader csvmenureader(&trigger, &raporter);
+	CsvMenuReader csvmenureader;
 	std::vector<std::string> SoupArguments = csvmenureader.readthefile(soupcsv);
 	std::vector<std::string> MainCourseArguments = csvmenureader.readthefile(maincoursecsv);
 	std::vector<std::string> DessertArguments = csvmenureader.readthefile(dessertcsv);
@@ -38,6 +40,7 @@ void RestaurantManager::execute_iteration()
 	std::stringstream info;
 	info << std::endl << "---------------------------------------iter" << interation_number++ << std::endl;
 	raporter.raport(info.str());
+	std::this_thread::sleep_for(std::chrono::milliseconds(500));
 }
 
 

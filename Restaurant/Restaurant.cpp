@@ -25,11 +25,26 @@ int main(int argc, char** argv)
     std::string numer_of_waiters = argv[6];
     std::string filename5 = argv[7];
     //test5(filename0, filename1, filename2, filename3, filename4, numer_of_waiters, filename5);
-    RestaurantManager restaurant(filename0, filename1, filename2, filename3, filename4, numer_of_waiters, filename5);
-    for (int i = 0; i < 200; i++) 
+    try 
     {
-        restaurant.execute_iteration();
+        RestaurantManager restaurant(filename0, filename1, filename2, filename3, filename4, numer_of_waiters, filename5);
+        for (int i = 0; i < 300; i++)
+        {
+            restaurant.execute_iteration();
+        }
     }
-
+    catch (std::out_of_range error)
+    {
+        std::cout << "Incorrect argument in configuration file" << std::endl;
+    }
+    catch (std::invalid_argument error)
+    {
+        std::cout << "Incorrect argument in configuration file" << std::endl;
+    }
+    catch (std::logic_error error)
+    {
+        std::cout << error.what() << std::endl;
+    };
+    
     return 0;
 }

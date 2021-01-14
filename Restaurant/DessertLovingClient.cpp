@@ -32,6 +32,6 @@ void DessertLovingClient::choose_dishes()
 
     // Raport
     std::ostringstream raport_stream;
-    raport_stream << *this << " choosed " << *dessert;
+    raport_stream << *this << " chose " << *dessert;
     raport(raport_stream.str());
 }

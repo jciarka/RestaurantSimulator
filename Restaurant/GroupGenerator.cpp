@@ -15,6 +15,16 @@ void GroupGenerator::execute_iteration()
 };
 
 void GroupGenerator::generate_group()
+// odds is loaded from a csv file, first argument is the odds of generating a group in one trigger (the odds are 1/x)
+// second argument is the odds of the group waiting for friends (1/x)
+// third argument is the maximum amount of StandardClients in a group (odds of each possible amount of clients is equal to 1/x)
+// fourth argument is the maximum amount of time a StandardClient will choose his meal (odds of each possible waiting time is equal to 1/x)
+// fifth argument is the maximum amount of HungryClients in a group (odds of each possible amount of clients is equal to 1/x)
+// sixth argument is the maximum amount of time a HungryClient will choose his meal (odds of each possible waiting time is equal to 1/x)
+// seventh argument is the maximum amount of HungryDessertLovingClients in a group (odds of each possible amount of clients is equal to 1/x)
+// eigth argument is the maximum amount of time a HungryDessertLovingClient will choose his meal (odds of each possible waiting time is equal to 1/x)
+// ninegth argument is the maximum amount of DessertLovingClients in a group (odds of each possible amount of clients is equal to 1/x)
+// tength argument is the maximum amount of time a DessertLovingClient will choose his meal (odds of each possible waiting time is equal to 1/x)
 {
 	unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
 	const unsigned client_types = 4;
@@ -52,24 +62,26 @@ void GroupGenerator::generate_group()
 			group->add_client(std::move(client));
 			group_is_empty = false;
 		}
+		// Group is already being generated so it needs at least one client, this increases the odds of having a single client in a group sliglty
 		if (group_is_empty)
 		{
-			if (generator() % client_types == 0)
+			int random_number_between_0_and_3 = generator() % client_types;
+			if (random_number_between_0_and_3 == 0)
 			{
 				std::unique_ptr<IClient> client = std::make_unique<StandardClient>(generator() % odds[3], global_trigger, global_raporter);
 				group->add_client(std::move(client));
 			}
-			if (generator() % client_types == 1)
+			if (random_number_between_0_and_3 == 1)
 			{
 				std::unique_ptr<IClient> client = std::make_unique<HungryClient>(generator() % odds[5], global_trigger, global_raporter);
 				group->add_client(std::move(client));
 			}
-			if (generator() % client_types == 2)
+			if (random_number_between_0_and_3 == 2)
 			{
 				std::unique_ptr<IClient> client = std::make_unique<HungryDessertLovingClient>(generator() % odds[7], global_trigger, global_raporter);
 				group->add_client(std::move(client));
 			}
-			else
+			if (random_number_between_0_and_3 == 3)
 			{
 				std::unique_ptr<IClient> client = std::make_unique<DessertLovingClient>(generator() % odds[9], global_trigger, global_raporter);
 				group->add_client(std::move(client));

@@ -34,7 +34,7 @@ void HungryClient::choose_dishes()
     soup->set_client(this);
 
     // Raport
-    raport_stream << *this << " choosed " << *soup;
+    raport_stream << *this << " chose " << *soup;
     raport(raport_stream.str());
 
     // Choose main course and beverage

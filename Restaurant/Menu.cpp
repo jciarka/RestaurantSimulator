@@ -6,7 +6,8 @@ Menu::Menu(std::vector<std::string> SoupArguments, std::vector<std::string> Main
 	: Triggered(global_trigger), Raportable(global_raporter), SoupArguments(SoupArguments), MainCourseArguments(MainCourseArguments), DessertArguments(DessertArguments), BeverageArguments(BeverageArguments), global_trigger(global_trigger), global_raporter(global_raporter)
 {}
 
-
+// Each dish has 4 arguments, the first one is preparing time, second one is eating time, third one is name, the last one is price
+// Return dish Object to be moved to client
 Soup Menu::get_soup(unsigned index) const 
 {
 	std::string prepraring_time = SoupArguments[index * 4];

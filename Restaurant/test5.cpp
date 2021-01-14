@@ -19,7 +19,7 @@ void test5(std::string filename0, std::string filename1, std::string filename2, 
 	TerminalRaporter raporter;
 	Kitchen kitchen(&raporter);
 	ServiceQueue servicequeue(&raporter);
-	CsvMenuReader CsvReader(&trigger, &raporter);
+	CsvMenuReader CsvReader;
 	std::vector<std::string> SoupArguments = CsvReader.readthefile(filename0);
 	std::vector<std::string> MainCourseArguments = CsvReader.readthefile(filename1);
 	std::vector<std::string> DessertArguments = CsvReader.readthefile(filename2);
