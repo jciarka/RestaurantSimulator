@@ -143,7 +143,7 @@
     <ClCompile Include="CombinedRaporter.cpp" />
     <ClCompile Include="CsvGeneratorReader.cpp" />
     <ClCompile Include="CsvTableReader.cpp" />
-    <ClCompile Include="CvsMenuReader.cpp" />
+    <ClCompile Include="CsvMenuReader.cpp" />
     <ClCompile Include="Dessert.cpp" />
     <ClCompile Include="DessertLovingClient.cpp" />
     <ClCompile Include="DishBase.cpp" />

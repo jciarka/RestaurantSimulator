@@ -28,7 +28,7 @@ int main(int argc, char** argv)
     try 
     {
         RestaurantManager restaurant(filename0, filename1, filename2, filename3, filename4, numer_of_waiters, filename5);
-        for (int i = 0; i < 300; i++)
+        for (int i = 0; i < 200; i++)
         {
             restaurant.execute_iteration();
         }

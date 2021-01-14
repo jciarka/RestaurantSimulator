@@ -23,7 +23,10 @@ RestaurantManager::RestaurantManager(std::string soupcsv, std::string maincourse
 		tables.push_back(new Table(table_sizes[i], &trigger, &raporter));
 	};
 	unsigned uns_numer_of_waiters = std::stoul(numer_of_waiters, nullptr, 10);
-	
+	if(uns_numer_of_waiters == 0)
+	{
+		waiters.push_back(new Waiter(menu_ptr, &kitchen, &servicequeue, &trigger, &raporter));
+	}
 	for (int i = 0; i < uns_numer_of_waiters; i++)
 	{
 		waiters.push_back(new Waiter(menu_ptr, &kitchen, &servicequeue, &trigger, &raporter));
@@ -40,7 +43,7 @@ void RestaurantManager::execute_iteration()
 	std::stringstream info;
 	info << std::endl << "---------------------------------------iter" << interation_number++ << std::endl;
 	raporter.raport(info.str());
-	std::this_thread::sleep_for(std::chrono::milliseconds(500));
+	std::this_thread::sleep_for(std::chrono::milliseconds(5));
 }
 
 

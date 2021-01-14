@@ -177,9 +177,6 @@
     <ClCompile Include="Menu.cpp">
       <Filter>Source Files\Dish</Filter>
     </ClCompile>
-    <ClCompile Include="CvsMenuReader.cpp">
-      <Filter>Source Files\Infractructure</Filter>
-    </ClCompile>
     <ClCompile Include="test5.cpp">
       <Filter>Source Files\Tests</Filter>
     </ClCompile>
@@ -218,6 +215,9 @@
     </ClCompile>
     <ClCompile Include="CombinedRaporter.cpp">
       <Filter>Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="CsvMenuReader.cpp">
+      <Filter>Source Files\Infractructure</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

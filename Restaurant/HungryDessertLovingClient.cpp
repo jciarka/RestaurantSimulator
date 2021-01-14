@@ -39,6 +39,7 @@ void HungryDessertLovingClient::choose_dishes()
 
     // Raport
     std::ostringstream raport_stream;
-    raport_stream << *this << " chose " << *dessert;
+    raport_stream << *this << " chose " << *dessert << std::endl;
+    raport_stream << *this << " chose " << *soup;
     raport(raport_stream.str());
 }

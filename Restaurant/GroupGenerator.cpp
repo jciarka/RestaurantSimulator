@@ -40,25 +40,25 @@ void GroupGenerator::generate_group()
 		bool group_is_empty = true;
 		for (int i = 0; i < generator() % odds[2]; i++)
 		{
-			std::unique_ptr<IClient> client = std::make_unique<StandardClient>(generator() % odds[3], global_trigger, global_raporter);
+			std::unique_ptr<IClient> client = std::make_unique<StandardClient>(generator() % odds[3] + 1, global_trigger, global_raporter);
 			group->add_client(std::move(client));
 			group_is_empty = false;
 		}
 		for (int i = 0; i < generator() % odds[4]; i++)
 		{
-			std::unique_ptr<IClient> client = std::make_unique<HungryClient>(generator() % odds[5], global_trigger, global_raporter);
+			std::unique_ptr<IClient> client = std::make_unique<HungryClient>(generator() % odds[5] + 1, global_trigger, global_raporter);
 			group->add_client(std::move(client));
 			group_is_empty = false;
 		}
 		for (int i = 0; i < generator() % odds[6]; i++)
 		{
-			std::unique_ptr<IClient> client = std::make_unique<HungryDessertLovingClient>(generator() % odds[7], global_trigger, global_raporter);
+			std::unique_ptr<IClient> client = std::make_unique<HungryDessertLovingClient>(generator() % odds[7] + 1, global_trigger, global_raporter);
 			group->add_client(std::move(client));
 			group_is_empty = false;
 		}
 		for (int i = 0; i < generator() % odds[8]; i++)
 		{
-			std::unique_ptr<IClient> client = std::make_unique<DessertLovingClient>(generator() % odds[9], global_trigger, global_raporter);
+			std::unique_ptr<IClient> client = std::make_unique<DessertLovingClient>(generator() % odds[9] + 1, global_trigger, global_raporter);
 			group->add_client(std::move(client));
 			group_is_empty = false;
 		}
@@ -68,22 +68,22 @@ void GroupGenerator::generate_group()
 			int random_number_between_0_and_3 = generator() % client_types;
 			if (random_number_between_0_and_3 == 0)
 			{
-				std::unique_ptr<IClient> client = std::make_unique<StandardClient>(generator() % odds[3], global_trigger, global_raporter);
+				std::unique_ptr<IClient> client = std::make_unique<StandardClient>(generator() % odds[3] + 1, global_trigger, global_raporter);
 				group->add_client(std::move(client));
 			}
 			if (random_number_between_0_and_3 == 1)
 			{
-				std::unique_ptr<IClient> client = std::make_unique<HungryClient>(generator() % odds[5], global_trigger, global_raporter);
+				std::unique_ptr<IClient> client = std::make_unique<HungryClient>(generator() % odds[5] + 1, global_trigger, global_raporter);
 				group->add_client(std::move(client));
 			}
 			if (random_number_between_0_and_3 == 2)
 			{
-				std::unique_ptr<IClient> client = std::make_unique<HungryDessertLovingClient>(generator() % odds[7], global_trigger, global_raporter);
+				std::unique_ptr<IClient> client = std::make_unique<HungryDessertLovingClient>(generator() % odds[7] + 1, global_trigger, global_raporter);
 				group->add_client(std::move(client));
 			}
 			if (random_number_between_0_and_3 == 3)
 			{
-				std::unique_ptr<IClient> client = std::make_unique<DessertLovingClient>(generator() % odds[9], global_trigger, global_raporter);
+				std::unique_ptr<IClient> client = std::make_unique<DessertLovingClient>(generator() % odds[9] + 1, global_trigger, global_raporter);
 				group->add_client(std::move(client));
 			}
 		}
