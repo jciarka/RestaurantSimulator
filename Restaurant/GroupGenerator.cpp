@@ -32,9 +32,9 @@ void GroupGenerator::generate_group()
 	bool waiting_for_friends = false;
 	if (generator() % odds[0] == 0)
 	{
-		if (generator() % odds[1] == 0);
+		if (generator() % odds[1] == 0)
 		{
-			bool waiting_for_friends = true;
+			waiting_for_friends = true;
 		}
 		std::unique_ptr<IGroup> group{ new Group(waiting_for_friends, service_queue, global_trigger, global_raporter) };
 		bool group_is_empty = true;

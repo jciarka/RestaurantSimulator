@@ -43,7 +43,7 @@ void RestaurantManager::execute_iteration()
 	std::stringstream info;
 	info << std::endl << "---------------------------------------iter" << interation_number++ << std::endl;
 	raporter.raport(info.str());
-	std::this_thread::sleep_for(std::chrono::milliseconds(5));
+	std::this_thread::sleep_for(std::chrono::milliseconds(500));
 }
 
 
