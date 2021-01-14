@@ -1,0 +1,1472 @@
+
+---------------------------------------iter0
+
+
+---------------------------------------iter1
+
+
+---------------------------------------iter2
+
+
+---------------------------------------iter3
+
+
+---------------------------------------iter4
+
+Client 1 (Group 1 at Table 1) Begins feast
+Client 2 (Group 1 at Table 1) Begins feast
+Client 3 (Group 1 at Table 1) Begins feast
+Client 4 (Group 1 at Table 1) Begins feast
+Client 5 (Group 1 at Table 1) Begins feast
+Client 6 (Group 1 at Table 1) Begins feast
+Group 1 at Table 1 Calls waiter for menu
+Waiter 1 delivering cards to Group 1 at Table 1
+Client 1 (Group 1 at Table 1) Took menu and begun to choose dishes
+Client 2 (Group 1 at Table 1) Took menu and begun to choose dishes
+Client 3 (Group 1 at Table 1) Took menu and begun to choose dishes
+Client 4 (Group 1 at Table 1) Took menu and begun to choose dishes
+Client 5 (Group 1 at Table 1) Took menu and begun to choose dishes
+Client 6 (Group 1 at Table 1) Took menu and begun to choose dishes
+
+---------------------------------------iter5
+
+Client 6 (Group 1 at Table 1) chose main course Cabbage rolls 1
+Client 6 (Group 1 at Table 1) chose beverage Coca Cola 2
+Client 6 (Group 1 at Table 1) chose dessert Apple pie 3
+Client 6 (Group 1 at Table 1) is ready to order
+
+---------------------------------------iter6
+
+Client 1 (Group 1 at Table 1) chose soup Cucumber soup 4
+Client 1 (Group 1 at Table 1) chose main course Cabbage rolls 5
+Client 1 (Group 1 at Table 1) chose beverage Coca Cola 6
+Client 1 (Group 1 at Table 1) is ready to order
+Client 2 (Group 1 at Table 1) chose soup Cucumber soup 7
+Client 2 (Group 1 at Table 1) chose main course Cabbage rolls 8
+Client 2 (Group 1 at Table 1) chose beverage Coca Cola 9
+Client 2 (Group 1 at Table 1) is ready to order
+Client 3 (Group 1 at Table 1) chose soup Cucumber soup 10
+Client 3 (Group 1 at Table 1) chose main course Cabbage rolls 11
+Client 3 (Group 1 at Table 1) chose beverage Coca Cola 12
+Client 3 (Group 1 at Table 1) is ready to order
+Client 5 (Group 1 at Table 1) chose main course Cabbage rolls 13
+Client 5 (Group 1 at Table 1) chose beverage Coca Cola 14
+Client 5 (Group 1 at Table 1) chose dessert Apple pie 15
+Client 5 (Group 1 at Table 1) is ready to order
+
+---------------------------------------iter7
+
+
+---------------------------------------iter8
+
+Client 4 (Group 1 at Table 1) chose main course Cabbage rolls 16
+Client 4 (Group 1 at Table 1) chose beverage Coca Cola 17
+Client 4 (Group 1 at Table 1) chose dessert Apple pie 18
+Client 4 (Group 1 at Table 1) is ready to order
+Group 1 at Table 1 Calls waiter to order
+
+---------------------------------------iter9
+
+Waiter 1 taking order from Group 1 at Table 1
+Client 1 (Group 1 at Table 1) has ordered
+Client 2 (Group 1 at Table 1) has ordered
+Client 3 (Group 1 at Table 1) has ordered
+Client 4 (Group 1 at Table 1) has ordered
+Client 5 (Group 1 at Table 1) has ordered
+Client 6 (Group 1 at Table 1) has ordered
+Kitchen beginning preparation of beverage Coca Cola 6 for Client 1
+Kitchen beginning preparation of soup Cucumber soup 4 for Client 1
+Kitchen beginning preparation of main course Cabbage rolls 5 for Client 1
+Kitchen beginning preparation of beverage Coca Cola 9 for Client 2
+Kitchen beginning preparation of soup Cucumber soup 7 for Client 2
+Kitchen beginning preparation of main course Cabbage rolls 8 for Client 2
+Kitchen beginning preparation of beverage Coca Cola 12 for Client 3
+Kitchen beginning preparation of soup Cucumber soup 10 for Client 3
+Kitchen beginning preparation of main course Cabbage rolls 11 for Client 3
+Kitchen beginning preparation of beverage Coca Cola 17 for Client 4
+Kitchen beginning preparation of main course Cabbage rolls 16 for Client 4
+Kitchen beginning preparation of dessert Apple pie 18 for Client 4
+Kitchen beginning preparation of beverage Coca Cola 14 for Client 5
+Kitchen beginning preparation of main course Cabbage rolls 13 for Client 5
+Kitchen beginning preparation of dessert Apple pie 15 for Client 5
+Kitchen beginning preparation of beverage Coca Cola 2 for Client 6
+Kitchen beginning preparation of main course Cabbage rolls 1 for Client 6
+Kitchen beginning preparation of dessert Apple pie 3 for Client 6
+
+---------------------------------------iter10
+
+Kitchen beverage Coca Cola 2 for Client 6 prepared
+Kitchen dessert Apple pie 3 for Client 6 prepared
+Kitchen beverage Coca Cola 6 for Client 1 prepared
+Kitchen beverage Coca Cola 9 for Client 2 prepared
+Kitchen beverage Coca Cola 12 for Client 3 prepared
+Kitchen beverage Coca Cola 14 for Client 5 prepared
+Kitchen dessert Apple pie 15 for Client 5 prepared
+Kitchen beverage Coca Cola 17 for Client 4 prepared
+Kitchen dessert Apple pie 18 for Client 4 prepared
+
+---------------------------------------iter11
+
+Waiter 1 delivering beverage Coca Cola 2
+Client 6 (Group 1 at Table 1) starts consuming beverage Coca Cola 2
+
+---------------------------------------iter12
+
+Waiter 1 delivering dessert Apple pie 3
+
+---------------------------------------iter13
+
+Waiter 1 delivering beverage Coca Cola 6
+Client 1 (Group 1 at Table 1) starts consuming beverage Coca Cola 6
+
+---------------------------------------iter14
+
+Waiter 1 delivering beverage Coca Cola 9
+Client 2 (Group 1 at Table 1) starts consuming beverage Coca Cola 9
+
+---------------------------------------iter15
+
+Waiter 1 delivering beverage Coca Cola 12
+Client 3 (Group 1 at Table 1) starts consuming beverage Coca Cola 12
+Kitchen soup Cucumber soup 4 for Client 1 prepared
+Kitchen soup Cucumber soup 7 for Client 2 prepared
+Kitchen soup Cucumber soup 10 for Client 3 prepared
+
+---------------------------------------iter16
+
+Waiter 1 delivering beverage Coca Cola 14
+Client 5 (Group 1 at Table 1) starts consuming beverage Coca Cola 14
+Kitchen main course Cabbage rolls 1 for Client 6 prepared
+Kitchen main course Cabbage rolls 5 for Client 1 prepared
+Kitchen main course Cabbage rolls 8 for Client 2 prepared
+Kitchen main course Cabbage rolls 11 for Client 3 prepared
+Kitchen main course Cabbage rolls 13 for Client 5 prepared
+Kitchen main course Cabbage rolls 16 for Client 4 prepared
+
+---------------------------------------iter17
+
+Waiter 1 delivering dessert Apple pie 15
+
+---------------------------------------iter18
+
+Waiter 1 delivering beverage Coca Cola 17
+Client 4 (Group 1 at Table 1) starts consuming beverage Coca Cola 17
+
+---------------------------------------iter19
+
+Waiter 1 delivering dessert Apple pie 18
+Client 6 (Group 1 at Table 1) consumed beverage Coca Cola 2
+
+---------------------------------------iter20
+
+Waiter 1 delivering soup Cucumber soup 4
+Client 1 (Group 1 at Table 1) starts consuming soup Cucumber soup 4
+
+---------------------------------------iter21
+
+Waiter 1 delivering soup Cucumber soup 7
+Client 2 (Group 1 at Table 1) starts consuming soup Cucumber soup 7
+Client 1 (Group 1 at Table 1) consumed beverage Coca Cola 6
+
+---------------------------------------iter22
+
+Waiter 1 delivering soup Cucumber soup 10
+Client 3 (Group 1 at Table 1) starts consuming soup Cucumber soup 10
+Client 2 (Group 1 at Table 1) consumed beverage Coca Cola 9
+
+---------------------------------------iter23
+
+Waiter 1 delivering main course Cabbage rolls 1
+Client 6 (Group 1 at Table 1) starts consuming main course Cabbage rolls 1
+Client 1 (Group 1 at Table 1) consumed soup Cucumber soup 4
+Client 3 (Group 1 at Table 1) consumed beverage Coca Cola 12
+
+---------------------------------------iter24
+
+Waiter 1 delivering main course Cabbage rolls 5
+Client 1 (Group 1 at Table 1) starts consuming main course Cabbage rolls 5
+Client 2 (Group 1 at Table 1) consumed soup Cucumber soup 7
+Client 5 (Group 1 at Table 1) consumed beverage Coca Cola 14
+
+---------------------------------------iter25
+
+Waiter 1 delivering main course Cabbage rolls 8
+Client 2 (Group 1 at Table 1) starts consuming main course Cabbage rolls 8
+Client 3 (Group 1 at Table 1) consumed soup Cucumber soup 10
+
+---------------------------------------iter26
+
+Waiter 1 delivering main course Cabbage rolls 11
+Client 3 (Group 1 at Table 1) starts consuming main course Cabbage rolls 11
+Client 6 (Group 1 at Table 1) consumed main course Cabbage rolls 1
+Client 6 (Group 1 at Table 1) starts consuming dessert Apple pie 3
+Client 4 (Group 1 at Table 1) consumed beverage Coca Cola 17
+
+---------------------------------------iter27
+
+Waiter 1 delivering main course Cabbage rolls 13
+Client 5 (Group 1 at Table 1) starts consuming main course Cabbage rolls 13
+Client 1 (Group 1 at Table 1) consumed main course Cabbage rolls 5
+
+---------------------------------------iter28
+
+Waiter 1 delivering main course Cabbage rolls 16
+Client 4 (Group 1 at Table 1) starts consuming main course Cabbage rolls 16
+Client 6 (Group 1 at Table 1) consumed dessert Apple pie 3
+Client 2 (Group 1 at Table 1) consumed main course Cabbage rolls 8
+
+---------------------------------------iter29
+
+Client 3 (Group 1 at Table 1) consumed main course Cabbage rolls 11
+
+---------------------------------------iter30
+
+Client 5 (Group 1 at Table 1) consumed main course Cabbage rolls 13
+Client 5 (Group 1 at Table 1) starts consuming dessert Apple pie 15
+
+---------------------------------------iter31
+
+Client 4 (Group 1 at Table 1) consumed main course Cabbage rolls 16
+Client 4 (Group 1 at Table 1) starts consuming dessert Apple pie 18
+
+---------------------------------------iter32
+
+Client 5 (Group 1 at Table 1) consumed dessert Apple pie 15
+
+---------------------------------------iter33
+
+Client 4 (Group 1 at Table 1) consumed dessert Apple pie 18
+Group 1 at Table 1 Calls waiter to pay
+
+---------------------------------------iter34
+
+Waiter 1 taking payment form: Group 1 at Table 1
+Client 1 (Group 1 at Table 1) paying 38zl 80gr
+Client 2 (Group 1 at Table 1) paying 38zl 80gr
+Client 3 (Group 1 at Table 1) paying 38zl 80gr
+Client 4 (Group 1 at Table 1) paying 41zl 0gr
+Client 5 (Group 1 at Table 1) paying 41zl 0gr
+Client 6 (Group 1 at Table 1) paying 41zl 0gr
+Group 1 at Table 1 Is preparing to leave
+
+---------------------------------------iter35
+
+Group 1 at Table 1 has left restaurant
+
+---------------------------------------iter36
+
+Client 7 (Group 2 at Table 1) Begins feast
+Client 8 (Group 2 at Table 1) Begins feast
+Client 9 (Group 2 at Table 1) Begins feast
+Client 10 (Group 2 at Table 1) Begins feast
+Client 11 (Group 2 at Table 1) Begins feast
+Group 2 at Table 1 Calls waiter for menu
+Waiter 1 delivering cards to Group 2 at Table 1
+Client 7 (Group 2 at Table 1) Took menu and begun to choose dishes
+Client 8 (Group 2 at Table 1) Took menu and begun to choose dishes
+Client 9 (Group 2 at Table 1) Took menu and begun to choose dishes
+Client 10 (Group 2 at Table 1) Took menu and begun to choose dishes
+Client 11 (Group 2 at Table 1) Took menu and begun to choose dishes
+
+---------------------------------------iter37
+
+Client 8 (Group 2 at Table 1) chose soup Cucumber soup 19
+Client 8 (Group 2 at Table 1) chose main course Cabbage rolls 20
+Client 8 (Group 2 at Table 1) chose beverage Coca Cola 21
+Client 8 (Group 2 at Table 1) is ready to order
+
+---------------------------------------iter38
+
+
+---------------------------------------iter39
+
+
+---------------------------------------iter40
+
+Client 7 (Group 2 at Table 1) chose main course Cabbage rolls 22
+Client 7 (Group 2 at Table 1) chose beverage Coca Cola 23
+Client 7 (Group 2 at Table 1) is ready to order
+Client 9 (Group 2 at Table 1) chose main course Cabbage rolls 25
+Client 9 (Group 2 at Table 1) chose beverage Coca Cola 26
+Client 9 (Group 2 at Table 1) chose dessert Apple pie 27
+Client 9 (Group 2 at Table 1) chose soup Cucumber soup 24
+Client 9 (Group 2 at Table 1) is ready to order
+Client 10 (Group 2 at Table 1) chose main course Cabbage rolls 28
+Client 10 (Group 2 at Table 1) chose beverage Coca Cola 29
+Client 10 (Group 2 at Table 1) chose dessert Apple pie 30
+Client 10 (Group 2 at Table 1) is ready to order
+Client 11 (Group 2 at Table 1) chose main course Cabbage rolls 31
+Client 11 (Group 2 at Table 1) chose beverage Coca Cola 32
+Client 11 (Group 2 at Table 1) chose dessert Apple pie 33
+Client 11 (Group 2 at Table 1) is ready to order
+Group 2 at Table 1 Calls waiter to order
+
+---------------------------------------iter41
+
+Waiter 1 taking order from Group 2 at Table 1
+Client 7 (Group 2 at Table 1) has ordered
+Client 8 (Group 2 at Table 1) has ordered
+Client 9 (Group 2 at Table 1) has ordered
+Client 10 (Group 2 at Table 1) has ordered
+Client 11 (Group 2 at Table 1) has ordered
+Kitchen beginning preparation of beverage Coca Cola 23 for Client 7
+Kitchen beginning preparation of main course Cabbage rolls 22 for Client 7
+Kitchen beginning preparation of beverage Coca Cola 21 for Client 8
+Kitchen beginning preparation of soup Cucumber soup 19 for Client 8
+Kitchen beginning preparation of main course Cabbage rolls 20 for Client 8
+Kitchen beginning preparation of beverage Coca Cola 26 for Client 9
+Kitchen beginning preparation of soup Cucumber soup 24 for Client 9
+Kitchen beginning preparation of main course Cabbage rolls 25 for Client 9
+Kitchen beginning preparation of dessert Apple pie 27 for Client 9
+Kitchen beginning preparation of beverage Coca Cola 29 for Client 10
+Kitchen beginning preparation of main course Cabbage rolls 28 for Client 10
+Kitchen beginning preparation of dessert Apple pie 30 for Client 10
+Kitchen beginning preparation of beverage Coca Cola 32 for Client 11
+Kitchen beginning preparation of main course Cabbage rolls 31 for Client 11
+Kitchen beginning preparation of dessert Apple pie 33 for Client 11
+
+---------------------------------------iter42
+
+Kitchen beverage Coca Cola 21 for Client 8 prepared
+Kitchen beverage Coca Cola 23 for Client 7 prepared
+Kitchen beverage Coca Cola 26 for Client 9 prepared
+Kitchen dessert Apple pie 27 for Client 9 prepared
+Kitchen beverage Coca Cola 29 for Client 10 prepared
+Kitchen dessert Apple pie 30 for Client 10 prepared
+Kitchen beverage Coca Cola 32 for Client 11 prepared
+Kitchen dessert Apple pie 33 for Client 11 prepared
+
+---------------------------------------iter43
+
+Waiter 1 delivering beverage Coca Cola 21
+Client 8 (Group 2 at Table 1) starts consuming beverage Coca Cola 21
+
+---------------------------------------iter44
+
+Waiter 1 delivering beverage Coca Cola 23
+Client 7 (Group 2 at Table 1) starts consuming beverage Coca Cola 23
+
+---------------------------------------iter45
+
+Waiter 1 delivering beverage Coca Cola 26
+Client 9 (Group 2 at Table 1) starts consuming beverage Coca Cola 26
+
+---------------------------------------iter46
+
+Waiter 1 delivering dessert Apple pie 27
+
+---------------------------------------iter47
+
+Waiter 1 delivering beverage Coca Cola 29
+Client 10 (Group 2 at Table 1) starts consuming beverage Coca Cola 29
+Kitchen soup Cucumber soup 19 for Client 8 prepared
+Kitchen soup Cucumber soup 24 for Client 9 prepared
+
+---------------------------------------iter48
+
+Waiter 1 delivering dessert Apple pie 30
+Kitchen main course Cabbage rolls 20 for Client 8 prepared
+Kitchen main course Cabbage rolls 22 for Client 7 prepared
+Kitchen main course Cabbage rolls 25 for Client 9 prepared
+Kitchen main course Cabbage rolls 28 for Client 10 prepared
+Kitchen main course Cabbage rolls 31 for Client 11 prepared
+
+---------------------------------------iter49
+
+Waiter 1 delivering beverage Coca Cola 32
+Client 11 (Group 2 at Table 1) starts consuming beverage Coca Cola 32
+
+---------------------------------------iter50
+
+Waiter 1 delivering dessert Apple pie 33
+
+---------------------------------------iter51
+
+Waiter 1 delivering soup Cucumber soup 19
+Client 8 (Group 2 at Table 1) starts consuming soup Cucumber soup 19
+Client 8 (Group 2 at Table 1) consumed beverage Coca Cola 21
+
+---------------------------------------iter52
+
+Waiter 1 delivering soup Cucumber soup 24
+Client 9 (Group 2 at Table 1) starts consuming soup Cucumber soup 24
+Client 7 (Group 2 at Table 1) consumed beverage Coca Cola 23
+
+---------------------------------------iter53
+
+Waiter 1 delivering main course Cabbage rolls 20
+Client 9 (Group 2 at Table 1) consumed beverage Coca Cola 26
+
+---------------------------------------iter54
+
+Waiter 1 delivering main course Cabbage rolls 22
+Client 7 (Group 2 at Table 1) starts consuming main course Cabbage rolls 22
+Client 8 (Group 2 at Table 1) consumed soup Cucumber soup 19
+Client 8 (Group 2 at Table 1) starts consuming main course Cabbage rolls 20
+
+---------------------------------------iter55
+
+Waiter 1 delivering main course Cabbage rolls 25
+Client 9 (Group 2 at Table 1) consumed soup Cucumber soup 24
+Client 9 (Group 2 at Table 1) starts consuming main course Cabbage rolls 25
+Client 10 (Group 2 at Table 1) consumed beverage Coca Cola 29
+
+---------------------------------------iter56
+
+Waiter 1 delivering main course Cabbage rolls 28
+Client 10 (Group 2 at Table 1) starts consuming main course Cabbage rolls 28
+
+---------------------------------------iter57
+
+Waiter 1 delivering main course Cabbage rolls 31
+Client 11 (Group 2 at Table 1) starts consuming main course Cabbage rolls 31
+Client 8 (Group 2 at Table 1) consumed main course Cabbage rolls 20
+Client 7 (Group 2 at Table 1) consumed main course Cabbage rolls 22
+Client 11 (Group 2 at Table 1) consumed beverage Coca Cola 32
+
+---------------------------------------iter58
+
+Client 9 (Group 2 at Table 1) consumed main course Cabbage rolls 25
+Client 9 (Group 2 at Table 1) starts consuming dessert Apple pie 27
+
+---------------------------------------iter59
+
+Client 10 (Group 2 at Table 1) consumed main course Cabbage rolls 28
+Client 10 (Group 2 at Table 1) starts consuming dessert Apple pie 30
+
+---------------------------------------iter60
+
+Client 9 (Group 2 at Table 1) consumed dessert Apple pie 27
+Client 11 (Group 2 at Table 1) consumed main course Cabbage rolls 31
+Client 11 (Group 2 at Table 1) starts consuming dessert Apple pie 33
+
+---------------------------------------iter61
+
+Client 10 (Group 2 at Table 1) consumed dessert Apple pie 30
+
+---------------------------------------iter62
+
+Client 11 (Group 2 at Table 1) consumed dessert Apple pie 33
+Group 2 at Table 1 Calls waiter to pay
+
+---------------------------------------iter63
+
+Waiter 1 taking payment form: Group 2 at Table 1
+Client 7 (Group 2 at Table 1) paying 29zl 80gr
+Client 8 (Group 2 at Table 1) paying 38zl 80gr
+Client 9 (Group 2 at Table 1) paying 50zl 0gr
+Client 10 (Group 2 at Table 1) paying 41zl 0gr
+Client 11 (Group 2 at Table 1) paying 41zl 0gr
+Group 2 at Table 1 Is preparing to leave
+
+---------------------------------------iter64
+
+Group 2 at Table 1 has left restaurant
+
+---------------------------------------iter65
+
+Client 12 (Group 3 at Table 1) Begins feast
+Client 13 (Group 3 at Table 1) Begins feast
+Client 14 (Group 3 at Table 1) Begins feast
+Client 15 (Group 3 at Table 1) Begins feast
+Group 3 at Table 1 Calls waiter for menu
+Waiter 1 delivering cards to Group 3 at Table 1
+Client 12 (Group 3 at Table 1) Took menu and begun to choose dishes
+Client 13 (Group 3 at Table 1) Took menu and begun to choose dishes
+Client 14 (Group 3 at Table 1) Took menu and begun to choose dishes
+Client 15 (Group 3 at Table 1) Took menu and begun to choose dishes
+
+---------------------------------------iter66
+
+
+---------------------------------------iter67
+
+Client 15 (Group 3 at Table 1) chose main course Pork chop with fries 34
+Client 15 (Group 3 at Table 1) chose beverage Beer 35
+Client 15 (Group 3 at Table 1) chose dessert Tiramisu 36
+Client 15 (Group 3 at Table 1) is ready to order
+
+---------------------------------------iter68
+
+Client 12 (Group 3 at Table 1) chose soup White Borscht 37
+Client 12 (Group 3 at Table 1) chose main course Pork chop with fries 38
+Client 12 (Group 3 at Table 1) chose beverage Beer 39
+Client 12 (Group 3 at Table 1) is ready to order
+Client 14 (Group 3 at Table 1) chose main course Pork chop with fries 41
+Client 14 (Group 3 at Table 1) chose beverage Beer 42
+Client 14 (Group 3 at Table 1) chose dessert Tiramisu 43
+Client 14 (Group 3 at Table 1) chose soup White Borscht 40
+Client 14 (Group 3 at Table 1) is ready to order
+
+---------------------------------------iter69
+
+Client 13 (Group 3 at Table 1) chose soup White Borscht 44
+Client 13 (Group 3 at Table 1) chose main course Pork chop with fries 45
+Client 13 (Group 3 at Table 1) chose beverage Beer 46
+Client 13 (Group 3 at Table 1) is ready to order
+Group 3 at Table 1 Calls waiter to order
+
+---------------------------------------iter70
+
+Waiter 1 taking order from Group 3 at Table 1
+Client 12 (Group 3 at Table 1) has ordered
+Client 13 (Group 3 at Table 1) has ordered
+Client 14 (Group 3 at Table 1) has ordered
+Client 15 (Group 3 at Table 1) has ordered
+Kitchen beginning preparation of beverage Beer 39 for Client 12
+Kitchen beginning preparation of soup White Borscht 37 for Client 12
+Kitchen beginning preparation of main course Pork chop with fries 38 for Client 12
+Kitchen beginning preparation of beverage Beer 46 for Client 13
+Kitchen beginning preparation of soup White Borscht 44 for Client 13
+Kitchen beginning preparation of main course Pork chop with fries 45 for Client 13
+Kitchen beginning preparation of beverage Beer 42 for Client 14
+Kitchen beginning preparation of soup White Borscht 40 for Client 14
+Kitchen beginning preparation of main course Pork chop with fries 41 for Client 14
+Kitchen beginning preparation of dessert Tiramisu 43 for Client 14
+Kitchen beginning preparation of beverage Beer 35 for Client 15
+Kitchen beginning preparation of main course Pork chop with fries 34 for Client 15
+Kitchen beginning preparation of dessert Tiramisu 36 for Client 15
+Kitchen beverage Beer 35 for Client 15 prepared
+Kitchen beverage Beer 39 for Client 12 prepared
+Kitchen beverage Beer 42 for Client 14 prepared
+Kitchen beverage Beer 46 for Client 13 prepared
+
+---------------------------------------iter71
+
+Waiter 1 delivering beverage Beer 35
+Client 15 (Group 3 at Table 1) starts consuming beverage Beer 35
+Kitchen dessert Tiramisu 36 for Client 15 prepared
+Kitchen dessert Tiramisu 43 for Client 14 prepared
+
+---------------------------------------iter72
+
+Waiter 1 delivering beverage Beer 39
+Client 12 (Group 3 at Table 1) starts consuming beverage Beer 39
+
+---------------------------------------iter73
+
+Waiter 1 delivering beverage Beer 42
+Client 14 (Group 3 at Table 1) starts consuming beverage Beer 42
+
+---------------------------------------iter74
+
+Waiter 1 delivering beverage Beer 46
+Client 13 (Group 3 at Table 1) starts consuming beverage Beer 46
+Kitchen soup White Borscht 37 for Client 12 prepared
+Kitchen soup White Borscht 40 for Client 14 prepared
+Kitchen soup White Borscht 44 for Client 13 prepared
+
+---------------------------------------iter75
+
+Waiter 1 delivering dessert Tiramisu 36
+
+---------------------------------------iter76
+
+Waiter 1 delivering dessert Tiramisu 43
+Kitchen main course Pork chop with fries 34 for Client 15 prepared
+Kitchen main course Pork chop with fries 38 for Client 12 prepared
+Kitchen main course Pork chop with fries 41 for Client 14 prepared
+Kitchen main course Pork chop with fries 45 for Client 13 prepared
+
+---------------------------------------iter77
+
+Waiter 1 delivering soup White Borscht 37
+Client 12 (Group 3 at Table 1) starts consuming soup White Borscht 37
+
+---------------------------------------iter78
+
+Waiter 1 delivering soup White Borscht 40
+Client 14 (Group 3 at Table 1) starts consuming soup White Borscht 40
+
+---------------------------------------iter79
+
+Waiter 1 delivering soup White Borscht 44
+Client 13 (Group 3 at Table 1) starts consuming soup White Borscht 44
+
+---------------------------------------iter80
+
+Waiter 1 delivering main course Pork chop with fries 34
+Client 15 (Group 3 at Table 1) starts consuming main course Pork chop with fries 34
+Client 15 (Group 3 at Table 1) consumed beverage Beer 35
+
+---------------------------------------iter81
+
+Waiter 1 delivering main course Pork chop with fries 38
+Client 12 (Group 3 at Table 1) consumed soup White Borscht 37
+Client 12 (Group 3 at Table 1) starts consuming main course Pork chop with fries 38
+Client 12 (Group 3 at Table 1) consumed beverage Beer 39
+
+---------------------------------------iter82
+
+Waiter 1 delivering main course Pork chop with fries 41
+Client 14 (Group 3 at Table 1) consumed soup White Borscht 40
+Client 14 (Group 3 at Table 1) starts consuming main course Pork chop with fries 41
+Client 14 (Group 3 at Table 1) consumed beverage Beer 42
+
+---------------------------------------iter83
+
+Waiter 1 delivering main course Pork chop with fries 45
+Client 13 (Group 3 at Table 1) consumed soup White Borscht 44
+Client 13 (Group 3 at Table 1) starts consuming main course Pork chop with fries 45
+Client 13 (Group 3 at Table 1) consumed beverage Beer 46
+
+---------------------------------------iter84
+
+
+---------------------------------------iter85
+
+
+---------------------------------------iter86
+
+Client 15 (Group 3 at Table 1) consumed main course Pork chop with fries 34
+Client 15 (Group 3 at Table 1) starts consuming dessert Tiramisu 36
+
+---------------------------------------iter87
+
+Client 12 (Group 3 at Table 1) consumed main course Pork chop with fries 38
+
+---------------------------------------iter88
+
+Client 14 (Group 3 at Table 1) consumed main course Pork chop with fries 41
+Client 14 (Group 3 at Table 1) starts consuming dessert Tiramisu 43
+
+---------------------------------------iter89
+
+Client 15 (Group 3 at Table 1) consumed dessert Tiramisu 36
+Client 13 (Group 3 at Table 1) consumed main course Pork chop with fries 45
+
+---------------------------------------iter90
+
+
+---------------------------------------iter91
+
+Client 14 (Group 3 at Table 1) consumed dessert Tiramisu 43
+Group 3 at Table 1 Calls waiter to pay
+
+---------------------------------------iter92
+
+Waiter 1 taking payment form: Group 3 at Table 1
+Client 12 (Group 3 at Table 1) paying 55zl 50gr
+Client 13 (Group 3 at Table 1) paying 55zl 50gr
+Client 14 (Group 3 at Table 1) paying 70zl 50gr
+Client 15 (Group 3 at Table 1) paying 60zl 50gr
+Group 3 at Table 1 Is preparing to leave
+
+---------------------------------------iter93
+
+Group 3 at Table 1 has left restaurant
+
+---------------------------------------iter94
+
+Client 16 (Group 4 at Table 1) Begins feast
+Client 17 (Group 4 at Table 1) Begins feast
+Client 18 (Group 4 at Table 1) Begins feast
+Client 19 (Group 4 at Table 1) Begins feast
+Client 20 (Group 4 at Table 1) Begins feast
+Client 21 (Group 4 at Table 1) Begins feast
+Client 22 (Group 4 at Table 1) Begins feast
+Group 4 at Table 1 Calls waiter for menu
+Waiter 1 delivering cards to Group 4 at Table 1
+Client 16 (Group 4 at Table 1) Took menu and begun to choose dishes
+Client 17 (Group 4 at Table 1) Took menu and begun to choose dishes
+Client 18 (Group 4 at Table 1) Took menu and begun to choose dishes
+Client 19 (Group 4 at Table 1) Took menu and begun to choose dishes
+Client 20 (Group 4 at Table 1) Took menu and begun to choose dishes
+Client 21 (Group 4 at Table 1) Took menu and begun to choose dishes
+Client 22 (Group 4 at Table 1) Took menu and begun to choose dishes
+Client 22 (Group 4 at Table 1) chose main course Pork chop with fries 47
+Client 22 (Group 4 at Table 1) chose beverage Beer 48
+Client 22 (Group 4 at Table 1) chose dessert Tiramisu 49
+Client 22 (Group 4 at Table 1) is ready to order
+
+---------------------------------------iter95
+
+
+---------------------------------------iter96
+
+Client 17 (Group 4 at Table 1) chose soup White Borscht 50
+Client 17 (Group 4 at Table 1) chose main course Pork chop with fries 51
+Client 17 (Group 4 at Table 1) chose beverage Beer 52
+Client 17 (Group 4 at Table 1) is ready to order
+Client 18 (Group 4 at Table 1) chose soup White Borscht 53
+Client 18 (Group 4 at Table 1) chose main course Pork chop with fries 54
+Client 18 (Group 4 at Table 1) chose beverage Beer 55
+Client 18 (Group 4 at Table 1) is ready to order
+Client 19 (Group 4 at Table 1) chose main course Pork chop with fries 57
+Client 19 (Group 4 at Table 1) chose beverage Beer 58
+Client 19 (Group 4 at Table 1) chose dessert Tiramisu 59
+Client 19 (Group 4 at Table 1) chose soup White Borscht 56
+Client 19 (Group 4 at Table 1) is ready to order
+Client 21 (Group 4 at Table 1) chose main course Pork chop with fries 61
+Client 21 (Group 4 at Table 1) chose beverage Beer 62
+Client 21 (Group 4 at Table 1) chose dessert Tiramisu 63
+Client 21 (Group 4 at Table 1) chose soup White Borscht 60
+Client 21 (Group 4 at Table 1) is ready to order
+
+---------------------------------------iter97
+
+Client 20 (Group 4 at Table 1) chose main course Pork chop with fries 65
+Client 20 (Group 4 at Table 1) chose beverage Beer 66
+Client 20 (Group 4 at Table 1) chose dessert Tiramisu 67
+Client 20 (Group 4 at Table 1) chose soup White Borscht 64
+Client 20 (Group 4 at Table 1) is ready to order
+
+---------------------------------------iter98
+
+Client 16 (Group 4 at Table 1) chose main course Pork chop with fries 68
+Client 16 (Group 4 at Table 1) chose beverage Beer 69
+Client 16 (Group 4 at Table 1) is ready to order
+Group 4 at Table 1 Calls waiter to order
+
+---------------------------------------iter99
+
+Waiter 1 taking order from Group 4 at Table 1
+Client 16 (Group 4 at Table 1) has ordered
+Client 17 (Group 4 at Table 1) has ordered
+Client 18 (Group 4 at Table 1) has ordered
+Client 19 (Group 4 at Table 1) has ordered
+Client 20 (Group 4 at Table 1) has ordered
+Client 21 (Group 4 at Table 1) has ordered
+Client 22 (Group 4 at Table 1) has ordered
+Kitchen beginning preparation of beverage Beer 69 for Client 16
+Kitchen beginning preparation of main course Pork chop with fries 68 for Client 16
+Kitchen beginning preparation of beverage Beer 52 for Client 17
+Kitchen beginning preparation of soup White Borscht 50 for Client 17
+Kitchen beginning preparation of main course Pork chop with fries 51 for Client 17
+Kitchen beginning preparation of beverage Beer 55 for Client 18
+Kitchen beginning preparation of soup White Borscht 53 for Client 18
+Kitchen beginning preparation of main course Pork chop with fries 54 for Client 18
+Kitchen beginning preparation of beverage Beer 58 for Client 19
+Kitchen beginning preparation of soup White Borscht 56 for Client 19
+Kitchen beginning preparation of main course Pork chop with fries 57 for Client 19
+Kitchen beginning preparation of dessert Tiramisu 59 for Client 19
+Kitchen beginning preparation of beverage Beer 66 for Client 20
+Kitchen beginning preparation of soup White Borscht 64 for Client 20
+Kitchen beginning preparation of main course Pork chop with fries 65 for Client 20
+Kitchen beginning preparation of dessert Tiramisu 67 for Client 20
+Kitchen beginning preparation of beverage Beer 62 for Client 21
+Kitchen beginning preparation of soup White Borscht 60 for Client 21
+Kitchen beginning preparation of main course Pork chop with fries 61 for Client 21
+Kitchen beginning preparation of dessert Tiramisu 63 for Client 21
+Kitchen beginning preparation of beverage Beer 48 for Client 22
+Kitchen beginning preparation of main course Pork chop with fries 47 for Client 22
+Kitchen beginning preparation of dessert Tiramisu 49 for Client 22
+Kitchen beverage Beer 48 for Client 22 prepared
+Kitchen beverage Beer 52 for Client 17 prepared
+Kitchen beverage Beer 55 for Client 18 prepared
+Kitchen beverage Beer 58 for Client 19 prepared
+Kitchen beverage Beer 62 for Client 21 prepared
+Kitchen beverage Beer 66 for Client 20 prepared
+Kitchen beverage Beer 69 for Client 16 prepared
+
+---------------------------------------iter100
+
+Waiter 1 delivering beverage Beer 48
+Client 22 (Group 4 at Table 1) starts consuming beverage Beer 48
+Kitchen dessert Tiramisu 49 for Client 22 prepared
+Kitchen dessert Tiramisu 59 for Client 19 prepared
+Kitchen dessert Tiramisu 63 for Client 21 prepared
+Kitchen dessert Tiramisu 67 for Client 20 prepared
+
+---------------------------------------iter101
+
+Waiter 1 delivering beverage Beer 52
+Client 17 (Group 4 at Table 1) starts consuming beverage Beer 52
+
+---------------------------------------iter102
+
+Waiter 1 delivering beverage Beer 55
+Client 18 (Group 4 at Table 1) starts consuming beverage Beer 55
+
+---------------------------------------iter103
+
+Waiter 1 delivering beverage Beer 58
+Client 19 (Group 4 at Table 1) starts consuming beverage Beer 58
+Kitchen soup White Borscht 50 for Client 17 prepared
+Kitchen soup White Borscht 53 for Client 18 prepared
+Kitchen soup White Borscht 56 for Client 19 prepared
+Kitchen soup White Borscht 60 for Client 21 prepared
+Kitchen soup White Borscht 64 for Client 20 prepared
+
+---------------------------------------iter104
+
+Waiter 1 delivering beverage Beer 62
+Client 21 (Group 4 at Table 1) starts consuming beverage Beer 62
+
+---------------------------------------iter105
+
+Waiter 1 delivering beverage Beer 66
+Client 20 (Group 4 at Table 1) starts consuming beverage Beer 66
+Kitchen main course Pork chop with fries 47 for Client 22 prepared
+Kitchen main course Pork chop with fries 51 for Client 17 prepared
+Kitchen main course Pork chop with fries 54 for Client 18 prepared
+Kitchen main course Pork chop with fries 57 for Client 19 prepared
+Kitchen main course Pork chop with fries 61 for Client 21 prepared
+Kitchen main course Pork chop with fries 65 for Client 20 prepared
+Kitchen main course Pork chop with fries 68 for Client 16 prepared
+
+---------------------------------------iter106
+
+Waiter 1 delivering beverage Beer 69
+Client 16 (Group 4 at Table 1) starts consuming beverage Beer 69
+
+---------------------------------------iter107
+
+Waiter 1 delivering dessert Tiramisu 49
+
+---------------------------------------iter108
+
+Waiter 1 delivering dessert Tiramisu 59
+
+---------------------------------------iter109
+
+Waiter 1 delivering dessert Tiramisu 63
+Client 22 (Group 4 at Table 1) consumed beverage Beer 48
+
+---------------------------------------iter110
+
+Waiter 1 delivering dessert Tiramisu 67
+Client 17 (Group 4 at Table 1) consumed beverage Beer 52
+
+---------------------------------------iter111
+
+Waiter 1 delivering soup White Borscht 50
+Client 17 (Group 4 at Table 1) starts consuming soup White Borscht 50
+Client 18 (Group 4 at Table 1) consumed beverage Beer 55
+
+---------------------------------------iter112
+
+Waiter 1 delivering soup White Borscht 53
+Client 18 (Group 4 at Table 1) starts consuming soup White Borscht 53
+Client 19 (Group 4 at Table 1) consumed beverage Beer 58
+
+---------------------------------------iter113
+
+Waiter 1 delivering soup White Borscht 56
+Client 19 (Group 4 at Table 1) starts consuming soup White Borscht 56
+Client 21 (Group 4 at Table 1) consumed beverage Beer 62
+
+---------------------------------------iter114
+
+Waiter 1 delivering soup White Borscht 60
+Client 21 (Group 4 at Table 1) starts consuming soup White Borscht 60
+Client 20 (Group 4 at Table 1) consumed beverage Beer 66
+
+---------------------------------------iter115
+
+Waiter 1 delivering soup White Borscht 64
+Client 20 (Group 4 at Table 1) starts consuming soup White Borscht 64
+Client 17 (Group 4 at Table 1) consumed soup White Borscht 50
+Client 16 (Group 4 at Table 1) consumed beverage Beer 69
+
+---------------------------------------iter116
+
+Waiter 1 delivering main course Pork chop with fries 47
+Client 22 (Group 4 at Table 1) starts consuming main course Pork chop with fries 47
+Client 18 (Group 4 at Table 1) consumed soup White Borscht 53
+
+---------------------------------------iter117
+
+Waiter 1 delivering main course Pork chop with fries 51
+Client 17 (Group 4 at Table 1) starts consuming main course Pork chop with fries 51
+Client 19 (Group 4 at Table 1) consumed soup White Borscht 56
+
+---------------------------------------iter118
+
+Waiter 1 delivering main course Pork chop with fries 54
+Client 18 (Group 4 at Table 1) starts consuming main course Pork chop with fries 54
+Client 21 (Group 4 at Table 1) consumed soup White Borscht 60
+
+---------------------------------------iter119
+
+Waiter 1 delivering main course Pork chop with fries 57
+Client 19 (Group 4 at Table 1) starts consuming main course Pork chop with fries 57
+Client 20 (Group 4 at Table 1) consumed soup White Borscht 64
+
+---------------------------------------iter120
+
+Waiter 1 delivering main course Pork chop with fries 61
+Client 21 (Group 4 at Table 1) starts consuming main course Pork chop with fries 61
+
+---------------------------------------iter121
+
+Waiter 1 delivering main course Pork chop with fries 65
+Client 20 (Group 4 at Table 1) starts consuming main course Pork chop with fries 65
+
+---------------------------------------iter122
+
+Waiter 1 delivering main course Pork chop with fries 68
+Client 16 (Group 4 at Table 1) starts consuming main course Pork chop with fries 68
+Client 22 (Group 4 at Table 1) consumed main course Pork chop with fries 47
+Client 22 (Group 4 at Table 1) starts consuming dessert Tiramisu 49
+
+---------------------------------------iter123
+
+Client 17 (Group 4 at Table 1) consumed main course Pork chop with fries 51
+
+---------------------------------------iter124
+
+Client 18 (Group 4 at Table 1) consumed main course Pork chop with fries 54
+
+---------------------------------------iter125
+
+Client 22 (Group 4 at Table 1) consumed dessert Tiramisu 49
+Client 19 (Group 4 at Table 1) consumed main course Pork chop with fries 57
+Client 19 (Group 4 at Table 1) starts consuming dessert Tiramisu 59
+
+---------------------------------------iter126
+
+Client 21 (Group 4 at Table 1) consumed main course Pork chop with fries 61
+Client 21 (Group 4 at Table 1) starts consuming dessert Tiramisu 63
+
+---------------------------------------iter127
+
+Client 20 (Group 4 at Table 1) consumed main course Pork chop with fries 65
+Client 20 (Group 4 at Table 1) starts consuming dessert Tiramisu 67
+
+---------------------------------------iter128
+
+Client 19 (Group 4 at Table 1) consumed dessert Tiramisu 59
+Client 16 (Group 4 at Table 1) consumed main course Pork chop with fries 68
+
+---------------------------------------iter129
+
+Client 21 (Group 4 at Table 1) consumed dessert Tiramisu 63
+
+---------------------------------------iter130
+
+Client 20 (Group 4 at Table 1) consumed dessert Tiramisu 67
+Group 4 at Table 1 Calls waiter to pay
+
+---------------------------------------iter131
+
+Waiter 1 taking payment form: Group 4 at Table 1
+Client 16 (Group 4 at Table 1) paying 45zl 50gr
+Client 17 (Group 4 at Table 1) paying 55zl 50gr
+Client 18 (Group 4 at Table 1) paying 55zl 50gr
+Client 19 (Group 4 at Table 1) paying 70zl 50gr
+Client 20 (Group 4 at Table 1) paying 70zl 50gr
+Client 21 (Group 4 at Table 1) paying 70zl 50gr
+Client 22 (Group 4 at Table 1) paying 60zl 50gr
+Group 4 at Table 1 Is preparing to leave
+
+---------------------------------------iter132
+
+Group 4 at Table 1 has left restaurant
+
+---------------------------------------iter133
+
+Client 23 (Group 5 at Table 1) Begins feast
+Client 24 (Group 5 at Table 1) Begins feast
+Client 25 (Group 5 at Table 1) Begins feast
+Client 26 (Group 5 at Table 1) Begins feast
+Client 27 (Group 5 at Table 1) Begins feast
+Client 28 (Group 5 at Table 1) Begins feast
+Client 29 (Group 5 at Table 1) Begins feast
+Group 5 at Table 1 Calls waiter for menu
+Waiter 1 delivering cards to Group 5 at Table 1
+Client 23 (Group 5 at Table 1) Took menu and begun to choose dishes
+Client 24 (Group 5 at Table 1) Took menu and begun to choose dishes
+Client 25 (Group 5 at Table 1) Took menu and begun to choose dishes
+Client 26 (Group 5 at Table 1) Took menu and begun to choose dishes
+Client 27 (Group 5 at Table 1) Took menu and begun to choose dishes
+Client 28 (Group 5 at Table 1) Took menu and begun to choose dishes
+Client 29 (Group 5 at Table 1) Took menu and begun to choose dishes
+
+---------------------------------------iter134
+
+Client 24 (Group 5 at Table 1) chose soup White Borscht 70
+Client 24 (Group 5 at Table 1) chose main course Pork chop with fries 71
+Client 24 (Group 5 at Table 1) chose beverage Beer 72
+Client 24 (Group 5 at Table 1) is ready to order
+Client 25 (Group 5 at Table 1) chose soup White Borscht 73
+Client 25 (Group 5 at Table 1) chose main course Pork chop with fries 74
+Client 25 (Group 5 at Table 1) chose beverage Beer 75
+Client 25 (Group 5 at Table 1) is ready to order
+Client 29 (Group 5 at Table 1) chose main course Pork chop with fries 76
+Client 29 (Group 5 at Table 1) chose beverage Beer 77
+Client 29 (Group 5 at Table 1) chose dessert Tiramisu 78
+Client 29 (Group 5 at Table 1) is ready to order
+
+---------------------------------------iter135
+
+
+---------------------------------------iter136
+
+Client 23 (Group 5 at Table 1) chose main course Pork chop with fries 79
+Client 23 (Group 5 at Table 1) chose beverage Beer 80
+Client 23 (Group 5 at Table 1) is ready to order
+Client 26 (Group 5 at Table 1) chose main course Pork chop with fries 82
+Client 26 (Group 5 at Table 1) chose beverage Beer 83
+Client 26 (Group 5 at Table 1) chose dessert Tiramisu 84
+Client 26 (Group 5 at Table 1) chose soup White Borscht 81
+Client 26 (Group 5 at Table 1) is ready to order
+Client 27 (Group 5 at Table 1) chose main course Pork chop with fries 85
+Client 27 (Group 5 at Table 1) chose beverage Beer 86
+Client 27 (Group 5 at Table 1) chose dessert Tiramisu 87
+Client 27 (Group 5 at Table 1) is ready to order
+
+---------------------------------------iter137
+
+Client 28 (Group 5 at Table 1) chose main course Pork chop with fries 88
+Client 28 (Group 5 at Table 1) chose beverage Beer 89
+Client 28 (Group 5 at Table 1) chose dessert Tiramisu 90
+Client 28 (Group 5 at Table 1) is ready to order
+Group 5 at Table 1 Calls waiter to order
+
+---------------------------------------iter138
+
+Waiter 1 taking order from Group 5 at Table 1
+Client 23 (Group 5 at Table 1) has ordered
+Client 24 (Group 5 at Table 1) has ordered
+Client 25 (Group 5 at Table 1) has ordered
+Client 26 (Group 5 at Table 1) has ordered
+Client 27 (Group 5 at Table 1) has ordered
+Client 28 (Group 5 at Table 1) has ordered
+Client 29 (Group 5 at Table 1) has ordered
+Kitchen beginning preparation of beverage Beer 80 for Client 23
+Kitchen beginning preparation of main course Pork chop with fries 79 for Client 23
+Kitchen beginning preparation of beverage Beer 72 for Client 24
+Kitchen beginning preparation of soup White Borscht 70 for Client 24
+Kitchen beginning preparation of main course Pork chop with fries 71 for Client 24
+Kitchen beginning preparation of beverage Beer 75 for Client 25
+Kitchen beginning preparation of soup White Borscht 73 for Client 25
+Kitchen beginning preparation of main course Pork chop with fries 74 for Client 25
+Kitchen beginning preparation of beverage Beer 83 for Client 26
+Kitchen beginning preparation of soup White Borscht 81 for Client 26
+Kitchen beginning preparation of main course Pork chop with fries 82 for Client 26
+Kitchen beginning preparation of dessert Tiramisu 84 for Client 26
+Kitchen beginning preparation of beverage Beer 86 for Client 27
+Kitchen beginning preparation of main course Pork chop with fries 85 for Client 27
+Kitchen beginning preparation of dessert Tiramisu 87 for Client 27
+Kitchen beginning preparation of beverage Beer 89 for Client 28
+Kitchen beginning preparation of main course Pork chop with fries 88 for Client 28
+Kitchen beginning preparation of dessert Tiramisu 90 for Client 28
+Kitchen beginning preparation of beverage Beer 77 for Client 29
+Kitchen beginning preparation of main course Pork chop with fries 76 for Client 29
+Kitchen beginning preparation of dessert Tiramisu 78 for Client 29
+Kitchen beverage Beer 72 for Client 24 prepared
+Kitchen beverage Beer 75 for Client 25 prepared
+Kitchen beverage Beer 77 for Client 29 prepared
+Kitchen beverage Beer 80 for Client 23 prepared
+Kitchen beverage Beer 83 for Client 26 prepared
+Kitchen beverage Beer 86 for Client 27 prepared
+Kitchen beverage Beer 89 for Client 28 prepared
+
+---------------------------------------iter139
+
+Waiter 1 delivering beverage Beer 72
+Client 24 (Group 5 at Table 1) starts consuming beverage Beer 72
+Kitchen dessert Tiramisu 78 for Client 29 prepared
+Kitchen dessert Tiramisu 84 for Client 26 prepared
+Kitchen dessert Tiramisu 87 for Client 27 prepared
+Kitchen dessert Tiramisu 90 for Client 28 prepared
+
+---------------------------------------iter140
+
+Waiter 1 delivering beverage Beer 75
+Client 25 (Group 5 at Table 1) starts consuming beverage Beer 75
+
+---------------------------------------iter141
+
+Waiter 1 delivering beverage Beer 77
+Client 29 (Group 5 at Table 1) starts consuming beverage Beer 77
+
+---------------------------------------iter142
+
+Waiter 1 delivering beverage Beer 80
+Client 23 (Group 5 at Table 1) starts consuming beverage Beer 80
+Kitchen soup White Borscht 70 for Client 24 prepared
+Kitchen soup White Borscht 73 for Client 25 prepared
+Kitchen soup White Borscht 81 for Client 26 prepared
+
+---------------------------------------iter143
+
+Waiter 1 delivering beverage Beer 83
+Client 26 (Group 5 at Table 1) starts consuming beverage Beer 83
+
+---------------------------------------iter144
+
+Waiter 1 delivering beverage Beer 86
+Client 27 (Group 5 at Table 1) starts consuming beverage Beer 86
+Kitchen main course Pork chop with fries 71 for Client 24 prepared
+Kitchen main course Pork chop with fries 74 for Client 25 prepared
+Kitchen main course Pork chop with fries 76 for Client 29 prepared
+Kitchen main course Pork chop with fries 79 for Client 23 prepared
+Kitchen main course Pork chop with fries 82 for Client 26 prepared
+Kitchen main course Pork chop with fries 85 for Client 27 prepared
+Kitchen main course Pork chop with fries 88 for Client 28 prepared
+
+---------------------------------------iter145
+
+Waiter 1 delivering beverage Beer 89
+Client 28 (Group 5 at Table 1) starts consuming beverage Beer 89
+
+---------------------------------------iter146
+
+Waiter 1 delivering dessert Tiramisu 78
+
+---------------------------------------iter147
+
+Waiter 1 delivering dessert Tiramisu 84
+
+---------------------------------------iter148
+
+Waiter 1 delivering dessert Tiramisu 87
+Client 24 (Group 5 at Table 1) consumed beverage Beer 72
+
+---------------------------------------iter149
+
+Waiter 1 delivering dessert Tiramisu 90
+Client 25 (Group 5 at Table 1) consumed beverage Beer 75
+
+---------------------------------------iter150
+
+Waiter 1 delivering soup White Borscht 70
+Client 24 (Group 5 at Table 1) starts consuming soup White Borscht 70
+Client 29 (Group 5 at Table 1) consumed beverage Beer 77
+
+---------------------------------------iter151
+
+Waiter 1 delivering soup White Borscht 73
+Client 25 (Group 5 at Table 1) starts consuming soup White Borscht 73
+Client 23 (Group 5 at Table 1) consumed beverage Beer 80
+
+---------------------------------------iter152
+
+Waiter 1 delivering soup White Borscht 81
+Client 26 (Group 5 at Table 1) starts consuming soup White Borscht 81
+Client 26 (Group 5 at Table 1) consumed beverage Beer 83
+
+---------------------------------------iter153
+
+Waiter 1 delivering main course Pork chop with fries 71
+Client 27 (Group 5 at Table 1) consumed beverage Beer 86
+
+---------------------------------------iter154
+
+Waiter 1 delivering main course Pork chop with fries 74
+Client 24 (Group 5 at Table 1) consumed soup White Borscht 70
+Client 24 (Group 5 at Table 1) starts consuming main course Pork chop with fries 71
+Client 28 (Group 5 at Table 1) consumed beverage Beer 89
+
+---------------------------------------iter155
+
+Waiter 1 delivering main course Pork chop with fries 76
+Client 29 (Group 5 at Table 1) starts consuming main course Pork chop with fries 76
+Client 25 (Group 5 at Table 1) consumed soup White Borscht 73
+Client 25 (Group 5 at Table 1) starts consuming main course Pork chop with fries 74
+
+---------------------------------------iter156
+
+Waiter 1 delivering main course Pork chop with fries 79
+Client 23 (Group 5 at Table 1) starts consuming main course Pork chop with fries 79
+Client 26 (Group 5 at Table 1) consumed soup White Borscht 81
+
+---------------------------------------iter157
+
+Waiter 1 delivering main course Pork chop with fries 82
+Client 26 (Group 5 at Table 1) starts consuming main course Pork chop with fries 82
+
+---------------------------------------iter158
+
+Waiter 1 delivering main course Pork chop with fries 85
+Client 27 (Group 5 at Table 1) starts consuming main course Pork chop with fries 85
+
+---------------------------------------iter159
+
+Waiter 1 delivering main course Pork chop with fries 88
+Client 28 (Group 5 at Table 1) starts consuming main course Pork chop with fries 88
+
+---------------------------------------iter160
+
+Client 24 (Group 5 at Table 1) consumed main course Pork chop with fries 71
+
+---------------------------------------iter161
+
+Client 25 (Group 5 at Table 1) consumed main course Pork chop with fries 74
+Client 29 (Group 5 at Table 1) consumed main course Pork chop with fries 76
+Client 29 (Group 5 at Table 1) starts consuming dessert Tiramisu 78
+
+---------------------------------------iter162
+
+Client 23 (Group 5 at Table 1) consumed main course Pork chop with fries 79
+
+---------------------------------------iter163
+
+Client 26 (Group 5 at Table 1) consumed main course Pork chop with fries 82
+Client 26 (Group 5 at Table 1) starts consuming dessert Tiramisu 84
+
+---------------------------------------iter164
+
+Client 29 (Group 5 at Table 1) consumed dessert Tiramisu 78
+Client 27 (Group 5 at Table 1) consumed main course Pork chop with fries 85
+Client 27 (Group 5 at Table 1) starts consuming dessert Tiramisu 87
+
+---------------------------------------iter165
+
+Client 28 (Group 5 at Table 1) consumed main course Pork chop with fries 88
+Client 28 (Group 5 at Table 1) starts consuming dessert Tiramisu 90
+
+---------------------------------------iter166
+
+Client 26 (Group 5 at Table 1) consumed dessert Tiramisu 84
+
+---------------------------------------iter167
+
+Client 27 (Group 5 at Table 1) consumed dessert Tiramisu 87
+
+---------------------------------------iter168
+
+Client 28 (Group 5 at Table 1) consumed dessert Tiramisu 90
+Group 5 at Table 1 Calls waiter to pay
+
+---------------------------------------iter169
+
+Waiter 1 taking payment form: Group 5 at Table 1
+Client 23 (Group 5 at Table 1) paying 45zl 50gr
+Client 24 (Group 5 at Table 1) paying 55zl 50gr
+Client 25 (Group 5 at Table 1) paying 55zl 50gr
+Client 26 (Group 5 at Table 1) paying 70zl 50gr
+Client 27 (Group 5 at Table 1) paying 60zl 50gr
+Client 28 (Group 5 at Table 1) paying 60zl 50gr
+Client 29 (Group 5 at Table 1) paying 60zl 50gr
+Group 5 at Table 1 Is preparing to leave
+
+---------------------------------------iter170
+
+Group 5 at Table 1 has left restaurant
+
+---------------------------------------iter171
+
+Client 30 (Group 6 at Table 1) Begins feast
+Client 31 (Group 6 at Table 1) Begins feast
+Client 32 (Group 6 at Table 1) Begins feast
+Client 33 (Group 6 at Table 1) Begins feast
+Client 34 (Group 6 at Table 1) Begins feast
+Client 35 (Group 6 at Table 1) Begins feast
+Client 36 (Group 6 at Table 1) Begins feast
+Group 6 at Table 1 Calls waiter for menu
+Waiter 1 delivering cards to Group 6 at Table 1
+Client 30 (Group 6 at Table 1) Took menu and begun to choose dishes
+Client 31 (Group 6 at Table 1) Took menu and begun to choose dishes
+Client 32 (Group 6 at Table 1) Took menu and begun to choose dishes
+Client 33 (Group 6 at Table 1) Took menu and begun to choose dishes
+Client 34 (Group 6 at Table 1) Took menu and begun to choose dishes
+Client 35 (Group 6 at Table 1) Took menu and begun to choose dishes
+Client 36 (Group 6 at Table 1) Took menu and begun to choose dishes
+Client 30 (Group 6 at Table 1) chose main course Pork chop with fries 91
+Client 30 (Group 6 at Table 1) chose beverage Coca Cola 92
+Client 30 (Group 6 at Table 1) is ready to order
+Client 32 (Group 6 at Table 1) chose soup White Borscht 93
+Client 32 (Group 6 at Table 1) chose main course Pork chop with fries 94
+Client 32 (Group 6 at Table 1) chose beverage Coca Cola 95
+Client 32 (Group 6 at Table 1) is ready to order
+Client 36 (Group 6 at Table 1) chose main course Pork chop with fries 96
+Client 36 (Group 6 at Table 1) chose beverage Coca Cola 97
+Client 36 (Group 6 at Table 1) chose dessert Tiramisu 98
+Client 36 (Group 6 at Table 1) is ready to order
+
+---------------------------------------iter172
+
+Client 33 (Group 6 at Table 1) chose main course Pork chop with fries 100
+Client 33 (Group 6 at Table 1) chose beverage Coca Cola 101
+Client 33 (Group 6 at Table 1) chose dessert Tiramisu 102
+Client 33 (Group 6 at Table 1) chose soup White Borscht 99
+Client 33 (Group 6 at Table 1) is ready to order
+
+---------------------------------------iter173
+
+Client 31 (Group 6 at Table 1) chose main course Pork chop with fries 103
+Client 31 (Group 6 at Table 1) chose beverage Coca Cola 104
+Client 31 (Group 6 at Table 1) is ready to order
+
+---------------------------------------iter174
+
+Client 35 (Group 6 at Table 1) chose main course Pork chop with fries 106
+Client 35 (Group 6 at Table 1) chose beverage Coca Cola 107
+Client 35 (Group 6 at Table 1) chose dessert Tiramisu 108
+Client 35 (Group 6 at Table 1) chose soup White Borscht 105
+Client 35 (Group 6 at Table 1) is ready to order
+
+---------------------------------------iter175
+
+Client 34 (Group 6 at Table 1) chose main course Pork chop with fries 110
+Client 34 (Group 6 at Table 1) chose beverage Coca Cola 111
+Client 34 (Group 6 at Table 1) chose dessert Tiramisu 112
+Client 34 (Group 6 at Table 1) chose soup White Borscht 109
+Client 34 (Group 6 at Table 1) is ready to order
+Group 6 at Table 1 Calls waiter to order
+
+---------------------------------------iter176
+
+Waiter 1 taking order from Group 6 at Table 1
+Client 30 (Group 6 at Table 1) has ordered
+Client 31 (Group 6 at Table 1) has ordered
+Client 32 (Group 6 at Table 1) has ordered
+Client 33 (Group 6 at Table 1) has ordered
+Client 34 (Group 6 at Table 1) has ordered
+Client 35 (Group 6 at Table 1) has ordered
+Client 36 (Group 6 at Table 1) has ordered
+Kitchen beginning preparation of beverage Coca Cola 92 for Client 30
+Kitchen beginning preparation of main course Pork chop with fries 91 for Client 30
+Kitchen beginning preparation of beverage Coca Cola 104 for Client 31
+Kitchen beginning preparation of main course Pork chop with fries 103 for Client 31
+Kitchen beginning preparation of beverage Coca Cola 95 for Client 32
+Kitchen beginning preparation of soup White Borscht 93 for Client 32
+Kitchen beginning preparation of main course Pork chop with fries 94 for Client 32
+Kitchen beginning preparation of beverage Coca Cola 101 for Client 33
+Kitchen beginning preparation of soup White Borscht 99 for Client 33
+Kitchen beginning preparation of main course Pork chop with fries 100 for Client 33
+Kitchen beginning preparation of dessert Tiramisu 102 for Client 33
+Kitchen beginning preparation of beverage Coca Cola 111 for Client 34
+Kitchen beginning preparation of soup White Borscht 109 for Client 34
+Kitchen beginning preparation of main course Pork chop with fries 110 for Client 34
+Kitchen beginning preparation of dessert Tiramisu 112 for Client 34
+Kitchen beginning preparation of beverage Coca Cola 107 for Client 35
+Kitchen beginning preparation of soup White Borscht 105 for Client 35
+Kitchen beginning preparation of main course Pork chop with fries 106 for Client 35
+Kitchen beginning preparation of dessert Tiramisu 108 for Client 35
+Kitchen beginning preparation of beverage Coca Cola 97 for Client 36
+Kitchen beginning preparation of main course Pork chop with fries 96 for Client 36
+Kitchen beginning preparation of dessert Tiramisu 98 for Client 36
+
+---------------------------------------iter177
+
+Kitchen beverage Coca Cola 92 for Client 30 prepared
+Kitchen beverage Coca Cola 95 for Client 32 prepared
+Kitchen beverage Coca Cola 97 for Client 36 prepared
+Kitchen dessert Tiramisu 98 for Client 36 prepared
+Kitchen beverage Coca Cola 101 for Client 33 prepared
+Kitchen dessert Tiramisu 102 for Client 33 prepared
+Kitchen beverage Coca Cola 104 for Client 31 prepared
+Kitchen beverage Coca Cola 107 for Client 35 prepared
+Kitchen dessert Tiramisu 108 for Client 35 prepared
+Kitchen beverage Coca Cola 111 for Client 34 prepared
+Kitchen dessert Tiramisu 112 for Client 34 prepared
+
+---------------------------------------iter178
+
+Waiter 1 delivering beverage Coca Cola 92
+Client 30 (Group 6 at Table 1) starts consuming beverage Coca Cola 92
+
+---------------------------------------iter179
+
+Waiter 1 delivering beverage Coca Cola 95
+Client 32 (Group 6 at Table 1) starts consuming beverage Coca Cola 95
+
+---------------------------------------iter180
+
+Waiter 1 delivering beverage Coca Cola 97
+Client 36 (Group 6 at Table 1) starts consuming beverage Coca Cola 97
+Kitchen soup White Borscht 93 for Client 32 prepared
+Kitchen soup White Borscht 99 for Client 33 prepared
+Kitchen soup White Borscht 105 for Client 35 prepared
+Kitchen soup White Borscht 109 for Client 34 prepared
+
+---------------------------------------iter181
+
+Waiter 1 delivering dessert Tiramisu 98
+
+---------------------------------------iter182
+
+Waiter 1 delivering beverage Coca Cola 101
+Client 33 (Group 6 at Table 1) starts consuming beverage Coca Cola 101
+Kitchen main course Pork chop with fries 91 for Client 30 prepared
+Kitchen main course Pork chop with fries 94 for Client 32 prepared
+Kitchen main course Pork chop with fries 96 for Client 36 prepared
+Kitchen main course Pork chop with fries 100 for Client 33 prepared
+Kitchen main course Pork chop with fries 103 for Client 31 prepared
+Kitchen main course Pork chop with fries 106 for Client 35 prepared
+Kitchen main course Pork chop with fries 110 for Client 34 prepared
+
+---------------------------------------iter183
+
+Waiter 1 delivering dessert Tiramisu 102
+
+---------------------------------------iter184
+
+Waiter 1 delivering beverage Coca Cola 104
+Client 31 (Group 6 at Table 1) starts consuming beverage Coca Cola 104
+
+---------------------------------------iter185
+
+Waiter 1 delivering beverage Coca Cola 107
+Client 35 (Group 6 at Table 1) starts consuming beverage Coca Cola 107
+
+---------------------------------------iter186
+
+Waiter 1 delivering dessert Tiramisu 108
+Client 30 (Group 6 at Table 1) consumed beverage Coca Cola 92
+
+---------------------------------------iter187
+
+Waiter 1 delivering beverage Coca Cola 111
+Client 34 (Group 6 at Table 1) starts consuming beverage Coca Cola 111
+Client 32 (Group 6 at Table 1) consumed beverage Coca Cola 95
+
+---------------------------------------iter188
+
+Waiter 1 delivering dessert Tiramisu 112
+Client 36 (Group 6 at Table 1) consumed beverage Coca Cola 97
+
+---------------------------------------iter189
+
+Waiter 1 delivering soup White Borscht 93
+Client 32 (Group 6 at Table 1) starts consuming soup White Borscht 93
+
+---------------------------------------iter190
+
+Waiter 1 delivering soup White Borscht 99
+Client 33 (Group 6 at Table 1) starts consuming soup White Borscht 99
+Client 33 (Group 6 at Table 1) consumed beverage Coca Cola 101
+
+---------------------------------------iter191
+
+Waiter 1 delivering soup White Borscht 105
+Client 35 (Group 6 at Table 1) starts consuming soup White Borscht 105
+
+---------------------------------------iter192
+
+Waiter 1 delivering soup White Borscht 109
+Client 34 (Group 6 at Table 1) starts consuming soup White Borscht 109
+Client 31 (Group 6 at Table 1) consumed beverage Coca Cola 104
+
+---------------------------------------iter193
+
+Waiter 1 delivering main course Pork chop with fries 91
+Client 30 (Group 6 at Table 1) starts consuming main course Pork chop with fries 91
+Client 32 (Group 6 at Table 1) consumed soup White Borscht 93
+Client 35 (Group 6 at Table 1) consumed beverage Coca Cola 107
+
+---------------------------------------iter194
+
+Waiter 1 delivering main course Pork chop with fries 94
+Client 32 (Group 6 at Table 1) starts consuming main course Pork chop with fries 94
+Client 33 (Group 6 at Table 1) consumed soup White Borscht 99
+
+---------------------------------------iter195
+
+Waiter 1 delivering main course Pork chop with fries 96
+Client 36 (Group 6 at Table 1) starts consuming main course Pork chop with fries 96
+Client 35 (Group 6 at Table 1) consumed soup White Borscht 105
+Client 34 (Group 6 at Table 1) consumed beverage Coca Cola 111
+
+---------------------------------------iter196
+
+Waiter 1 delivering main course Pork chop with fries 100
+Client 33 (Group 6 at Table 1) starts consuming main course Pork chop with fries 100
+Client 34 (Group 6 at Table 1) consumed soup White Borscht 109
+
+---------------------------------------iter197
+
+Waiter 1 delivering main course Pork chop with fries 103
+Client 31 (Group 6 at Table 1) starts consuming main course Pork chop with fries 103
+
+---------------------------------------iter198
+
+Waiter 1 delivering main course Pork chop with fries 106
+Client 35 (Group 6 at Table 1) starts consuming main course Pork chop with fries 106
+
+---------------------------------------iter199
+
