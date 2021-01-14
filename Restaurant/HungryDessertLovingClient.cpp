@@ -3,7 +3,8 @@
 #include <stdexcept>
 #include <sstream>
 #include <stdlib.h>
-#include <time.h>
+#include <chrono>
+#include <random>
 #include "Order.h"
 #include "MainCourse.h"
 #include "Beverage.h"
@@ -19,9 +20,10 @@ HungryDessertLovingClient::HungryDessertLovingClient(unsigned choosing_time, ITr
 
 void HungryDessertLovingClient::choose_dishes()
 {
-    srand(time(nullptr));
+    unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
+    std::mt19937 generator(seed);
     unsigned soup_count = menu->get_soup_size();
-    unsigned choosen = rand() % soup_count;
+    unsigned choosen = generator() % soup_count;
 
     soup = new Soup(menu->get_soup(choosen));
     soup->set_client(this);
@@ -32,7 +34,7 @@ void HungryDessertLovingClient::choose_dishes()
     // Rand number of soup
     srand(time(nullptr));
     unsigned dessert_count = menu->get_dessert_size();
-    choosen = rand() % dessert_count;
+    choosen = generator() % dessert_count;
 
     dessert = new Dessert(menu->get_dessert(choosen));
     dessert->set_client(this);

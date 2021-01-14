@@ -2,7 +2,8 @@
 #include <stdexcept>
 #include <sstream>
 #include <stdlib.h>
-#include <time.h>
+#include <chrono>
+#include <random>
 #include "StandardClient.h"
 #include "IGroup.h"
 #include "ITable.h"
@@ -113,10 +114,12 @@ void StandardClient::choose_dishes()
     // Prepare to raport
     std::ostringstream raport_stream;
 
+    unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
+    std::mt19937 generator(seed);
+
     // Choose main course
-    srand(time(nullptr));
     unsigned dish_count = menu->get_main_course_size();
-    unsigned choosen = rand() % dish_count;
+    unsigned choosen = generator() % dish_count;
     main_course =new MainCourse(menu->get_main_course(choosen));
     main_course->set_client(this);
 
@@ -124,7 +127,7 @@ void StandardClient::choose_dishes()
    
     // Choose beverage
     dish_count = menu->get_beverage_size();
-    choosen = rand() % dish_count;
+    choosen = generator() % dish_count;
     beveage = new Beverage(menu->get_beverage(choosen));
     beveage->set_client(this);
     raport_stream << *this << " chose " << *beveage;

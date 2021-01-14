@@ -2,7 +2,8 @@
 #include <stdexcept>
 #include <sstream>
 #include <stdlib.h>
-#include <time.h>
+#include <chrono>
+#include <random>
 #include "HungryClient.h"
 #include "StandardClient.h"
 #include "IGroup.h"
@@ -25,10 +26,10 @@ void HungryClient::choose_dishes()
     std::ostringstream raport_stream;
 
     // Rand number of soup
-    srand(time(nullptr));
+    unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
+    std::mt19937 generator(seed);
     unsigned soup_count = menu->get_soup_size();
-    unsigned choosen = rand() % soup_count;
-
+    unsigned choosen = generator() % soup_count;
 
     soup = new Soup(menu->get_soup(choosen));
     soup->set_client(this);

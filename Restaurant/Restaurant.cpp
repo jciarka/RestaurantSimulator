@@ -16,7 +16,7 @@ int main(int argc, char** argv)
     //test3();
     //test_clients_queue();
     //test4();
-    
+ 
     std::string filename0 = argv[1];
     std::string filename1 = argv[2];
     std::string filename2 = argv[3];
@@ -45,6 +45,6 @@ int main(int argc, char** argv)
     {
         std::cout << error.what() << std::endl;
     };
-    
+
     return 0;
 }

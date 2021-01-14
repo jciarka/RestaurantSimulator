@@ -3,7 +3,8 @@
 #include <stdexcept>
 #include <sstream>
 #include <stdlib.h>
-#include <time.h>
+#include <chrono>
+#include <random>
 #include "Order.h"
 #include "MainCourse.h"
 #include "Beverage.h"
@@ -23,15 +24,16 @@ void DessertLovingClient::choose_dishes()
     StandardClient::choose_dishes();
 
     // Rand number of soup
-    srand(time(nullptr));
+    unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
+    std::mt19937 generator(seed);
     unsigned dessert_count = menu->get_dessert_size();
-    unsigned choosen = rand() % dessert_count;
+    unsigned choosen = generator() % dessert_count;
 
     dessert = new Dessert(menu->get_dessert(choosen));
     dessert->set_client(this);
 
     // Raport
     std::ostringstream raport_stream;
-    raport_stream << *this << " chose " << *dessert;
+    raport_stream << *this << " choosed " << *dessert;
     raport(raport_stream.str());
 }
